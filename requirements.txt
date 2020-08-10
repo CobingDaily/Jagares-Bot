@@ -1,7 +1,4 @@
 discord
 hypixel
-random
 datetime
 requests
-math
-os

@@ -11,7 +11,7 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(status=discord.Status.idle, activity=discord.Game('/jag help'))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game('/jag help'))
     
     print(bot.user.name + " is ready.")
 
@@ -80,10 +80,15 @@ async def help(ctx):
     embed.add_field(name='Mega Walls Class Points', value='/jag cp <player>', inline=False)
     embed.add_field(name='Mega Walls Class Stats', value='/jag mwclass <class> <player>', inline=False)
     embed.add_field(name='\u200b', value='\u200b', inline=False)
+    embed.add_field(name='Blitz Survival Games Stats', value='/jag bsg <player>', inline=False)
+    embed.add_field(name='\u200b', value='\u200b', inline=False)
     embed.add_field(name='8ball', value='/jag 8ball <question>', inline=False)
     embed.add_field(name='Good Night', value='/jag gn <person>', inline=False)
     embed.add_field(name='Duel', value='/jag duel <player1> <player2>', inline=False)
     embed.add_field(name='Pet Image', value='/jag dog/cat/bird/panda', inline=False)
+    embed.add_field(name='Lyrics', value='/jag lyrics <song>', inline=False)
+    embed.add_field(name='Bot Chat', value='/jag chat <message>', inline=False)
+    embed.add_field(name='Shoutout', value='/jag shoutout', inline=False)
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
     await ctx.send(embed=embed)

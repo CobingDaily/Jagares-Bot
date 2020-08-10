@@ -391,6 +391,10 @@ async def mwclass(ctx, Class, name):
     class_final_deaths = hypixel.get_class_final_deaths(name, Class, data)
     class_fkd = round(class_final_kills/class_final_deaths, 2)
     class_cp = class_wins * 10 + class_final_kills + class_final_assists
+    class_losses = hypixel.get_class_losses(name, Class, data)
+    class_wlr = round(class_wins/class_losses, 2)
+
+
 
     embed = discord.Embed(
     title = f"{ign}'s {Class.capitalize()} Stats",
@@ -404,6 +408,7 @@ async def mwclass(ctx, Class, name):
     embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists)}", inline=False)
     embed.add_field(name=f'{Class.capitalize()} FK/D Ratio', value=f"{'{:,}'.format(class_fkd)}", inline=False)
     embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wins)}", inline=False)
+    embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wlr)}", inline=False)   
     embed.add_field(name=f'{Class.capitalize()} Class Points', value=f"{'{:,}'.format(class_cp)}", inline=False)
 
 

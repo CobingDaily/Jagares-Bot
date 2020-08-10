@@ -75,6 +75,7 @@ async def help(ctx):
     embed.set_author(name='Commands')
     embed.add_field(name='Info', value='/jag info <player>', inline=False)
     embed.add_field(name='Guild Info', value='/jag guild <guild name>', inline=False)
+    embed.add_field(name='Watchdog/Staff Stats', value='/jag watchdog', inline=False)
     embed.add_field(name='\u200b', value='\u200b', inline=False)
     embed.add_field(name='Mega Walls Stats', value='/jag mw <player>', inline=False)
     embed.add_field(name='Mega Walls Class Points', value='/jag cp <player>', inline=False)

@@ -404,12 +404,13 @@ async def mwclass(ctx, Class, name):
 
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
-    embed.add_field(name=f'{Class.capitalize()} Final Kills', value=f"{'{:,}'.format(class_final_kills)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} FK/D Ratio', value=f"{'{:,}'.format(class_fkd)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wins)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} W/L Ratio', value=f"{'{:,}'.format(class_wlr)}", inline=False)   
-    embed.add_field(name=f'{Class.capitalize()} Class Points', value=f"{'{:,}'.format(class_cp)}", inline=False)
+    embed.add_field(name=f'{Class.capitalize()} Final Kills', value=f"{'{:,}'.format(class_final_kills)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} FK/D Ratio', value=f"{'{:,}'.format(class_fkd)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wins)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} Losses', value=f"{'{:,}'.format(class_losses)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} W/L Ratio', value=f"{'{:,}'.format(class_wlr)}", inline=True)   
+    embed.add_field(name=f'{Class.capitalize()} Class Points', value=f"{'{:,}'.format(class_cp)}", inline=True)
 
 
     embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png")

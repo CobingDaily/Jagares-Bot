@@ -133,6 +133,11 @@ async def chat(ctx, *, message):
     await ctx.send(f'{Message}')
 
 
+@bot.command()
+async def non(ctx):
+    
+    await ctx.send(f'L non u are bad.')
+
 
 
 @bot.command()

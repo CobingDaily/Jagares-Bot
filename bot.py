@@ -408,7 +408,7 @@ async def mwclass(ctx, Class, name):
     embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists)}", inline=False)
     embed.add_field(name=f'{Class.capitalize()} FK/D Ratio', value=f"{'{:,}'.format(class_fkd)}", inline=False)
     embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wins)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wlr)}", inline=False)   
+    embed.add_field(name=f'{Class.capitalize()} W/L Ratio', value=f"{'{:,}'.format(class_wlr)}", inline=False)   
     embed.add_field(name=f'{Class.capitalize()} Class Points', value=f"{'{:,}'.format(class_cp)}", inline=False)
 
 

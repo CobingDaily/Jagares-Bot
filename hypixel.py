@@ -95,11 +95,11 @@ def bird_img_api():
 
 def dog_img_api():
 
-    res = requests.get("https://some-random-api.ml/img/dog")
+    res = requests.get("https://dog.ceo/api/breeds/image/random")
     data = res.json()
-    if data["link"] is None:
+    if data["message"] is None:
         return None
-    return data["link"]
+    return data["message"]
 
 
 

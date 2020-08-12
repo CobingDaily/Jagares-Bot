@@ -126,6 +126,15 @@ async def gn(ctx, *, Object="bird"):
     await ctx.send(f'gn {Object}')
 
 
+
+@bot.command(aliases=['discord'])
+async def dc(ctx):
+    
+    await ctx.send(f'https://discord.gg/88qd5TX')
+
+
+
+
 @bot.command()
 async def chat(ctx, *, message):
     Message = hypixel.chat_api(message)

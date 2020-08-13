@@ -634,6 +634,22 @@ def get_bsg_wins_solo_normal(name, data):
 
 
 
+def get_bsg_losses_teams_normal(name, data):
+    try:
+        bsg_losses_teams_normal = int(data["player"]["stats"]["HungerGames"]["losses_teams_normal"])
+    except:
+        bsg_losses_teams_normal = 0
+    return bsg_losses_teams_normal
+
+
+def get_bsg_losses_solo_normal(name, data):
+    try:
+        bsg_losses_solo_normal = int(data["player"]["stats"]["HungerGames"]["losses_solo_normal"])
+    except:
+        bsg_losses_solo_normal = 0
+    return bsg_losses_solo_normal
+
+
 
 
 

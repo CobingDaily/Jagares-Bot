@@ -209,7 +209,7 @@ def get_lastLogin(name, data):
     try:
         lastLogin = int(data["player"]["lastLogin"])
     except:
-        lastLogin = "Unknown"
+        lastLogin = 0
     return lastLogin
 
 

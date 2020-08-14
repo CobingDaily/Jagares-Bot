@@ -206,10 +206,8 @@ def get_firstLogin(name, data):
 
 
 def get_lastLogin(name, data):
-    try:
-        lastLogin = int(data["player"]["lastLogin"])
-    except:
-        lastLogin = 0
+    
+    lastLogin = int(data["player"]["lastLogin"])
     return lastLogin
 
 

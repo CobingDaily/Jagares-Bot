@@ -206,7 +206,10 @@ def get_firstLogin(name, data):
 
 
 def get_lastLogin(name, data):
-    lastLogin = int(data["player"]["lastLogin"])
+    try:
+        lastLogin = int(data["player"]["lastLogin"])
+    except:
+        lastLogin = "Unknown"
     return lastLogin
 
 

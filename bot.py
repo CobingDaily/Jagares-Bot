@@ -27,7 +27,10 @@ async def info(ctx, name):
     achievementPoints = hypixel.get_achievementPoints(name, data)
     version = hypixel.get_mcVersionRp(name, data)
     firstLogin = hypixel.get_firstLogin(name, data)
-    lastLogin = hypixel.get_lastLogin(name, data)
+    try:
+        lastLogin = hypixel.get_lastLogin(name, data)
+    except:
+        lastLogin = "Unknown"
     dt_firstLogin = datetime.datetime.utcfromtimestamp(round(firstLogin/1000))
     dt_lastLogin = datetime.datetime.utcfromtimestamp(round(lastLogin/1000))
     # quests = hypixel.get_quests(name, data)

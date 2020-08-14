@@ -48,7 +48,7 @@ async def info(ctx, name):
     # embed.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
     embed.add_field(name='Version', value=f'{version}', inline=False)
     embed.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
-    embed.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False
+    embed.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
     embed.set_image(url=f"https://minotar.net/armor/body/{ign}.png")
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 

@@ -261,7 +261,7 @@ def get_final_deaths_post(name, data):
     try:
         final_deaths = int(data["player"]["stats"]["Walls3"]["final_deaths"])
     except:
-        final_deaths = 1
+        final_deaths = 0
     return final_deaths
 
 
@@ -269,7 +269,7 @@ def get_final_deaths_pre(name, data):
     try:
         finalDeaths = int(data["player"]["stats"]["Walls3"]["finalDeaths"])
     except:
-        finalDeaths = 1
+        finalDeaths = 0
     return finalDeaths
 
 

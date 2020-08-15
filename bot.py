@@ -281,8 +281,7 @@ async def mw(ctx, name):
     cakes_found = hypixel.get_cakes_found(name, data)
     fas = hypixel.get_final_assists(name, data)
     fds = fds1 + fds2
-    if fds == 0
-       fds = 1
+    if fds == 0: fds = 1
     fkd = round(final_kills/fds, 2)
     wl = round(wins/losses,  2)
     

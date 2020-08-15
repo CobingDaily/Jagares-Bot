@@ -5,13 +5,13 @@ from discord.ext import commands
 import datetime
 import os
 
-bot = commands.Bot(command_prefix = "/jag ")
+bot = commands.Bot(command_prefix = "/")
 bot.remove_command('help')
 
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game('/jag help'))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game('/help'))
     
     print(bot.user.name + " is ready.")
 

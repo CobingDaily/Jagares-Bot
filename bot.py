@@ -137,7 +137,7 @@ async def gn(ctx, *, Object="bird"):
 @commands.has_role("Members")
 
 async def dc(ctx):
-    if get(message.author.roles, id=519612131738386441):
+    if get(member.roles, id=519612131738386441):
         await ctx.send(f'https://discord.gg/88qd5TX')
     else:
 

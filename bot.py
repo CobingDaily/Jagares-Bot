@@ -4,6 +4,7 @@ import random
 from discord.ext import commands
 import datetime
 import os
+from discord.utils import get
 
 bot = commands.Bot(command_prefix = "/")
 bot.remove_command('help')

@@ -133,15 +133,14 @@ async def gn(ctx, *, Object="bird"):
 
 
 @bot.command(aliases=['discord'])
-try:
-    @commands.has_role("Members")
+@commands.has_role("Members")
 
-    async def dc(ctx):
-
+async def dc(ctx):
+    try:
         await ctx.send(f'https://discord.gg/88qd5TX')
-except:
+    except:
 
-    await client.send_message(ctx.message.channel, "Only Guild Members Have Access To This Command!")
+        await client.send_message(ctx.message.channel, "Only Guild Members Have Access To This Command!")
     
 
 

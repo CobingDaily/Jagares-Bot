@@ -133,6 +133,7 @@ async def gn(ctx, *, Object="bird"):
 
 
 @bot.command(aliases=['discord'])
+@commands.has_role("Members")
 async def dc(ctx):
     
     await ctx.send(f'https://discord.gg/88qd5TX')

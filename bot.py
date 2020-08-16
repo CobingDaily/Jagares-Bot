@@ -134,7 +134,6 @@ async def gn(ctx, *, Object="bird"):
 
 
 @bot.command(aliases=['discord'])
-@commands.has_role("Members")
 
 async def dc(ctx):
     if get(member.roles, id=519612131738386441):

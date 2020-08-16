@@ -136,7 +136,7 @@ async def gn(ctx, *, Object="bird"):
 @bot.command(aliases=['discord'])
 
 async def dc(ctx):
-AUTHOR = ctx.message.author.name
+AUTHOR = ctx.message.author
     if get(AUTHOR.roles, id=519612131738386441):
         await ctx.send(f'https://discord.gg/88qd5TX')
     else:

@@ -140,8 +140,8 @@ async def dc(ctx):
     if get(username.roles, id=519612131738386441):
         await ctx.send(f'https://discord.gg/88qd5TX')
     else:
-
-        await ctx.send_message(ctx.message.channel, "Only Guild Members Have Access To This Command!")
+        await ctx.send(f'Only Guild Members Have Access To This Command!')
+        
     
 
 

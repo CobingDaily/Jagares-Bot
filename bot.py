@@ -137,9 +137,11 @@ async def gn(ctx, *, Object="bird"):
 @commands.has_role("Members")
 
 async def dc(ctx):
-    await ctx.send(f'https://discord.gg/88qd5TX')
+    if get(message.author.roles, id=519612131738386441):
+        await ctx.send(f'https://discord.gg/88qd5TX')
+    else:
 
-   #     await client.send_message(ctx.message.channel, "Only Guild Members Have Access To This Command!")
+        await client.send_message(ctx.message.channel, "Only Guild Members Have Access To This Command!")
     
 
 

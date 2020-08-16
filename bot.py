@@ -141,7 +141,7 @@ async def dc(ctx):
         await ctx.send(f'https://discord.gg/88qd5TX')
     else:
 
-        await client.send_message(ctx.message.channel, "Only Guild Members Have Access To This Command!")
+        await ctx.send_message(ctx.message.channel, "Only Guild Members Have Access To This Command!")
     
 
 

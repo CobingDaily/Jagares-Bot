@@ -124,7 +124,41 @@ async def _8Ball(ctx, *, question):
 
     await ctx.send(f'{random.choice(responses)}')
 
+@bot.command(aliases=['guildcape'])
+async def gcape(ctx):
+    capes = ['https://www.needcoolshoes.com/banner?=gapfgvpygcgikp', 
+                 'https://www.needcoolshoes.com/banner?=japfjvpyjcjinp', 
+                 'https://www.needcoolshoes.com/banner?=iakfivkyiciilp', 
+                 'https://www.needcoolshoes.com/banner?=laaflvaylcliop', 
+                 'https://www.needcoolshoes.com/banner?=dalfdvlydcdibp', 
+                 'https://www.needcoolshoes.com/banner?=majfmvjymcmifp', 
+                 'https://www.needcoolshoes.com/banner?=ialfivlyiciikp', 
+                 'https://www.needcoolshoes.com/banner?=aapfavpyacaihp', 
+                 'https://www.needcoolshoes.com/banner?=paafpvaypcpiip', 
+                 'https://www.needcoolshoes.com/banner?=oalfovlyocoikp', 
+                 'https://www.needcoolshoes.com/banner?=famffvmyfcfiep', 
+                 'https://www.needcoolshoes.com/banner?=aahfavhyacaihp', 
+                 'https://www.needcoolshoes.com/banner?=paffpvfypipcpp', 
+                 'https://www.needcoolshoes.com/banner?=paefpveypipcpp', 
+                 'https://www.needcoolshoes.com/banner?=pabfpvbypipcpp', 
+                 'https://www.needcoolshoes.com/banner?=pacfpvcypipcpp', 
+                 'https://www.needcoolshoes.com/banner?=paofpvoypipcpp', 
+                 'https://www.needcoolshoes.com/banner?=palfpvlypipcpp', 
+                 'https://www.needcoolshoes.com/banner?=bapfbvpybibclp', 
+                 'https://www.needcoolshoes.com/banner?=nalfnvlynincop',
+                 'https://www.needcoolshoes.com/banner?=labflvbylilclp',
+	         'https://www.needcoolshoes.com/banner?=maefmveymimcgp',
+	         'https://www.needcoolshoes.com/banner?=gakfgvkygigcep',
+		 'https://www.needcoolshoes.com/banner?=haffhvfyhihcpp',
+		 'https://www.needcoolshoes.com/banner?=laaflvaylilckp',
+		 'https://www.needcoolshoes.com/banner?=mapfmvpymimcpp',
+		 'https://www.needcoolshoes.com/banner?=mapfmvpymimcop',
+		 'https://www.needcoolshoes.com/banner?=laaflvaylilcop',
+		 'https://www.needcoolshoes.com/banner?=labflvbylilcgp', 
+		 'https://www.needcoolshoes.com/banner?=falffvlyfifcnp', 
+	         'https://www.needcoolshoes.com/banner?=aaofavoyacaiap']
 
+    await ctx.send(f'Generated A Guild Cape {random.choice(capes)}')
 
 @bot.command()
 async def gn(ctx, *, Object="bird"):

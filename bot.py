@@ -5,6 +5,8 @@ from discord.ext import commands
 import datetime
 import os
 from discord.utils import get
+from discord.ext.commands import has_permissions, CheckFailure
+
 
 bot = commands.Bot(command_prefix = "/")
 bot.remove_command('help')

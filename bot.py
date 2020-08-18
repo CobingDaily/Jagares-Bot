@@ -175,8 +175,28 @@ async def dc(ctx):
         await ctx.send(f'https://discord.gg/88qd5TX')
     else:
         await ctx.send(f'Only Guild Members Have Access To This Command!')
-        
-    
+ 
+		    
+		    
+		    
+@bot.command(pass_context=True, aliases=['clear'])
+@has_permissions(administrator=True, manage_messages=True, manage_channels=True)
+async def purge(ctx, ammount=3):
+    await ctx.channel.purge(limit=ammount+1)
+
+		    
+
+@purge.error
+async def purge_error(error, ctx):
+    if isinstance(error, CheckFailure):
+        await ctx.send(f"Looks like you don't have the perm.")		    
+		    
+      
+		    
+		    
+		    
+		    
+
 
 
 @bot.command()

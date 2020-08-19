@@ -207,10 +207,10 @@ async def chat(ctx, *, message):
     await ctx.send(f'{Message}')
 
 
- @bot.command()
- async def seth(ctx):
+@bot.command()
+async def seth(ctx):
     
-     await ctx.send(f'lmao the guy who stays you mean?')
+    await ctx.send(f'lmao the guy who stays you mean?')
 
 
 

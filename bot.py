@@ -210,8 +210,13 @@ async def chat(ctx, *, message):
 @bot.command()
 async def seth(ctx):
     
-    await ctx.send(f'lmao the guy who stays you mean?')
+    await ctx.send(f'lmao the guy who skips you mean?')
 
+
+@bot.command()
+async def cijaye(ctx):
+    
+    await ctx.send(f'lmao the guy who stays you mean?')
 
 
 @bot.command()

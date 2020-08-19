@@ -5,7 +5,7 @@ from discord.ext import commands
 import datetime
 import os
 from discord.utils import get
-from discord.ext.commands import has_permissions, CheckFailure
+from discord.ext.commands import has_permissions, CheckFailure, MissingPermissions
 
 
 bot = commands.Bot(command_prefix = "/")
@@ -190,9 +190,9 @@ async def purge(ctx, ammount=3):
 
 @purge.error
 async def purge_error(error, ctx):
-    if isinstance(error, CheckFailure):
+    if isinstance(error, MissingPermissions):
         		    	    
-        await ctx.send("Looks like you don't have the perm.")
+        await ctx.send("Looks like you don't have the permission lol")
 		    
 		    
 		    

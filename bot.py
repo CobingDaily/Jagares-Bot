@@ -182,7 +182,7 @@ async def dc(ctx):
 		    
 		    
 @bot.command(pass_context=True, aliases=['clear'])
-@has_permissions(administrator=True, manage_messages=True, manage_channels=True)
+@has_permissions(manage_messages=True)
 async def purge(ctx, ammount=3):
     await ctx.channel.purge(limit=ammount+1)
 

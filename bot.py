@@ -190,9 +190,9 @@ async def purge(ctx, ammount=3):
 
 @purge.error
 async def purge_error(error, ctx):
-    if isinstance(error, CheckFailure):
+    if isinstance(error, MissingPermissions):
         		    	    
-     await client.send_message(ctx.message.channel, "Looks like you don't have the perm.")
+        await ctx.send("Looks like you don't have the perm.")
 		    
 		    
 		    

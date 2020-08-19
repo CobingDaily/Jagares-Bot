@@ -190,7 +190,7 @@ async def purge(ctx, ammount=3):
 
 @purge.error
 async def purge_error(error, ctx):
-    if isinstance(error, MissingPermissions):
+    if isinstance(error, CheckFailure):
         		    	    
         await ctx.send("Looks like you don't have the perm.")
 		    

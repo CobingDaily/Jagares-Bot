@@ -198,8 +198,8 @@ async def purge_error(ctx, error):
 		    
 @bot.command(pass_context=True)
 @has_permissions(manage_messages=True)
-async def yes(ctx):
-    await ctx.send("yes")		    
+async def say(ctx):
+    await ctx.send(ctx)		    
 		    
 		    
 		    

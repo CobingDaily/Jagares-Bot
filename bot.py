@@ -167,6 +167,10 @@ async def gn(ctx, *, Object="bird"):
     
     await ctx.send(f'gn {Object}')
 
+@bot.command(aliases=['Bhoppare', 'xhealz', 'bhopper'])
+async def bhoppare(ctx):
+    
+    await ctx.send(f'https://tenor.com/view/xhealz-megawalls-dreadlord-bhop-minecraft-gif-17190956')
 
 
 @bot.command(pass_context=True, aliases=['discord'])

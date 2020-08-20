@@ -194,6 +194,12 @@ async def purge_error(ctx, error):
         		    	    
         await ctx.send("Looks like you don't have the permission lol")
 		    
+
+		    
+@bot.command(pass_context=True)
+@has_permissions(manage_messages=True)
+async def purge(ctx):
+    await ctx.send("yes")		    
 		    
 		    
 		    

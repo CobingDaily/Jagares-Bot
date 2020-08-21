@@ -234,8 +234,8 @@ async def cijaye(ctx):
 
 
 
-@bot.command(aliases=['44hp'])
-async def 44HP(ctx):
+@bot.command(aliases=['44hp', '44HP', 'wouter'])
+async def _44HP(ctx):
     
     await ctx.send(f'lmao the guy who never dies you mean?')
 

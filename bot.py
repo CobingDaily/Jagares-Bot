@@ -206,7 +206,11 @@ async def say(ctx, *, msg):
     await ctx.send(f"{msg}")		    
 		    
 		    
-		    
+@say.error
+async def say_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        		    	    
+        await ctx.send("Looks like you don't have the permissions.")		    
 
 
 
@@ -227,6 +231,14 @@ async def seth(ctx):
 async def cijaye(ctx):
     
     await ctx.send(f'lmao the guy who stays you mean?')
+
+
+
+@bot.command(aliases=['44hp'])
+async def 44HP(ctx):
+    
+    await ctx.send(f'lmao the guy who never dies you mean?')
+
 
 
 @bot.command()

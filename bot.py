@@ -128,39 +128,44 @@ async def _8Ball(ctx, *, question):
 
 @bot.command(aliases=['guildcape'])
 async def gcape(ctx):
-    capes = ['https://www.needcoolshoes.com/banner?=aapfaiavpypEac', 
-                 'https://www.needcoolshoes.com/banner?=paafpipvayaEpc', 
-                 'https://www.needcoolshoes.com/banner?=pamfpipvmymEpc', 
-                 'https://www.needcoolshoes.com/banner?=pajfpipvjyjEpc', 
-                 'https://www.needcoolshoes.com/banner?=paffpipvfyfEpc', 
-                 'https://www.needcoolshoes.com/banner?=paefpipveyeEpc', 
-                 'https://www.needcoolshoes.com/banner?=pakfpipvkykEpc', 
-                 'https://www.needcoolshoes.com/banner?=palfpipvlylEpc', 
-                 'https://www.needcoolshoes.com/banner?=paofpipvoyoEpc', 
-                 'https://www.needcoolshoes.com/banner?=pabfpipvbybEpc', 
-                 'https://www.needcoolshoes.com/banner?=aalfaiavlylEac', 
-                 'https://www.needcoolshoes.com/banner?=aaofaiavoyoEac', 
-                 'https://www.needcoolshoes.com/banner?=aabfaiavbybEac', 
-                 'https://www.needcoolshoes.com/banner?=aakfaiavkykEac', 
-                 'https://www.needcoolshoes.com/banner?=aamfaiavmymEac', 
-                 'https://www.needcoolshoes.com/banner?=aaefaiaveyeEac', 
-                 'https://www.needcoolshoes.com/banner?=aaffaiavfyfEac', 
-                 'https://www.needcoolshoes.com/banner?=japfjijvpypEjc', 
-                 'https://www.needcoolshoes.com/banner?=fapffifvpypEfc', 
-                 'https://www.needcoolshoes.com/banner?=eapfeievpypEec',
-                 'https://www.needcoolshoes.com/banner?=mapfmimvpypEmc',
-	         'https://www.needcoolshoes.com/banner?=kapfkikvpypEkc',
-	         'https://www.needcoolshoes.com/banner?=lapflilvpypElc',
-		 'https://www.needcoolshoes.com/banner?=oapfoiovpypEoc',
-		 'https://www.needcoolshoes.com/banner?=bapfbibvpypEbc',
-		 'https://www.needcoolshoes.com/banner?=dalfdidvlylEdc',
-		 'https://www.needcoolshoes.com/banner?=fajffifvjyjEfc',
-		 'https://www.needcoolshoes.com/banner?=fakffifvkykEfc',
-		 'https://www.needcoolshoes.com/banner?=labflilvbybElc', 
-		 'https://www.needcoolshoes.com/banner?=gapfgigvpypEgc', 
-	         'https://www.needcoolshoes.com/banner?=jaffjijvfyfEjc']
+    username = ctx.message.author
+    if get(username.roles, id=519612131738386441):
+        capes = ['https://www.needcoolshoes.com/banner?=aapfaiavpypEac', 
+                    'https://www.needcoolshoes.com/banner?=paafpipvayaEpc', 
+                    'https://www.needcoolshoes.com/banner?=pamfpipvmymEpc', 
+                    'https://www.needcoolshoes.com/banner?=pajfpipvjyjEpc', 
+                    'https://www.needcoolshoes.com/banner?=paffpipvfyfEpc', 
+                    'https://www.needcoolshoes.com/banner?=paefpipveyeEpc', 
+                    'https://www.needcoolshoes.com/banner?=pakfpipvkykEpc', 
+                    'https://www.needcoolshoes.com/banner?=palfpipvlylEpc', 
+                    'https://www.needcoolshoes.com/banner?=paofpipvoyoEpc', 
+                    'https://www.needcoolshoes.com/banner?=pabfpipvbybEpc', 
+                    'https://www.needcoolshoes.com/banner?=aalfaiavlylEac', 
+                    'https://www.needcoolshoes.com/banner?=aaofaiavoyoEac', 
+                    'https://www.needcoolshoes.com/banner?=aabfaiavbybEac', 
+                    'https://www.needcoolshoes.com/banner?=aakfaiavkykEac', 
+                    'https://www.needcoolshoes.com/banner?=aamfaiavmymEac', 
+                    'https://www.needcoolshoes.com/banner?=aaefaiaveyeEac', 
+                    'https://www.needcoolshoes.com/banner?=aaffaiavfyfEac', 
+                    'https://www.needcoolshoes.com/banner?=japfjijvpypEjc', 
+                    'https://www.needcoolshoes.com/banner?=fapffifvpypEfc', 
+                    'https://www.needcoolshoes.com/banner?=eapfeievpypEec',
+                    'https://www.needcoolshoes.com/banner?=mapfmimvpypEmc',
+                    'https://www.needcoolshoes.com/banner?=kapfkikvpypEkc',
+                    'https://www.needcoolshoes.com/banner?=lapflilvpypElc',
+                    'https://www.needcoolshoes.com/banner?=oapfoiovpypEoc',
+                    'https://www.needcoolshoes.com/banner?=bapfbibvpypEbc',
+                    'https://www.needcoolshoes.com/banner?=dalfdidvlylEdc',
+                    'https://www.needcoolshoes.com/banner?=fajffifvjyjEfc',
+                    'https://www.needcoolshoes.com/banner?=fakffifvkykEfc',
+                    'https://www.needcoolshoes.com/banner?=labflilvbybElc', 
+                    'https://www.needcoolshoes.com/banner?=gapfgigvpypEgc', 
+                    'https://www.needcoolshoes.com/banner?=jaffjijvfyfEjc']
 
-    await ctx.send(f'Generated A Guild Cape {random.choice(capes)}')
+        await ctx.send(f'Generated A Guild Cape {random.choice(capes)}')
+    else:
+        await ctx.send(f'Only Guild Members Can Generate Guild Capes!')
+
 
 @bot.command()
 async def gn(ctx, *, Object="bird"):

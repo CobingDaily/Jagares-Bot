@@ -576,7 +576,7 @@ async def guild(ctx, name):
     embed.add_field(name='Guild description', value=f'{guild_description} \u200b', inline=False)
     embed.add_field(name='Guild Experience', value=f"{'{:,}'.format(guild_exp)} \u200b", inline=False)
     embed.add_field(name='Creation Date', value=f'{guild_date} UTC', inline=False)
-    for key in guild_exp_history:
+    for key, value in guild_exp_history.items():
         embed.add_field(name=f'{key} \u200b', value=f"{value} \u200b", inline=False)
     
 

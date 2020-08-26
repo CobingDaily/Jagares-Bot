@@ -23,7 +23,7 @@ async def info(ctx, name):
     data = hypixel.hypixel_api(name)
     data2 = hypixel.hypixel_api2(name)
     try:
-        ign = hypixel.get_displayname(name, data)
+        ign = hypixel.get_displayname(name, data2)
     except:
         await ctx.send("Player not found! (Make sure to use their Minecraft username)")
     level = hypixel.get_level(name, data2)

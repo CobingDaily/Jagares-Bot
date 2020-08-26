@@ -20,9 +20,10 @@ async def on_ready():
 
 @bot.command()
 async def info(ctx, name):
-    data = hypixel.hypixel_api(name)
-    data2 = hypixel.hypixel_api2(name)
     try:
+        data = hypixel.hypixel_api(name)
+        data2 = hypixel.hypixel_api2(name)
+
         ign = hypixel.get_displayname(name, data)
 
         level = hypixel.get_level(name, data2)

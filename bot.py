@@ -575,7 +575,7 @@ async def guild(ctx, name):
     embed.add_field(name='Guild description', value=f'{guild_description} \u200b', inline=False)
     embed.add_field(name='Guild Experience', value=f"{'{:,}'.format(guild_exp)} \u200b", inline=False)
     embed.add_field(name='Creation Date', value=f'{guild_date} UTC', inline=False)
-    embed.add_field(name='Guild Experience History', value=f"{guild_exp_history)} \u200b", inline=False)
+    embed.add_field(name='Guild Experience History', value=f"{guild_exp_history} \u200b", inline=False)
     
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")

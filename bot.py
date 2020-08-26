@@ -24,11 +24,13 @@ async def info(ctx, name):
     data2 = hypixel.hypixel_api2(name)
     try:
         ign = hypixel.get_displayname(name, data)
+
+        level = hypixel.get_level(name, data2)
+        karma = hypixel.get_karma(name, data2)
+        achievementPoints = hypixel.get_achievementPoints(name, data2)
+        quests = hypixel.get_quests(name, data2)
     except:
         await ctx.send("Player not found! (Make sure to use their Minecraft username)")
-    level = hypixel.get_level(name, data2)
-    karma = hypixel.get_karma(name, data2)
-    achievementPoints = hypixel.get_achievementPoints(name, data2)
     version = hypixel.get_mcVersionRp(name, data)
     firstLogin = hypixel.get_firstLogin(name, data)
    
@@ -39,7 +41,7 @@ async def info(ctx, name):
     except:
         lastLogin = "Unknown"
         dt_lastLogin = "Unknown"
-    quests = hypixel.get_quests(name, data2)
+
 
 
     embed = discord.Embed(

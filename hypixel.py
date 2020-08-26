@@ -176,8 +176,8 @@ def panda_img_api():
 
 
 
-def get_displayname(name, data2):
-    ign = str(data2["username"])
+def get_displayname(name, data):
+    ign = str(data["player"]["displayname"])
     return ign
 
 

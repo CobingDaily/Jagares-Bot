@@ -550,16 +550,16 @@ async def mwclass(ctx, Class, name):
 
 
 @bot.command()
-async def guild(ctx, *, gname):
-    gdata = hypixel.hypixel_gapi(gname)
+async def guild(ctx, name):
+    gdata = hypixel.hypixel_gapi(name)
     try:
-        guild_name = hypixel.get_guild_name(gname, gdata)
+        guild_name = hypixel.get_guild_name(name, gdata)
     except:
         await ctx.send("Guild not found! (Make sure to use the guild name)")
-    guild_tag = hypixel.get_guild_tag(gname, gdata)
-    guild_description = hypixel.get_guild_description(gname, gdata)
-    guild_exp = hypixel.get_guild_exp(gname, gdata)
-    guild_date = datetime.datetime.utcfromtimestamp(round(hypixel.get_guild_date(gname, gdata)/1000))
+    guild_tag = hypixel.get_guild_tag(name, gdata)
+    guild_description = hypixel.get_guild_description(name, gdata)
+    guild_exp = hypixel.get_guild_exp(name, gdata)
+    guild_date = datetime.datetime.utcfromtimestamp(round(hypixel.get_guild_date(name, gdata)/1000))
 
 
     embed = discord.Embed(

@@ -26,11 +26,11 @@ def hypixel_api(name):
         return None
     return data
 
-def hypixel_gapi(gname):
-    gurl = f"https://api.hypixel.net/guild?key={API_KEY}&name={gname}"
+def hypixel_gapi(name):
+    gurl = f"https://api.slothpixel.me/api/guilds/{name}"
     gres = requests.get(gurl)
     gdata = gres.json()
-    if gdata["guild"] is None:
+    if gdata["name"] is None:
         return None
     return gdata
 
@@ -667,20 +667,20 @@ def get_bsg_losses_solo_normal(name, data):
 
 
 
-def get_guild_name(gname, gdata):
-    guild_name = str(gdata["guild"]["name"])
+def get_guild_name(name, gdata):
+    guild_name = str(gdata["name"])
     return guild_name
 
-def get_guild_tag(gname, gdata):
+def get_guild_tag(name, gdata):
     try:
-        guild_tag = str(gdata["guild"]["tag"])
+        guild_tag = str(gdata["tag"])
     except:
         guild_tag = "unknown guild tag"
     return guild_tag
 
-def get_guild_description(gname, gdata):
+def get_guild_description(name, gdata):
     try:
-        guild_description = str(gdata["guild"]["description"])
+        guild_description = str(gdata["description"])
     except:
         guild_description = "unknown guild description"
     if guild_description == "":
@@ -689,17 +689,17 @@ def get_guild_description(gname, gdata):
 
     return guild_description
 
-def get_guild_exp(gname, gdata):
+def get_guild_exp(name, gdata):
     try:
-        guild_exp = int(gdata["guild"]["exp"])
+        guild_exp = int(gdata["exp"])
     except:
         guild_exp = 0
     return guild_exp
 
 
-def get_guild_date(gname, gdata):
+def get_guild_date(name, gdata):
     try:
-        guild_date = int(gdata["guild"]["created"])
+        guild_date = int(gdata["created"])
     except:
         guild_date = 0
     return guild_date

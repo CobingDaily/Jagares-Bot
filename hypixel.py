@@ -26,6 +26,21 @@ def hypixel_api(name):
         return None
     return data
 
+
+
+
+def hypixel_api2(name):
+    url2 = f"https://api.slothpixel.me/api/players/{name}"
+    res2 = requests.get(url2)
+    data2 = res2.json()
+    if data2["username"] is None:
+        return None
+    return data2
+
+
+
+
+
 def hypixel_gapi(name):
     gurl = f"https://api.slothpixel.me/api/guilds/{name}"
     gres = requests.get(gurl)
@@ -161,38 +176,40 @@ def panda_img_api():
 
 
 
-def get_displayname(name, data):
-    ign = str(data["player"]["displayname"])
+def get_displayname(name, data2):
+    ign = str(data2["username"])
     return ign
 
 
-def get_level(name, data):
+def get_level(name, data2):
     try:
-        exp = int(data["player"]["networkExp"])
+        exp = int(data2["exp"])
     except:
         exp = 0
     return math.floor(1 + REVERSE_PQ_PREFIX + math.sqrt(REVERSE_CONST + GROWTH_DIVIDES_2 * exp))
 
 
-def get_karma(name, data):
+def get_karma(name, data2):
     try:
-        karma = int(data["player"]["karma"])
+        karma = int(data2["karma"])
     except:
         karma = 0
     return karma
 
 
-def get_achievementPoints(name, data):
+def get_achievementPoints(name, data2):
     try:
-        achievementPoints = int(data["player"]["achievementPoints"])
+        achievementPoints = int(data2["achievement_points"])
     except:
         achievementPoints = 0
     return achievementPoints
 
-# def get_quests(name, data):
-#     quests = data["player"]["quests"]
-#     totalquests = len(quests.completions)
-#     return totalquests
+def get_quests(name, data2):
+    try:
+        quests_completed = int(data2["quests_completed"])
+    except:
+        quests_completed = 0
+    return quests_completed
 
 
 def get_mcVersionRp(name, data):

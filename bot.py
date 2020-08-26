@@ -21,13 +21,14 @@ async def on_ready():
 @bot.command()
 async def info(ctx, name):
     data = hypixel.hypixel_api(name)
+    data2 = hypixel.hypixel_api2(name)
     try:
-        ign = hypixel.get_displayname(name, data)
+        ign = hypixel.get_displayname(name, data2)
     except:
         await ctx.send("Player not found! (Make sure to use their Minecraft username)")
-    level = hypixel.get_level(name, data)
-    karma = hypixel.get_karma(name, data)
-    achievementPoints = hypixel.get_achievementPoints(name, data)
+    level = hypixel.get_level(name, data2)
+    karma = hypixel.get_karma(name, data2)
+    achievementPoints = hypixel.get_achievementPoints(name, data2)
     version = hypixel.get_mcVersionRp(name, data)
     firstLogin = hypixel.get_firstLogin(name, data)
    
@@ -38,7 +39,7 @@ async def info(ctx, name):
     except:
         lastLogin = "Unknown"
         dt_lastLogin = "Unknown"
-    # quests = hypixel.get_quests(name, data)
+    quests = hypixel.get_quests(name, data2)
 
 
     embed = discord.Embed(
@@ -53,7 +54,7 @@ async def info(ctx, name):
     embed.add_field(name='Level', value=f'{level}', inline=False)
     embed.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
     embed.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
-    # embed.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
+    embed.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
     embed.add_field(name='Version', value=f'{version}', inline=False)
     embed.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
     embed.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)

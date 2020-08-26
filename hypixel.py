@@ -705,9 +705,9 @@ def get_guild_date(name, gdata):
     return guild_date
 
 def get_guild_exp_history(name, gdata):
-    guild_date = dict(gdata["exp_history"])
+    guild_exp_history = dict(gdata["exp_history"])
 
-    return guild_date
+    return guild_exp_history
 
 
 

@@ -82,7 +82,7 @@ async def help(ctx):
     
     embed.set_author(name='Commands')
     embed.add_field(name='Info', value='/info <player>', inline=False)
-    embed.add_field(name='Guild Info', value='/guild <guild name>', inline=False)
+    embed.add_field(name='Guild Info', value='/guild <player>', inline=False)
     embed.add_field(name='Watchdog/Staff Stats', value='/watchdog', inline=False)
     embed.add_field(name='\u200b', value='\u200b', inline=False)
     embed.add_field(name='Mega Walls Stats', value='/mw <player>', inline=False)
@@ -91,6 +91,7 @@ async def help(ctx):
     embed.add_field(name='\u200b', value='\u200b', inline=False)
     embed.add_field(name='Blitz Survival Games Stats', value='/bsg <player>', inline=False)
     embed.add_field(name='\u200b', value='\u200b', inline=False)
+    embed.add_field(name='Guild Cape', value='/gcape', inline=False)
     embed.add_field(name='8ball', value='/8ball <question>', inline=False)
     embed.add_field(name='Good Night', value='/gn <person>', inline=False)
     embed.add_field(name='Duel', value='/duel <player1> <player2>', inline=False)

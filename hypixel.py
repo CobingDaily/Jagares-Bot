@@ -705,10 +705,8 @@ def get_guild_date(name, gdata):
     return guild_date
 
 def get_guild_exp_history(name, gdata):
-    try:
-        guild_date = int(gdata["exp_history"])
-    except:
-        guild_date = 0
+    guild_date = int(gdata["exp_history"])
+
     return guild_date
 
 

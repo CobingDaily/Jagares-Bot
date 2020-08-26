@@ -560,7 +560,7 @@ async def guild(ctx, name):
     guild_description = hypixel.get_guild_description(name, gdata)
     guild_exp = hypixel.get_guild_exp(name, gdata)
     guild_date = datetime.datetime.utcfromtimestamp(round(hypixel.get_guild_date(name, gdata)/1000))
-
+    guild_exp_history = hypixel.get_guild_exp_history(name, gdata)
 
     embed = discord.Embed(
     title = 'Jagares Bot',
@@ -574,7 +574,9 @@ async def guild(ctx, name):
     embed.add_field(name='Guild Tag', value=f'{guild_tag} \u200b', inline=False)
     embed.add_field(name='Guild description', value=f'{guild_description} \u200b', inline=False)
     embed.add_field(name='Guild Experience', value=f"{'{:,}'.format(guild_exp)} \u200b", inline=False)
-    embed.add_field(name='Creation Date', value=f'{guild_date} UTC', inline=False)    
+    embed.add_field(name='Creation Date', value=f'{guild_date} UTC', inline=False)
+    embed.add_field(name='Guild Experience History', value=f"{'{:,}'.format(guild_exp_history)} \u200b", inline=False)
+    
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 

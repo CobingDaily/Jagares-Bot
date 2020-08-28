@@ -501,10 +501,16 @@ async def mwclass(ctx, Class, name):
     class_final_assists = hypixel.get_class_final_assists(name, Class, data)
     class_wins = hypixel.get_class_wins(name, Class, data)
     class_final_deaths = hypixel.get_class_final_deaths(name, Class, data)
-    class_fkd = round(class_final_kills/class_final_deaths, 2)
+    if class_final_deaths == 0:
+        class_fkd = class_final_kills
+    else:
+        class_fkd = round(class_final_kills/class_final_deaths, 2)
     class_cp = class_wins * 10 + class_final_kills + class_final_assists
     class_losses = hypixel.get_class_losses(name, Class, data)
-    class_wlr = round(class_wins/class_losses, 2)
+    if class_losses == 0:
+        class_wlr = class_wins
+    else:
+        class_wlr = round(class_wins/class_losses, 2)
 
 
 

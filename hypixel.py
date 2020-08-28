@@ -59,6 +59,13 @@ def hypixel_wdapi():
     return wddata
 
 
+# def mojang_api(name):
+#     url = f"https://api.mojang.com/users/profiles/minecraft/{name}"
+#     res = requests.get(url)
+#     mdata = res.json()
+#     if mdata["id"] is None:
+#         return None
+#     return mdata["id"]
 
 
 
@@ -234,10 +241,9 @@ def get_lastLogin(name, data):
 
 
 def get_knownAliases(name, data):
-    try:
-        nameHistory = (data["player"]["knownAliases"])
-    except:
-        pass
+
+    nameHistory = (data["player"]["knownAliases"])
+
     return nameHistory
 
 

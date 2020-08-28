@@ -244,7 +244,7 @@ def get_knownAliases(name, data):
     try:
         nameHistory = (data["player"]["knownAliases"])
     except:
-        nameHistory = ['Player Not Found!', '\u200b']
+        nameHistory = ['\u200b' '\u200b']
     return nameHistory
 
 

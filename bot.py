@@ -655,6 +655,38 @@ async def watchdog(ctx):
 
 
 
+@bot.command(aliases=['name', 'namehistory'])
+async def nh(ctx, name):
+    
+    data = hypixel.hypixel_api(name)
+    try:
+        ign = hypixel.get_displayname(name, data)
+    except:
+        await ctx.send("Player not found! (Make sure to use the Minecraft username)")
+
+    nameHistory = hypixel.get_knownAliases(name, data)
+
+
+
+    embed = discord.Embed(
+    title = f"{ign}'s Name History",
+    colour = discord.Colour.orange()
+    )
+
+
+    embed.set_author(name='Jagares Bot')
+
+
+    for value in nameHistory:
+        embed.add_field(name=f'{value} \u200b', value=f"{'{:,}'.format(value)} \u200b", inline=False)
+    
+
+    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+
+    await ctx.send(embed=embed)
 
 
 

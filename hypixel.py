@@ -233,6 +233,25 @@ def get_lastLogin(name, data):
 
 
 
+def get_knownAliases(name, data):
+    
+    nameHistory = (data["player"]["knownAliases"])
+    return nameHistory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # MEGA WALLS

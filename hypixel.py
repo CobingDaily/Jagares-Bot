@@ -234,8 +234,10 @@ def get_lastLogin(name, data):
 
 
 def get_knownAliases(name, data):
-    
-    nameHistory = (data["player"]["knownAliases"])
+    try:
+        nameHistory = (data["player"]["knownAliases"])
+    except:
+        pass
     return nameHistory
 
 

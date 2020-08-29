@@ -18,6 +18,27 @@ async def on_ready():
     
     print(bot.user.name + " is ready.")
 
+@bot.command(pass_context=True)
+async def servers(ctx):
+    client = discord.Client()
+    servers = list(client.servers)
+    print("Connected on " + str(len(client.servers)) + " servers:")
+    for x in range(len(servers)):
+        print(" "+servers[x-1].name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @bot.command()
 async def info(ctx, name):
     try:

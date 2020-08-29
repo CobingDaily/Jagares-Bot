@@ -18,16 +18,20 @@ async def on_ready():
     
     print(bot.user.name + " is ready.")
 
+# @bot.command(pass_context=True)
+# async def servers(ctx):
+#     client = discord.Client()
+#     servers = list(client.guilds)
+#     print("Connected on " + str(len(client.guilds)) + " servers:")
+#     for x in range(len(servers)):
+#         print(" "+servers[x-1].name)
+
+
 @bot.command(pass_context=True)
 async def servers(ctx):
-    client = discord.Client()
-    servers = list(client.guilds)
-    print("Connected on " + str(len(client.guilds)) + " servers:")
-    for x in range(len(servers)):
-        print(" "+servers[x-1].name)
-
-
-
+  servers = list(bot.guilds)
+  await ctx.send(f"Connected on {str(len(servers))} servers:")
+  await ctx.send('\n'.join(server.name for server in servers))
 
 
 

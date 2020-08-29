@@ -29,9 +29,9 @@ async def on_ready():
 
 @bot.command(pass_context=True)
 async def servers(ctx):
-  servers = list(bot.guilds)
-  await print(f"Connected to {str(len(servers))} servers:")
-  await print('\n'.join(server.name for server in servers))
+    servers = list(bot.guilds)
+    print(f"Connected to {str(len(servers))} servers:")
+    print('\n'.join(server.name for server in servers))
 
 
 

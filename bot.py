@@ -30,8 +30,8 @@ async def on_ready():
 @bot.command(pass_context=True)
 async def servers(ctx):
   servers = list(bot.guilds)
-  await ctx.send(f"Connected on {str(len(servers))} servers:")
-  await ctx.send('\n'.join(server.name for server in servers))
+  await print(f"Connected to {str(len(servers))} servers:")
+  await print('\n'.join(server.name for server in servers))
 
 
 

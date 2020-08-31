@@ -220,7 +220,11 @@ def get_quests(name, data2):
 
 
 def get_mcVersionRp(name, data):
-    mcVersionRp = str(data["player"]["mcVersionRp"])
+    try:
+        mcVersionRp = str(data["player"]["mcVersionRp"])
+    except:
+        mcVersionRp = "Unknown"
+
     return mcVersionRp
 
 

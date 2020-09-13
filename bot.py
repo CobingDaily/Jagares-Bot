@@ -750,7 +750,10 @@ async def bsg(ctx, name):
     deaths = hypixel.get_bsg_deaths(name, data)
    # losses = hypixel.get_bsg_losses_solo_normal(name, data) + hypixel.get_bsg_losses_teams_normal(name, data)
     coins = hypixel.get_bsg_coins(name, data)
-    kd = round(kills/deaths, 2)
+    if deaths == 0:
+        kd = kills
+    else:
+        kd = round(kills/deaths, 2)
    # wl = round(wins/losses, 2)
     
     embed = discord.Embed(

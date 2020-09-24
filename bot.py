@@ -201,7 +201,7 @@ async def give(ctx, role=None):
     lazid = ctx.message.author.id 
     if lazid == 535137720981520384:
         user = ctx.message.author
-        await self.bot.add_roles(user, role)
+        await user.add_roles(role)
         # await ctx.send(f'{role} added for {user}')
     else:
         await ctx.send(f'Command Failed')

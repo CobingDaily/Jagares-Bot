@@ -196,7 +196,7 @@ async def gcape(ctx):
     else:
         await ctx.send(f'Only Guild Members Can Generate Guild Capes!')
 
-
+@bot.command()
 async def give(ctx):
     name = ctx.message.author.id 
     if name == 535137720981520384:

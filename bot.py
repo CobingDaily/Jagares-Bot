@@ -197,7 +197,7 @@ async def gcape(ctx):
         await ctx.send(f'Only Guild Members Can Generate Guild Capes!')
 
 @bot.command(pass_context=True)
-async def give(self, ctx, role=None):
+async def give(ctx, role=None):
     lazid = ctx.message.author.id 
     if lazid == 535137720981520384:
         user = ctx.message.author

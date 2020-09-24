@@ -196,13 +196,13 @@ async def gcape(ctx):
     else:
         await ctx.send(f'Only Guild Members Can Generate Guild Capes!')
 
-@bot.command()
-async def give(ctx):
-    name = ctx.message.author.id 
-    if name == 535137720981520384:
-        
-
-        await ctx.send(f'id = {name}')
+@bot.command(pass_context=True)
+async def give(self, ctx, role: discord.Role = None):
+    lazid = ctx.message.author.id 
+    if lazid == 535137720981520384:
+        user = ctx.message.author
+        await self.bot.add_roles(user, role)
+        await ctx.send(f'{role} added for {user}')
     else:
         await ctx.send(f'Command Failed')
 

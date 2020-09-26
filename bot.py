@@ -542,17 +542,18 @@ async def mwclass(ctx, Class, name):
     class_final_assists = hypixel.get_class_final_assists(name, Class, data)
     class_wins = hypixel.get_class_wins(name, Class, data)
     # class_final_deaths = hypixel.get_class_final_deaths(name, Class, data)
-    class_losses = hypixel.get_class_losses(name, Class, data)
+    # class_losses = hypixel.get_class_losses(name, Class, data)
 
     class_cp = class_wins * 10 + class_final_kills + class_final_assists
 
 
 
     class_final_kills_all = hypixel.get_class_finals_all(name, Class, data)
+    class_final_assists_all = hypixel.get_class_final_assists_all(name, Class, data)
     class_wins_all = hypixel.get_class_wins_all(name, Class, data)
     class_final_deaths_all = hypixel.get_class_final_deaths_all(name, Class, data)
     class_losses_all = hypixel.get_class_losses_all(name, Class, data)
-
+    
 
 
     if class_final_deaths_all == 0:
@@ -574,11 +575,11 @@ async def mwclass(ctx, Class, name):
 
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
-    embed.add_field(name=f'{Class.capitalize()} Final Kills', value=f"{'{:,}'.format(class_final_kills)}", inline=True)
-    embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} Final Kills', value=f"{'{:,}'.format(class_final_kills_all)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists_all)}", inline=True)
     embed.add_field(name=f'{Class.capitalize()} FK/D Ratio', value=f"{'{:,}'.format(class_fkd)}", inline=True)
-    embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wins)}", inline=True)
-    embed.add_field(name=f'{Class.capitalize()} Losses', value=f"{'{:,}'.format(class_losses)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wins_all)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} Losses', value=f"{'{:,}'.format(class_losses_all)}", inline=True)
     embed.add_field(name=f'{Class.capitalize()} W/L Ratio', value=f"{'{:,}'.format(class_wlr)}", inline=True)   
     embed.add_field(name=f'{Class.capitalize()} Class Points', value=f"{'{:,}'.format(class_cp)}", inline=True)
 

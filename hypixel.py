@@ -617,13 +617,13 @@ def get_class_wins(name, Class, data):
 #     return class_final_deaths
 
 
-def get_class_losses(name, Class, data):
+# def get_class_losses(name, Class, data):
     
-    try:
-        class_final_losses = int(data["player"]["stats"]["Walls3"][f"{Class.lower()}_losses_standard"])
-    except:
-        class_final_losses = 0
-    return class_final_losses
+#     try:
+#         class_final_losses = int(data["player"]["stats"]["Walls3"][f"{Class.lower()}_losses_standard"])
+#     except:
+#         class_final_losses = 0
+#     return class_final_losses
 
 
 
@@ -639,6 +639,15 @@ def get_class_finals_all(name, Class, data):
     except:
         class_finals_all = 0
     return class_finals_all
+
+def get_class_final_assists_all(name, Class, data):
+    
+    try:
+        class_final_assists_all = int(data["player"]["stats"]["Walls3"][f"{Class.lower()}_final_assists"])
+    except:
+        class_final_assists_all = 0
+    return class_final_assists_all
+
 
 def get_class_final_deaths_all(name, Class, data):
     

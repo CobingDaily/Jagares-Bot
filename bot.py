@@ -228,6 +228,11 @@ async def dc(ctx):
         await ctx.send(f'Only Guild Members Have Access To This Command!')
  
 		    
+@bot.command(pass_context=True, aliases=['discord'])
+
+async def apply(ctx):
+
+    await ctx.send(f'https://hypixel.net/threads/%E2%98%95%EF%B8%8F-jagares-jag-%E2%98%95%EF%B8%8F-level-89-%E2%98%95%EF%B8%8F-mega-walls-more-%E2%98%95%EF%B8%8F-top-100-%E2%98%95%EF%B8%8F-events-%E2%98%95%EF%B8%8F.2490194/')
 		    
 		    
 @bot.command(pass_context=True, aliases=['clear'])

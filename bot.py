@@ -234,7 +234,7 @@ async def apply(ctx):
     title = f"Apply For Jagares",
     colour = discord.Colour.orange()
     )
-    embed.add_field(name="[apply here](https://hypixel.net/threads/%E2%98%95%EF%B8%8F-jagares-jag-%E2%98%95%EF%B8%8F-level-89-%E2%98%95%EF%B8%8F-mega-walls-more-%E2%98%95%EF%B8%8F-top-100-%E2%98%95%EF%B8%8F-events-%E2%98%95%EF%B8%8F.2490194/)", value=f"\u200b", inline=True)
+    embed.add_field(name='\u200b', value=f"[apply here](https://hypixel.net/threads/%E2%98%95%EF%B8%8F-jagares-jag-%E2%98%95%EF%B8%8F-level-89-%E2%98%95%EF%B8%8F-mega-walls-more-%E2%98%95%EF%B8%8F-top-100-%E2%98%95%EF%B8%8F-events-%E2%98%95%EF%B8%8F.2490194/)", inline=True)
 
     # await ctx.send(f'https://hypixel.net/threads/%E2%98%95%EF%B8%8F-jagares-jag-%E2%98%95%EF%B8%8F-level-89-%E2%98%95%EF%B8%8F-mega-walls-more-%E2%98%95%EF%B8%8F-top-100-%E2%98%95%EF%B8%8F-events-%E2%98%95%EF%B8%8F.2490194/')
     await ctx.send(embed=embed)

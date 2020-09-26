@@ -200,9 +200,7 @@ async def gcape(ctx):
 async def give(ctx, role=None):
     lazid = ctx.message.author.id 
     if lazid == 535137720981520384:
-        user = ctx.message.author
-        await user.add_roles(role)
-        # await ctx.send(f'{role} added for {user}')
+        pass
     else:
         await ctx.send(f'Command Failed')
 
@@ -543,17 +541,28 @@ async def mwclass(ctx, Class, name):
     class_final_kills = hypixel.get_class_finals(name, Class, data)
     class_final_assists = hypixel.get_class_final_assists(name, Class, data)
     class_wins = hypixel.get_class_wins(name, Class, data)
-    class_final_deaths = hypixel.get_class_final_deaths(name, Class, data)
-    if class_final_deaths == 0:
-        class_fkd = class_final_kills
-    else:
-        class_fkd = round(class_final_kills/class_final_deaths, 2)
-    class_cp = class_wins * 10 + class_final_kills + class_final_assists
+    # class_final_deaths = hypixel.get_class_final_deaths(name, Class, data)
     class_losses = hypixel.get_class_losses(name, Class, data)
-    if class_losses == 0:
-        class_wlr = class_wins
+
+    class_cp = class_wins * 10 + class_final_kills + class_final_assists
+
+
+
+    class_final_kills_all = hypixel.get_class_finals_all(name, Class, data)
+    class_wins_all = hypixel.get_class_wins_all(name, Class, data)
+    class_final_deaths_all = hypixel.get_class_final_deaths_all(name, Class, data)
+    class_losses_all = hypixel.get_class_losses_all(name, Class, data)
+
+
+
+    if class_final_deaths_all == 0:
+        class_fkd = class_final_kills_all
     else:
-        class_wlr = round(class_wins/class_losses, 2)
+        class_fkd = round(class_final_kills_all/class_final_deaths_all, 2)
+    if class_losses_all == 0:
+        class_wlr = class_wins_all
+    else:
+        class_wlr = round(class_wins_all/class_losses_all, 2)
 
 
 

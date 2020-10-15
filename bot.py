@@ -579,6 +579,8 @@ async def mwclass(ctx, Class, name):
         class_wlr = round(class_wins_all/class_losses_all, 2)
 
 
+    rand = get_random_string(12)
+
 
     embed = discord.Embed(
     title = f"{ign}'s {Class.capitalize()} Stats",
@@ -597,7 +599,7 @@ async def mwclass(ctx, Class, name):
     embed.add_field(name=f'{Class.capitalize()} Class Points', value=f"{'{:,}'.format(class_cp)}", inline=True)
 
 
-    embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png")
+    embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png?random={rand}")
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
@@ -797,6 +799,10 @@ async def bsg(ctx, name):
         kd = round(kills/deaths, 2)
    # wl = round(wins/losses, 2)
     
+
+    rand = get_random_string(12)
+
+
     embed = discord.Embed(
     title = f"{ign}'s Blitz Stats ",
     colour = discord.Colour.orange()
@@ -817,7 +823,7 @@ async def bsg(ctx, name):
 
 
 
-    embed.set_image(url=f"https://gen.plancke.io/blitz/{ign}/3.png")
+    embed.set_image(url=f"https://gen.plancke.io/blitz/{ign}/3.png?random={rand}")
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 

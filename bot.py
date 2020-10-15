@@ -434,7 +434,7 @@ async def mw(ctx, name):
         wl = round(wins/losses,  2)
 
 
-    rand = get_random_string(length)
+    rand = get_random_string(12)
     
     embed = discord.Embed(
     title = f'{ign}',

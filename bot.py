@@ -424,7 +424,7 @@ async def mw(ctx, name):
     fas = hypixel.get_final_assists(name, data)
     fds = fds1 + fds2
     if fds == 0:
-        fds = final_kills
+        fkd = final_kills
     else:
         fkd = round(final_kills/fds, 2)
     

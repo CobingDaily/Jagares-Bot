@@ -1,6 +1,7 @@
 import discord
 import hypixel
 import random
+import string
 from discord.ext import commands
 import datetime
 import os
@@ -431,6 +432,9 @@ async def mw(ctx, name):
         wl = wins
     else:
         wl = round(wins/losses,  2)
+
+
+    rand = get_random_string(length)
     
     embed = discord.Embed(
     title = f'{ign}',
@@ -452,7 +456,7 @@ async def mw(ctx, name):
     embed.add_field(name='Wither Damage', value=f"{'{:,}'.format(wither_damage)}", inline=True)
     embed.add_field(name='Chosen Class', value=f"{chosen_class}", inline=True)
     embed.add_field(name='Cakes Found', value=f"{'{:,}'.format(cakes_found)}", inline=True)
-    embed.set_image(url=f"https://gen.plancke.io/mw/{ign}/2.png")
+    embed.set_image(url=f"https://gen.plancke.io/mw/{ign}/2.png?random={rand}")
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
@@ -835,11 +839,15 @@ async def bsg(ctx, name):
 
 
 
+###OTHER
+###OTHER
+###OTHER
 
-
-
-
-
+def get_random_string(length):
+    # Random string with the combination of lower and upper case
+    letters = string.ascii_letters
+    rand = ''.join(random.choice(letters) for i in range(length))
+    return rand
 
 
 

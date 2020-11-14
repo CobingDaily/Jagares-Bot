@@ -748,7 +748,7 @@ async def nh(ctx, name):
 
 
     for value in nameHistory:
-        embed.add_field(name=f'\u200b', value=f"{value} \u200b", inline=False)
+        embed.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
     
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")

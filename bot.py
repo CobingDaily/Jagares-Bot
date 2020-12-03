@@ -46,6 +46,8 @@ async def servers(ctx):
 
 @bot.command()
 async def info(ctx, name):
+    name is None
+    await ctx.send(f'Command Currently Unavailable!')
     # try:
     #     data = hypixel.hypixel_api(name)
     #     data2 = hypixel.hypixel_api2(name)
@@ -96,7 +98,6 @@ async def info(ctx, name):
     #     await ctx.send("Player not found! (Make sure to use their Minecraft username)")
     # else:
     #      await ctx.send(embed=embed)
-    await ctx.send("Command Currently Unavailable")
 
 
 
@@ -631,6 +632,8 @@ async def mwclass(ctx, Class, name):
 
 @bot.command()
 async def guild(ctx, name):
+    name is None
+    await ctx.send(f'Command Currently Unavailable!')
     # gdata = hypixel.hypixel_gapi(name)
     # try:
     #     guild_name = hypixel.get_guild_name(name, gdata)
@@ -669,7 +672,7 @@ async def guild(ctx, name):
     #     await ctx.send("Guild not found!")
     # else:
     #      await ctx.send(embed=embed)
-    await ctx.send("Command Currently Unavailable")
+
 
 
 

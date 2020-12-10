@@ -5,6 +5,7 @@ import string
 from discord.ext import commands
 import datetime
 import os
+import math
 from discord.utils import get
 from discord.ext.commands import has_permissions, CheckFailure, MissingPermissions
 from Cybernator import Paginator as pag
@@ -818,6 +819,7 @@ async def nh(ctx, name):
     nameHistory.reverse()
 
     nameLength = len(nameHistory)
+    pages = str(math.ceil(len(nameHistory) / 10))
 
     embed1 = discord.Embed(
     title = f"{ign}'s Name History",
@@ -832,7 +834,7 @@ async def nh(ctx, name):
         embed1.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
     
 
-    embed1.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed1.set_footer(text=f"© 2020 LazBoi All Rights Reserved | Page 1/{pages} ")
 
 
 
@@ -850,7 +852,7 @@ async def nh(ctx, name):
         embed2.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
     
 
-    embed2.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed2.set_footer(text=f"© 2020 LazBoi All Rights Reserved | Page 2/{pages} ")
 
 
 
@@ -868,7 +870,7 @@ async def nh(ctx, name):
         embed3.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
     
 
-    embed3.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed3.set_footer(text=f"© 2020 LazBoi All Rights Reserved | Page 3/{pages} ")
 
 
 
@@ -885,7 +887,7 @@ async def nh(ctx, name):
         embed4.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
     
 
-    embed4.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed4.set_footer(text=f"© 2020 LazBoi All Rights Reserved | Page 4/{pages} ")
 
 
 
@@ -904,7 +906,7 @@ async def nh(ctx, name):
         embed5.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
     
 
-    embed5.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed5.set_footer(text=f"© 2020 LazBoi All Rights Reserved | Page 5/{pages} ")
 
 
 
@@ -922,7 +924,7 @@ async def nh(ctx, name):
         embed6.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
     
 
-    embed6.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed6.set_footer(text=f"© 2020 LazBoi All Rights Reserved | Page 6/{pages} ")
 
 
     if nameLength <= 10:

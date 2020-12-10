@@ -84,7 +84,7 @@ async def info(ctx, name):
     embed1.add_field(name='IGN', value=f'{ign}', inline=False)
     embed1.add_field(name='Level', value=f'{level}', inline=False)
     embed1.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
-
+    embed1.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
     embed1.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
@@ -98,10 +98,11 @@ async def info(ctx, name):
 
     # embed.set_author(name='w')
 
-    embed2.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
+
     embed2.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
     embed2.add_field(name='Version', value=f'{version}', inline=False)
-
+    embed2.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
+    embed2.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
     embed2.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
@@ -115,8 +116,7 @@ async def info(ctx, name):
 
     # embed.set_author(name='w')
 
-    embed3.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
-    embed3.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
+
     embed3.set_image(url=f"https://minotar.net/armor/body/{ign}.png")
     embed3.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 

@@ -229,7 +229,8 @@ def get_mcVersionRp(name, data):
 
 
 def get_firstLogin(name, data):
-    firstLogin = int(data["player"]["firstLogin"])
+    _id = data["player"]["_id"]
+    firstLogin = int(_id[0:8], base = 16) * 1000
     return firstLogin
 
 

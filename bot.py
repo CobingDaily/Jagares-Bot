@@ -412,7 +412,7 @@ async def duel(ctx, p1=None, p2=None):
         await ctx.send(f'/duel <Player1> <Player2>')
 
     else:
-        await ctx.send(f'{random.choice(players)} Wins The Duel!')
+        await ctx.send(f'{random.choice(players)} won the duel.')
 
 
 

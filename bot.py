@@ -668,7 +668,7 @@ async def mwclass(ctx, Class, name):
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
     embed.add_field(name=f'{Class.capitalize()} Final Kills', value=f"{'{:,}'.format(class_final_kills_all)}", inline=True)
-    embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists_all)}", inline=True)
+    embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists_all)}", inline=False)
     embed.add_field(name=f'{Class.capitalize()} FK/D Ratio', value=f"{'{:,}'.format(class_fkd)}", inline=True)
     embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wins_all)}", inline=True)
     embed.add_field(name=f'{Class.capitalize()} Losses', value=f"{'{:,}'.format(class_losses_all)}", inline=True)

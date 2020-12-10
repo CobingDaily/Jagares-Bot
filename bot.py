@@ -7,7 +7,7 @@ import datetime
 import os
 from discord.utils import get
 from discord.ext.commands import has_permissions, CheckFailure, MissingPermissions
-
+from Cybernator import Paginator as pag
 
 bot = commands.Bot(command_prefix = "/")
 bot.remove_command('help')
@@ -73,7 +73,7 @@ async def info(ctx, name):
 
 
 
-    embed = discord.Embed(
+    embed1 = discord.Embed(
     title = 'Jagares Bot',
     colour = discord.Colour.orange()
     )
@@ -81,23 +81,69 @@ async def info(ctx, name):
 
 
     # embed.set_author(name='w')
-    embed.add_field(name='IGN', value=f'{ign}', inline=False)
-    embed.add_field(name='Level', value=f'{level}', inline=False)
-    embed.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
-    embed.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
-    embed.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
-    embed.add_field(name='Version', value=f'{version}', inline=False)
-    embed.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
-    embed.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
-    embed.set_image(url=f"https://minotar.net/armor/body/{ign}.png")
-    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed1.add_field(name='IGN', value=f'{ign}', inline=False)
+    embed1.add_field(name='Level', value=f'{level}', inline=False)
+    embed1.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
+    embed1.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
+    embed1.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
+    embed1.add_field(name='Version', value=f'{version}', inline=False)
+    embed1.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
+    embed1.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
+    embed1.set_image(url=f"https://minotar.net/armor/body/{ign}.png")
+    embed1.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
+
+    embed2 = discord.Embed(
+    title = 'Jagares Bot',
+    colour = discord.Colour.orange()
+    )
+
+
+
+    # embed.set_author(name='w')
+    embed2.add_field(name='IGN', value=f'{ign}', inline=False)
+    embed2.add_field(name='Level', value=f'{level}', inline=False)
+    embed2.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
+    embed2.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
+    embed2.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
+    embed2.add_field(name='Version', value=f'{version}', inline=False)
+    embed2.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
+    embed2.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
+    embed2.set_image(url=f"https://minotar.net/armor/body/{ign}.png")
+    embed2.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+    embed3 = discord.Embed(
+    title = 'Jagares Bot',
+    colour = discord.Colour.orange()
+    )
+
+
+
+    # embed.set_author(name='w')
+    embed3.add_field(name='IGN', value=f'{ign}', inline=False)
+    embed3.add_field(name='Level', value=f'{level}', inline=False)
+    embed3.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
+    embed3.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
+    embed3.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
+    embed3.add_field(name='Version', value=f'{version}', inline=False)
+    embed3.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
+    embed3.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
+    embed3.set_image(url=f"https://minotar.net/armor/body/{ign}.png")
+    embed3.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+    embeds = [embed1, embed2, embed3]
+
+    message = await ctx.send(embed=embed1)
+
+    page = pag(bot, message, only=ctx.author, use_more=False, embeds = embeds)
 
     if level == 0:
         await ctx.send("Player not found! (Make sure to use their Minecraft username)")
     else:
-         await ctx.send(embed=embed)
+         await page.start()
 
 
 
@@ -113,24 +159,29 @@ async def help(ctx):
 
     
     embed.set_author(name='Commands')
+
     embed.add_field(name='Info', value='/info <player>', inline=False)
     embed.add_field(name='Guild Info', value='/guild <player>', inline=False)
     embed.add_field(name='Watchdog/Staff Stats', value='/watchdog', inline=False)
     embed.add_field(name='\u200b', value='\u200b', inline=False)
+
     embed.add_field(name='Mega Walls Stats', value='/mw <player>', inline=False)
     embed.add_field(name='Mega Walls Class Points', value='/cp <player>', inline=False)
     embed.add_field(name='Mega Walls Class Stats', value='/mwclass <class> <player>', inline=False)
     embed.add_field(name='\u200b', value='\u200b', inline=False)
     embed.add_field(name='Blitz Survival Games Stats', value='/bsg <player>', inline=False)
     embed.add_field(name='\u200b', value='\u200b', inline=False)
+
     embed.add_field(name='Guild Cape', value='/gcape', inline=False)
     embed.add_field(name='8ball', value='/8ball <question>', inline=False)
     embed.add_field(name='Good Night', value='/gn <person>', inline=False)
     embed.add_field(name='Duel', value='/duel <player1> <player2>', inline=False)
+
     embed.add_field(name='Pet Image', value='/dog/cat/bird/panda', inline=False)
     embed.add_field(name='Lyrics', value='/lyrics <song>', inline=False)
     embed.add_field(name='Bot Chat', value='/chat <message>', inline=False)
     embed.add_field(name='Shoutout', value='/shoutout', inline=False)
+
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
     await ctx.send(embed=embed)

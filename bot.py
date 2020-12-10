@@ -818,25 +818,47 @@ async def nh(ctx, name):
 
 
 
-    embed = discord.Embed(
+    embed1 = discord.Embed(
     title = f"{ign}'s Name History",
     colour = discord.Colour.orange()
     )
 
 
-    embed.set_author(name='Jagares Bot')
+    embed1.set_author(name='Jagares Bot')
 
 
-    for value in nameHistory:
-        embed.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
+    for value in nameHistory[0:9]:
+        embed1.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
     
 
-    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed1.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
 
 
-    await ctx.send(embed=embed)
+    embed2 = discord.Embed(
+    title = f"{ign}'s Name History",
+    colour = discord.Colour.orange()
+    )
+
+
+    embed2.set_author(name='Jagares Bot')
+
+
+    for value in nameHistory[10:19]:
+        embed2.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
+    
+
+    embed2.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+    embeds = [embed1, embed2]
+    message = await ctx.send(embed=embed1)
+    page = pag(bot, message, footer=False, only=ctx.author, use_more=False, embeds = embeds, language='en',use_exit=False, exit_reaction=["⏹"])
+
+    await page.start()
+
 
 
 

@@ -816,7 +816,7 @@ async def nh(ctx, name):
 
     nameHistory = hypixel.get_knownAliases(name, data)
 
-
+    nameLength = len(nameHistory)
 
     embed1 = discord.Embed(
     title = f"{ign}'s Name History",
@@ -884,7 +884,7 @@ async def nh(ctx, name):
         embed4.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
     
 
-    embed2.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed4.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
 
@@ -924,9 +924,22 @@ async def nh(ctx, name):
     embed6.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
+    if nameLength <= 10:
+        embeds = [embed1]
+    elif nameLength <= 20:
+        embeds = [embed1, embed2]
+    elif nameLength <= 30:
+        embeds = [embed1, embed2, embed3]
+    elif nameLength <= 40:
+        embeds = [embed1, embed2, embed3, embed4]
+    elif nameLength <= 50:
+        embeds = [embed1, embed2, embed3, embed4, embed5]
+    elif nameLength <= 60:
+        embeds = [embed1, embed2, embed3, embed4, embed5, embed6]
 
 
-    embeds = [embed1, embed2, embed3, embed4, embed5, embed6]
+
+
     message = await ctx.send(embed=embed1)
     page = pag(bot, message, footer=False, only=ctx.author, use_more=False, embeds = embeds, language='en',use_exit=False, exit_reaction=["⏹"])
 

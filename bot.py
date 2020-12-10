@@ -815,6 +815,7 @@ async def nh(ctx, name):
         await ctx.send("Player not found! (Make sure to use the Minecraft username)")
 
     nameHistory = hypixel.get_knownAliases(name, data)
+    nameHistory.reverse()
 
     nameLength = len(nameHistory)
 

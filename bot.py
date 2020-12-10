@@ -402,10 +402,14 @@ async def duel(ctx, p1=None, p2=None):
 
     players = [p1, p2]
     if p1 is None:
-        await ctx.send(f'First Player argument is missing.')
+        await ctx.send(f'`First` Player argument is missing.')
 
     if p2 is None:
-        await ctx.send(f'First Player argument is missing.')
+        await ctx.send(f'`Second` Player argument is missing.')
+    
+    if p1 is None and p2 is None:
+        await ctx.send(f'`Both` Player arguments are missing.')
+        await ctx.send(f'/duel <Player1> <Player2>')
 
     else:
         await ctx.send(f'{random.choice(players)} Wins The Duel!')

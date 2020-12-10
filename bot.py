@@ -81,7 +81,7 @@ async def info(ctx, name):
 
 
     # embed.set_author(name='w')
-    embed.add_field(name='Ign', value=f'{ign}', inline=False)
+    embed.add_field(name='IGN', value=f'{ign}', inline=False)
     embed.add_field(name='Level', value=f'{level}', inline=False)
     embed.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
     embed.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)

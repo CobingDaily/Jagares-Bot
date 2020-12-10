@@ -257,91 +257,91 @@ async def purge_error(ctx, error):
 		    
 
 		    
-@bot.command(pass_context=True)
-@has_permissions(manage_messages=True)
-async def say(ctx, *, msg):
-    await ctx.send(f"{msg}")		    
+# @bot.command(pass_context=True)
+# @has_permissions(manage_messages=True)
+# async def say(ctx, *, msg):
+#     await ctx.send(f"{msg}")		    
 		    
 		    
-@say.error
-async def say_error(ctx, error):
-    if isinstance(error, commands.MissingPermissions):
+# @say.error
+# async def say_error(ctx, error):
+#     if isinstance(error, commands.MissingPermissions):
         		    	    
-        await ctx.send("Looks like you don't have the permissions.")		    
+#         await ctx.send("Looks like you don't have the permissions.")		    
 
 
 
-@bot.command()
-async def chat(ctx, *, message):
-    Message = hypixel.chat_api(message)
+# @bot.command()
+# async def chat(ctx, *, message):
+#     Message = hypixel.chat_api(message)
     
-    await ctx.send(f'{Message}')
+#     await ctx.send(f'{Message}')
 
 
-@bot.command()
-async def seth(ctx):
+# @bot.command()
+# async def seth(ctx):
     
-    await ctx.send(f'lmao the guy who skips you mean?')
+#     await ctx.send(f'lmao the guy who skips you mean?')
 
 
-@bot.command()
-async def cijaye(ctx):
+# @bot.command()
+# async def cijaye(ctx):
     
-    await ctx.send(f'lmao the guy who stays you mean?')
+#     await ctx.send(f'lmao the guy who stays you mean?')
 
 
 
-@bot.command(aliases=['44hp', '44HP', 'wouter'])
-async def _44HP(ctx):
+# @bot.command(aliases=['44hp', '44HP', 'wouter'])
+# async def _44HP(ctx):
     
-    await ctx.send(f'lmao the guy who never dies you mean?')
+#     await ctx.send(f'lmao the guy who never dies you mean?')
 
 
 
-@bot.command()
-async def lyrics(ctx, *, title):
+# @bot.command()
+# async def lyrics(ctx, *, title):
     
 
 
-    try:
-        Title = hypixel.lyrics_api(title)['title']
-        Author = hypixel.lyrics_api(title)['author']
-        Lyrics = hypixel.lyrics_api(title)['lyrics']    
-        await ctx.send(f'Title: {Title} - {Author}')
-        await ctx.send('\u200b')
-        await ctx.send('%.2000s' % Lyrics)
+#     try:
+#         Title = hypixel.lyrics_api(title)['title']
+#         Author = hypixel.lyrics_api(title)['author']
+#         Lyrics = hypixel.lyrics_api(title)['lyrics']    
+#         await ctx.send(f'Title: {Title} - {Author}')
+#         await ctx.send('\u200b')
+#         await ctx.send('%.2000s' % Lyrics)
     
-    except:
+#     except:
  
 
-        await ctx.send(f'Song not found')
+#         await ctx.send(f'Song not found')
 
 
 
-@bot.command(aliases=['SO'])
-async def shoutout(ctx):
-    shoutouts = ['Shoutout to 44HP', 
-                 'Shoutout to Cijaye', 
-                 'Shoutout to TheManOfCake', 
-                 'Shoutout to Sethlol', 
-                 'Shoutout to Shtruz', 
-                 'Shoutout to UnityPusheen', 
-                 'Shoutout to LessYou', 
-                 'Shoutout to Rom', 
-                 'Shoutout to Dagals', 
-                 'Shoutout to OhWellDone', 
-                 'Shoutout to LazBoi', 
-                 'Shoutout to Non', 
-                 'Shoutout to 7mu', 
-                 'Shoutout to Souls', 
-                 'Shoutout to Pijaye', 
-                 'Shoutout to BAKERTHEBAGELMAN', 
-                 'Shoutout to JediKnight625', 
-                 'Shoutout to BlackKnight625', 
-                 'Shoutout to Tqqn', 
-                 'Shoutout to BurnBlade']
+# @bot.command(aliases=['SO'])
+# async def shoutout(ctx):
+#     shoutouts = ['Shoutout to 44HP', 
+#                  'Shoutout to Cijaye', 
+#                  'Shoutout to TheManOfCake', 
+#                  'Shoutout to Sethlol', 
+#                  'Shoutout to Shtruz', 
+#                  'Shoutout to UnityPusheen', 
+#                  'Shoutout to LessYou', 
+#                  'Shoutout to Rom', 
+#                  'Shoutout to Dagals', 
+#                  'Shoutout to OhWellDone', 
+#                  'Shoutout to LazBoi', 
+#                  'Shoutout to Non', 
+#                  'Shoutout to 7mu', 
+#                  'Shoutout to Souls', 
+#                  'Shoutout to Pijaye', 
+#                  'Shoutout to BAKERTHEBAGELMAN', 
+#                  'Shoutout to JediKnight625', 
+#                  'Shoutout to BlackKnight625', 
+#                  'Shoutout to Tqqn', 
+#                  'Shoutout to BurnBlade']
 
-    await ctx.send(f'{random.choice(shoutouts)}')
+#     await ctx.send(f'{random.choice(shoutouts)}')
 
 
 
@@ -398,11 +398,17 @@ async def panda(ctx):
 
 
 @bot.command()
-async def duel(ctx, p1="player1", p2="player2"):
+async def duel(ctx, p1=None, p2=None):
 
     players = [p1, p2]
-    
-    await ctx.send(f'{random.choice(players)} Wins The Duel!')
+    if p1 is None:
+        await ctx.send(f'First Player argument is missing.')
+
+    if p2 is None:
+        await ctx.send(f'First Player argument is missing.')
+
+    else
+        await ctx.send(f'{random.choice(players)} Wins The Duel!')
 
 
 

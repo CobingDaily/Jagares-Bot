@@ -124,7 +124,7 @@ async def info(ctx, name):
 
     message = await ctx.send(embed=embed1)
 
-    page = pag(bot, message, only=ctx.author, use_more=False, embeds = embeds, language='en', exit_reaction=["⏹"])
+    page = pag(bot, message, only=ctx.author, use_more=False, embeds = embeds, language='en',use_exit=True, exit_reaction=["⏹"])
 
     if level == 0:
         await ctx.send("Player not found! (Make sure to use their Minecraft username)")

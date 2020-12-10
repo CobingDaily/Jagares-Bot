@@ -853,7 +853,80 @@ async def nh(ctx, name):
 
 
 
-    embeds = [embed1, embed2]
+
+    embed3 = discord.Embed(
+    title = f"{ign}'s Name History",
+    colour = discord.Colour.orange()
+    )
+
+
+    embed3.set_author(name='Jagares Bot')
+
+
+    for value in nameHistory[20:29]:
+        embed3.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
+    
+
+    embed3.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+    embed4 = discord.Embed(
+    title = f"{ign}'s Name History",
+    colour = discord.Colour.orange()
+    )
+
+
+    embed4.set_author(name='Jagares Bot')
+
+
+    for value in nameHistory[30:39]:
+        embed4.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
+    
+
+    embed2.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+
+
+    embed5 = discord.Embed(
+    title = f"{ign}'s Name History",
+    colour = discord.Colour.orange()
+    )
+
+
+    embed5.set_author(name='Jagares Bot')
+
+
+    for value in nameHistory[40:49]:
+        embed5.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
+    
+
+    embed5.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+
+    embed6 = discord.Embed(
+    title = f"{ign}'s Name History",
+    colour = discord.Colour.orange()
+    )
+
+
+    embed6.set_author(name='Jagares Bot')
+
+
+    for value in nameHistory[50:59]:
+        embed6.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
+    
+
+    embed6.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+
+    embeds = [embed1, embed2, embed3, embed4, embed5, embed6]
     message = await ctx.send(embed=embed1)
     page = pag(bot, message, footer=False, only=ctx.author, use_more=False, embeds = embeds, language='en',use_exit=False, exit_reaction=["⏹"])
 

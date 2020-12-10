@@ -46,58 +46,58 @@ async def servers(ctx):
 
 @bot.command()
 async def info(ctx, name):
-    name is None
-    await ctx.send(f'Command Currently Unavailable!')
-    # try:
-    #     data = hypixel.hypixel_api(name)
-    #     data2 = hypixel.hypixel_api2(name)
+    # name is None
+    # await ctx.send(f'Command Currently Unavailable!')
+    try:
+        data = hypixel.hypixel_api(name)
+        data2 = hypixel.hypixel_api2(name)
 
-    #     ign = hypixel.get_displayname(name, data)
+        ign = hypixel.get_displayname(name, data)
 
-    #     level = hypixel.get_level(name, data2)
-    #     karma = hypixel.get_karma(name, data2)
-    #     achievementPoints = hypixel.get_achievementPoints(name, data2)
-    #     quests = hypixel.get_quests(name, data2)
-    # except:
-    #     await ctx.send("Player not found! (Make sure to use their Minecraft username)")
-    # version = hypixel.get_mcVersionRp(name, data)
-    # firstLogin = hypixel.get_firstLogin(name, data)
+        level = hypixel.get_level(name, data2)
+        karma = hypixel.get_karma(name, data2)
+        achievementPoints = hypixel.get_achievementPoints(name, data2)
+        quests = hypixel.get_quests(name, data2)
+    except:
+        await ctx.send("Player not found! (Make sure to use their Minecraft username)")
+    version = hypixel.get_mcVersionRp(name, data)
+    firstLogin = hypixel.get_firstLogin(name, data)
    
-    # dt_firstLogin = datetime.datetime.utcfromtimestamp(round(firstLogin/1000))
-    # try:
-    #     lastLogin = hypixel.get_lastLogin(name, data)
-    #     dt_lastLogin = datetime.datetime.utcfromtimestamp(round(lastLogin/1000))
-    # except:
-    #     lastLogin = "Unknown"
-    #     dt_lastLogin = "Unknown"
+    dt_firstLogin = datetime.datetime.utcfromtimestamp(round(firstLogin/1000))
+    try:
+        lastLogin = hypixel.get_lastLogin(name, data)
+        dt_lastLogin = datetime.datetime.utcfromtimestamp(round(lastLogin/1000))
+    except:
+        lastLogin = "Unknown"
+        dt_lastLogin = "Unknown"
 
 
 
-    # embed = discord.Embed(
-    # title = 'Jagares Bot',
-    # colour = discord.Colour.orange()
-    # )
+    embed = discord.Embed(
+    title = 'Jagares Bot',
+    colour = discord.Colour.orange()
+    )
 
 
 
-    # # embed.set_author(name='w')
-    # embed.add_field(name='Ign', value=f'{ign}', inline=False)
-    # embed.add_field(name='Level', value=f'{level}', inline=False)
-    # embed.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
-    # embed.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
-    # embed.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
-    # embed.add_field(name='Version', value=f'{version}', inline=False)
-    # embed.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
-    # embed.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
-    # embed.set_image(url=f"https://minotar.net/armor/body/{ign}.png")
-    # embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    # embed.set_author(name='w')
+    embed.add_field(name='Ign', value=f'{ign}', inline=False)
+    embed.add_field(name='Level', value=f'{level}', inline=False)
+    embed.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
+    embed.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
+    embed.add_field(name='Quests Completed', value=f"{'{:,}'.format(quests)}", inline=False)
+    embed.add_field(name='Version', value=f'{version}', inline=False)
+    embed.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
+    embed.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
+    embed.set_image(url=f"https://minotar.net/armor/body/{ign}.png")
+    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
 
-    # if level == 0:
-    #     await ctx.send("Player not found! (Make sure to use their Minecraft username)")
-    # else:
-    #      await ctx.send(embed=embed)
+    if level == 0:
+        await ctx.send("Player not found! (Make sure to use their Minecraft username)")
+    else:
+         await ctx.send(embed=embed)
 
 
 
@@ -412,7 +412,7 @@ async def duel(ctx, p1=None, p2=None):
         await ctx.send(f'/duel <Player1> <Player2>')
 
     else:
-        await ctx.send(f'{random.choice(players)} won the duel.')
+        await ctx.send(f'`{random.choice(players)}` won the duel.')
 
 
 

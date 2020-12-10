@@ -193,7 +193,7 @@ def get_level(name, data2):
         exp = int(data2["exp"])
     except:
         exp = 0
-    return math.floor(1 + REVERSE_PQ_PREFIX + math.sqrt(REVERSE_CONST + GROWTH_DIVIDES_2 * exp))
+    return round(1 + REVERSE_PQ_PREFIX + math.sqrt(REVERSE_CONST + GROWTH_DIVIDES_2 * exp))
 
 
 def get_karma(name, data2):

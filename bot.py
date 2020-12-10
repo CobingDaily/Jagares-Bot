@@ -44,7 +44,7 @@ async def servers(ctx):
 
 
 
-@bot.command()
+@bot.command(aliases=['stats', 'hypixel', 'statistics'])
 async def info(ctx, name):
     # name is None
     # await ctx.send(f'Command Currently Unavailable!')
@@ -85,7 +85,7 @@ async def info(ctx, name):
     embed1.add_field(name='Level', value=f'{level}', inline=False)
     embed1.add_field(name='Karma', value=f"{'{:,}'.format(karma)}", inline=False)
     embed1.add_field(name='Achievement Points', value=f"{'{:,}'.format(achievementPoints)}", inline=False)
-    embed1.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed1.set_footer(text="© 2020 LazBoi All Rights Reserved | Page 1/3 ")
 
 
 
@@ -103,7 +103,7 @@ async def info(ctx, name):
     embed2.add_field(name='Version', value=f'{version}', inline=False)
     embed2.add_field(name='First Login', value=f'{dt_firstLogin} UTC', inline=False)
     embed2.add_field(name='Last Login', value=f'{dt_lastLogin} UTC', inline=False)
-    embed2.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed2.set_footer(text="© 2020 LazBoi All Rights Reserved | Page 2/3 ")
 
 
 
@@ -118,13 +118,13 @@ async def info(ctx, name):
 
 
     embed3.set_image(url=f"https://minotar.net/armor/body/{ign}.png")
-    embed3.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed3.set_footer(text="© 2020 LazBoi All Rights Reserved | Page 3/3 ")
 
     embeds = [embed1, embed2, embed3]
 
     message = await ctx.send(embed=embed1)
 
-    page = pag(bot, message, only=ctx.author, use_more=False, embeds = embeds, language='en',use_exit=False, exit_reaction=["⏹"])
+    page = pag(bot, message, only=ctx.author, footer=False, use_more=False, embeds = embeds, language='en',use_exit=False, exit_reaction=["⏹"])
 
     if level == 0:
         await ctx.send("Player not found! (Make sure to use their Minecraft username)")
@@ -137,40 +137,68 @@ async def info(ctx, name):
 async def help(ctx):
     
 
-    embed = discord.Embed(
+    embed1 = discord.Embed(
     title = 'Jagares Bot',
     colour = discord.Colour.orange()
     )
 
 
     
-    embed.set_author(name='Commands')
+    embed1.set_author(name='Commands')
 
-    embed.add_field(name='Info', value='/info <player>', inline=False)
-    embed.add_field(name='Guild Info', value='/guild <player>', inline=False)
-    embed.add_field(name='Watchdog/Staff Stats', value='/watchdog', inline=False)
-    embed.add_field(name='\u200b', value='\u200b', inline=False)
+    embed1.add_field(name='Mega Walls Stats', value='/mw <player>', inline=False)
+    embed1.add_field(name='Mega Walls Class Points', value='/cp <player>', inline=False)
+    embed1.add_field(name='Mega Walls Class Stats', value='/mwclass <class> <player>', inline=False)
+    embed1.add_field(name='Blitz Survival Games Stats', value='/bsg <player>', inline=False)
+    embed1.add_field(name='Info', value='/info <player>', inline=False)
+    embed1.add_field(name='Guild Info', value='/guild <player>', inline=False)
+    embed1.add_field(name='Watchdog/Staff Stats', value='/watchdog', inline=False)
 
-    embed.add_field(name='Mega Walls Stats', value='/mw <player>', inline=False)
-    embed.add_field(name='Mega Walls Class Points', value='/cp <player>', inline=False)
-    embed.add_field(name='Mega Walls Class Stats', value='/mwclass <class> <player>', inline=False)
-    embed.add_field(name='\u200b', value='\u200b', inline=False)
-    embed.add_field(name='Blitz Survival Games Stats', value='/bsg <player>', inline=False)
-    embed.add_field(name='\u200b', value='\u200b', inline=False)
 
-    embed.add_field(name='Guild Cape', value='/gcape', inline=False)
-    embed.add_field(name='8ball', value='/8ball <question>', inline=False)
-    embed.add_field(name='Good Night', value='/gn <person>', inline=False)
-    embed.add_field(name='Duel', value='/duel <player1> <player2>', inline=False)
+    embed1.set_footer(text="© 2020 LazBoi All Rights Reserved | Page 1/3 ")
 
-    embed.add_field(name='Pet Image', value='/dog/cat/bird/panda', inline=False)
-    embed.add_field(name='Lyrics', value='/lyrics <song>', inline=False)
-    embed.add_field(name='Bot Chat', value='/chat <message>', inline=False)
-    embed.add_field(name='Shoutout', value='/shoutout', inline=False)
 
-    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embed2 = discord.Embed(
+    title = 'Jagares Bot',
+    colour = discord.Colour.orange()
+    )
 
-    await ctx.send(embed=embed)
+
+    
+    embed2.set_author(name='Commands')
+
+    embed2.add_field(name='Guild Cape', value='/gcape', inline=False)
+    embed2.add_field(name='8ball', value='/8ball <question>', inline=False)
+    embed2.add_field(name='Good Night', value='/gn <person>', inline=False)
+    embed2.add_field(name='Duel', value='/duel <player1> <player2>', inline=False)
+
+
+    embed2.set_footer(text="© 2020 LazBoi All Rights Reserved | Page 2/3 ")
+
+
+
+    embed3 = discord.Embed(
+    title = 'Jagares Bot',
+    colour = discord.Colour.orange()
+    )
+
+
+    
+    embed3.set_author(name='Commands')
+
+    embed3.add_field(name='Pet Image', value='/dog/cat/bird/panda', inline=False)
+    embed3.add_field(name='Lyrics', value='/lyrics <song>', inline=False)
+    embed3.add_field(name='Bot Chat', value='/chat <message>', inline=False)
+    embed3.add_field(name='Shoutout', value='/shoutout', inline=False)
+
+    embed3.set_footer(text="© 2020 LazBoi All Rights Reserved | Page 3/3 ")
+
+
+    embeds = [embed1, embed2, embed3]
+    message = await ctx.send(embed=embed1)
+    page = pag(bot, message, footer=False, only=ctx.author, use_more=False, embeds = embeds, language='en',use_exit=False, exit_reaction=["⏹"])
+
+    await page.start()
 
 @bot.command(aliases=['8ball', 'eightball', 'ateball'])
 async def _8Ball(ctx, *, question):

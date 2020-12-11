@@ -201,6 +201,41 @@ async def help(ctx):
 
     await page.start()
 
+
+
+
+@bot.command(aliases=['sync', 'link'])
+async def verify(ctx, name):
+    
+    data = hypixel.hypixel_api(name)
+
+    playerDiscord = hypixel.get_playerDiscord(name, data)
+    username = ctx.message.author.name
+
+
+    embed = discord.Embed(
+    title = f"Watchdog Stats",
+    colour = discord.Colour.green()
+    )
+    embed.set_author(name='Jagares Bot')
+    embed.add_field(name=f'Verified', value=f"Yuor discord account has been linked.", inline=False)
+
+    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+    if playerDiscord is None:
+        await ctx.send('You need to link your discord on hypixel.')
+    elif username == playerDiscord:
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send('Your current discord account and hypixel discord tag don\'t match.')        
+
+
+
+
+
+
+
+
 @bot.command(aliases=['8ball', 'eightball', 'ateball'])
 async def _8Ball(ctx, *, question):
     responses = ['It is certain', 

@@ -239,6 +239,12 @@ def get_lastLogin(name, data):
     lastLogin = int(data["player"]["lastLogin"])
     return lastLogin
 
+def get_playerDiscord(name, data):
+    try:
+        playerDiscord = str(data["player"]["socialMedia"]["links"]["DISCORD"])
+    except:
+        playerDiscord is None
+    return playerDiscord
 
 
 

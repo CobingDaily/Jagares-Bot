@@ -211,7 +211,7 @@ async def verify(ctx, name):
 
     playerDiscord = hypixel.get_playerDiscord(name, data)
     username = ctx.message.author
-    userId = ctx.message.author.id
+    # userId = ctx.message.author.id
 
     embedSuccess = discord.Embed(colour = discord.Colour.green())
     embedSuccess.set_author(name='Jagares Bot')
@@ -234,7 +234,7 @@ async def verify(ctx, name):
     if playerDiscord is None:
         await ctx.send(embed=embedFail)
     elif str(username) == str(playerDiscord):
-        await guild.get_member(id=userId).edit(nick=name)
+        await ctx.member.edit(nick=name)
         await ctx.send(embed=embedSuccess)
     elif str(username) != str(playerDiscord):
         await ctx.send(embed=embedNotMatch)        

@@ -234,7 +234,7 @@ async def verify(ctx, name):
     if playerDiscord is None:
         await ctx.send(embed=embedFail)
     elif str(username) == str(playerDiscord):
-        await ctx.member.edit(nick=name)
+        await ctx.message.author.edit(nick=name)
         await ctx.send(embed=embedSuccess)
     elif str(username) != str(playerDiscord):
         await ctx.send(embed=embedNotMatch)        

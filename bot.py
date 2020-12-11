@@ -209,8 +209,8 @@ async def verify(ctx, name):
     
     data = hypixel.hypixel_api(name)
 
-    playerDiscord = hypixel.get_playerDiscord(name, data)
-    username = ctx.message.author
+    playerDiscord = str(hypixel.get_playerDiscord(name, data))
+    username = str(ctx.message.author)
 
 
     embed = discord.Embed(
@@ -228,7 +228,7 @@ async def verify(ctx, name):
         await ctx.send('You need to link your discord on hypixel.')
     elif username == playerDiscord:
         await ctx.send(embed=embed)
-    else:
+    elif username != playerDiscord:
         await ctx.send('Your current discord account and hypixel discord tag don\'t match.')        
 
 

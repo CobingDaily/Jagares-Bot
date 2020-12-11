@@ -263,7 +263,7 @@ async def verify(ctx, name):
 
         await ctx.channel.purge(limit=25)
     else:
-        await ctx.send(f'You can only verify in `#verification`')
+        await ctx.send(f'You can only verify in `#verification`, CHANNEL_ID={ctx.channel.id}')
 
 
 

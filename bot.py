@@ -238,9 +238,7 @@ async def verify(ctx, name):
 
     if playerDiscord is None:
         await ctx.send(embed=embedFail)
-        time.sleep(10)
 
-        await ctx.channel.purge(limit=5)
 
     elif str(username) == str(playerDiscord):
         try:
@@ -255,17 +253,15 @@ async def verify(ctx, name):
             await ctx.send(embed=embedSuccess)
         except Exception as e:
             await ctx.send(f'Error: `{e}`')
-            time.sleep(7)
 
-            await ctx.channel.purge(limit=5)
 
         
     elif str(username) != str(playerDiscord):
         await ctx.send(embed=embedNotMatch)        
-        time.sleep(10)
 
-        await ctx.channel.purge(limit=5)
+    time.sleep(7)
 
+    await ctx.channel.purge(limit=7)
 
 
 

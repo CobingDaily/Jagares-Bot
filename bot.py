@@ -5,6 +5,7 @@ import string
 from discord.ext import commands
 import datetime
 import os
+import time
 import math
 from discord.utils import get
 from discord.ext.commands import has_permissions, CheckFailure, MissingPermissions
@@ -245,6 +246,10 @@ async def verify(ctx, name):
             await username.add_roles(discord.utils.get(username.guild.roles, name="Verified"))
             await username.add_roles(discord.utils.get(username.guild.roles, name="Community Members"))
 
+            time.sleep(3)
+
+            await ctx.channel.purge(limit=2)
+
             await ctx.send(embed=embedSuccess)
         except Exception as e:
             await ctx.send(f'Error: `{e}`')
@@ -253,7 +258,7 @@ async def verify(ctx, name):
         
     elif str(username) != str(playerDiscord):
         await ctx.send(embed=embedNotMatch)        
-
+        
 
 
 

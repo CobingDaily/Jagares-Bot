@@ -623,7 +623,7 @@ async def cp(ctx, name):
 
 
 @bot.command(aliases=['class'])
-async def mwclass(ctx, Class, name):
+async def mwclass(ctx, Class="Herobrine", name):
     data = hypixel.hypixel_api(name)
     try:
         ign = hypixel.get_displayname(name, data)
@@ -693,7 +693,7 @@ async def mwclass(ctx, Class, name):
 
 
 @bot.command(aliases=['compare'])
-async def classcompare(ctx, Class, name1, name2):
+async def classcompare(ctx, Class="Herobrine", name1, name2):
     data1 = hypixel.hypixel_api(name1)
     try:
         ign1 = hypixel.get_displayname(name1, data1)

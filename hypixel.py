@@ -243,7 +243,7 @@ def get_playerDiscord(name, data):
     try:
         playerDiscord = str(data["player"]["socialMedia"]["links"]["DISCORD"])
     except:
-        playerDiscord is None
+        playerDiscord = None
     return playerDiscord
 
 

@@ -215,7 +215,7 @@ async def verify(ctx, name):
 
     embedSuccess = discord.Embed(colour = discord.Colour.green())
     embedSuccess.set_author(name='Jagares Bot')
-    embedSuccess.add_field(name=f'Verified', value=f"Yuor discord account has been linked.", inline=False)
+    embedSuccess.add_field(name=f'Verified', value=f"Your discord account has been linked.", inline=False)
     embedSuccess.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
     embedFail = discord.Embed(colour = discord.Colour.red())

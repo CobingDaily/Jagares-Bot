@@ -208,6 +208,8 @@ async def help(ctx):
 async def verify(ctx, name):
     
     data = hypixel.hypixel_api(name)
+    ign = hypixel.get_displayname(name, data)
+
 
     playerDiscord = hypixel.get_playerDiscord(name, data)
     username = ctx.message.author
@@ -231,18 +233,19 @@ async def verify(ctx, name):
 
     # await ctx.send(f'username: {username} \nplayerDiscord: {playerDiscord}')
 
+
+
     if playerDiscord is None:
         await ctx.send(embed=embedFail)
 
 
-
     elif str(username) == str(playerDiscord):
         try:
-            await ctx.message.author.edit(nick=name)
+            await ctx.message.author.edit(nick=ign)
             await username.add_roles(discord.utils.get(username.guild.roles, name="verified"))
             await ctx.send(embed=embedSuccess)
         except Exception as e:
-            await ctx.send(f'There was an error running this command: `{e}`')
+            await ctx.send(f'Error: `{e}`')
         
 
         

@@ -210,7 +210,7 @@ async def verify(ctx, name):
     data = hypixel.hypixel_api(name)
 
     playerDiscord = hypixel.get_playerDiscord(name, data)
-    username = ctx.message.author.name
+    username = ctx.message.author
 
 
     embed = discord.Embed(
@@ -222,7 +222,7 @@ async def verify(ctx, name):
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
-    await ctx.send(f'username: {username}n\playerDiscord: {playerDiscord}')
+    await ctx.send(f'username: {username} \nplayerDiscord: {playerDiscord}')
 
     if playerDiscord is None:
         await ctx.send('You need to link your discord on hypixel.')

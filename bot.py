@@ -209,27 +209,34 @@ async def verify(ctx, name):
     
     data = hypixel.hypixel_api(name)
 
-    playerDiscord = str(hypixel.get_playerDiscord(name, data))
-    username = str(ctx.message.author)
+    playerDiscord = hypixel.get_playerDiscord(name, data)
+    username = ctx.message.author
 
 
-    embed = discord.Embed(
-    title = f"Watchdog Stats",
-    colour = discord.Colour.green()
-    )
-    embed.set_author(name='Jagares Bot')
-    embed.add_field(name=f'Verified', value=f"Yuor discord account has been linked.", inline=False)
+    embedSuccess = discord.Embed(colour = discord.Colour.green())
+    embedSuccess.set_author(name='Jagares Bot')
+    embedSuccess.add_field(name=f'Verified', value=f"Yuor discord account has been linked.", inline=False)
+    embedSuccess.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
-    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+    embedFail = discord.Embed(colour = discord.Colour.red())
+    embedFail.set_author(name='Jagares Bot')
+    embedFail.add_field(name=f'Error', value=f"You need to link your discord on hypixel.", inline=False)
+    embedFail.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
-    await ctx.send(f'username: {username} \nplayerDiscord: {playerDiscord}')
+    embedNotMatch = discord.Embed(colour = discord.Colour.red())
+    embedNotMatch.set_author(name='Jagares Bot')
+    embedNotMatch.add_field(name=f'Error', value=f"Your current discord account and hypixel discord tag don't match.", inline=False)
+    embedNotMatch.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+    # await ctx.send(f'username: {username} \nplayerDiscord: {playerDiscord}')
 
     if playerDiscord is None:
-        await ctx.send('You need to link your discord on hypixel.')
+        await ctx.send(embed=embedFail)
     elif username == playerDiscord:
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embedSuccess)
     elif username != playerDiscord:
-        await ctx.send('Your current discord account and hypixel discord tag don\'t match.')        
+        await ctx.send(embed=embedNotMatch)        
 
 
 

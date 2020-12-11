@@ -235,33 +235,35 @@ async def verify(ctx, name):
     # await ctx.send(f'username: {username} \nplayerDiscord: {playerDiscord}')
 
 
-
-    if playerDiscord is None:
-        await ctx.send(embed=embedFail)
-
-
-    elif str(username) == str(playerDiscord):
-        try:
-            await ctx.message.author.edit(nick=ign)
-            await username.add_roles(discord.utils.get(username.guild.roles, name="Verified"))
-            await username.add_roles(discord.utils.get(username.guild.roles, name="Community Members"))
-
-            # time.sleep(3)
-
-            # await ctx.channel.purge(limit=7)
-
-            await ctx.send(embed=embedSuccess)
-        except Exception as e:
-            await ctx.send(f'Error: `{e}`')
+    if get(username.roles, id=787080811064328283):
+        if playerDiscord is None:
+            await ctx.send(embed=embedFail)
 
 
-        
-    elif str(username) != str(playerDiscord):
-        await ctx.send(embed=embedNotMatch)        
+        elif str(username) == str(playerDiscord):
+            try:
+                await ctx.message.author.edit(nick=ign)
+                await username.add_roles(discord.utils.get(username.guild.roles, name="Verified"))
+                await username.add_roles(discord.utils.get(username.guild.roles, name="Community Members"))
 
-    time.sleep(7)
+                # time.sleep(3)
 
-    await ctx.channel.purge(limit=7)
+                # await ctx.channel.purge(limit=7)
+
+                await ctx.send(embed=embedSuccess)
+            except Exception as e:
+                await ctx.send(f'Error: `{e}`')
+
+
+            
+        elif str(username) != str(playerDiscord):
+            await ctx.send(embed=embedNotMatch)        
+
+        time.sleep(7)
+
+        await ctx.channel.purge(limit=7)
+    else:
+        await ctx.send(f'You can only verify in `#verification`')
 
 
 

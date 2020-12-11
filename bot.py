@@ -259,9 +259,9 @@ async def verify(ctx, name):
         elif str(username) != str(playerDiscord):
             await ctx.send(embed=embedNotMatch)        
 
-        time.sleep(7)
+        time.sleep(5)
 
-        await ctx.channel.purge(limit=7)
+        await ctx.channel.purge(limit=25)
     else:
         await ctx.send(f'You can only verify in `#verification`')
 

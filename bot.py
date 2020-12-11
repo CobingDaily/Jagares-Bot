@@ -770,13 +770,20 @@ async def classcompare(ctx, Class, name1, name2):
     else:
         class_cp_dif = 0
 
+
     if class_final_kills_all1 > class_final_kills_all2:
         class_fks_dif = class_final_kills_all1 - class_final_kills_all2
     elif class_final_kills_all1 < class_final_kills_all2:
-        class_fks_dif = class_final_kills_all2 - class_final_kills_all2
+        class_fks_dif = class_final_kills_all2 - class_final_kills_all1
     else:
         class_fks_dif = 0
 
+    if class_wins_all1 > class_wins_all2:
+        class_win_dif = class_wins_all1 - class_wins_all2
+    elif class_wins_all1 < class_wins_all2:
+        class_win_dif = class_wins_all2 - class_wins_all1
+    else:
+        class_win_dif = 0
 
 
 
@@ -794,7 +801,7 @@ async def classcompare(ctx, Class, name1, name2):
     )
 
 
-    embed.set_author(name='{Class.capitalize()} ')
+    embed.set_author(name=f'{Class.capitalize()}')
 
     embed.add_field(name=f'Final Kills', value=f"{'{:,}'.format(class_final_kills_all1)} | {'{:,}'.format(class_final_kills_all2)}", inline=False)
     embed.add_field(name=f'Final Assists', value=f"{'{:,}'.format(class_final_assists_all1)} | {'{:,}'.format(class_final_assists_all2)}", inline=False)
@@ -803,8 +810,9 @@ async def classcompare(ctx, Class, name1, name2):
     embed.add_field(name=f'Losses', value=f"{'{:,}'.format(class_losses_all1)} | {'{:,}'.format(class_losses_all2)}", inline=False)
     embed.add_field(name=f'W/L Ratio', value=f"{'{:,}'.format(class_wlr1)} | {'{:,}'.format(class_wlr2)}", inline=False)   
     embed.add_field(name=f'Class Points', value=f"{'{:,}'.format(class_cp1)} | {'{:,}'.format(class_cp2)}", inline=False)
-    embed.add_field(name=f'Class Point Difference', value=f"{'{:,}'.format(class_cp_dif)}", inline=False)
     embed.add_field(name=f'Final Kill Difference', value=f"{'{:,}'.format(class_fks_dif)}", inline=False)
+    embed.add_field(name=f'Win Difference', value=f"{'{:,}'.format(class_win_dif)}", inline=False)
+    embed.add_field(name=f'Class Point Difference', value=f"{'{:,}'.format(class_cp_dif)}", inline=False)
 
 
     # embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png?random={rand}")

@@ -242,7 +242,7 @@ async def verify(ctx, name):
     elif str(username) == str(playerDiscord):
         try:
             await ctx.message.author.edit(nick=ign)
-            await username.add_roles(discord.utils.get(username.guild.roles, name="verified"))
+            await username.add_roles(discord.utils.get(username.guild.roles, name="Verified"))
             await ctx.send(embed=embedSuccess)
         except Exception as e:
             await ctx.send(f'Error: `{e}`')

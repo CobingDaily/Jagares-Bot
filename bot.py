@@ -233,9 +233,19 @@ async def verify(ctx, name):
 
     if playerDiscord is None:
         await ctx.send(embed=embedFail)
+
+
+
     elif str(username) == str(playerDiscord):
-        await ctx.message.author.edit(nick=name)
-        await ctx.send(embed=embedSuccess)
+        try:
+            await ctx.message.author.edit(nick=name)
+            await username.add_roles(discord.utils.get(username.guild.roles, name="verified"))
+            await ctx.send(embed=embedSuccess)
+        except Exception as e:
+            await ctx.send('There was an error running this command ' + str(e))
+        
+
+        
     elif str(username) != str(playerDiscord):
         await ctx.send(embed=embedNotMatch)        
 

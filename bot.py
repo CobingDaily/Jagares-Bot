@@ -242,7 +242,7 @@ async def verify(ctx, name):
             await username.add_roles(discord.utils.get(username.guild.roles, name="verified"))
             await ctx.send(embed=embedSuccess)
         except Exception as e:
-            await ctx.send('There was an error running this command ' + str(e))
+            await ctx.send(f'There was an error running this command: `{e}`)
         
 
         

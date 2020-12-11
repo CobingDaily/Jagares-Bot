@@ -622,7 +622,7 @@ async def cp(ctx, name):
 
 
 
-@bot.command()
+@bot.command(aliases=['class'])
 async def mwclass(ctx, Class, name):
     data = hypixel.hypixel_api(name)
     try:
@@ -686,6 +686,122 @@ async def mwclass(ctx, Class, name):
     await ctx.send(embed=embed)
 
 
+
+
+
+
+
+
+@bot.command(aliases=['compare'])
+async def classcompare(ctx, Class, name1, name2):
+    data1 = hypixel.hypixel_api(name1)
+    try:
+        ign1 = hypixel.get_displayname(name1, data1)
+    except:
+        await ctx.send("Player not found! (Make sure to use the Minecraft username)")
+    class_final_kills1 = hypixel.get_class_finals(name1, Class, data1)
+    class_final_assists1 = hypixel.get_class_final_assists(name1, Class, data1)
+    class_wins1 = hypixel.get_class_wins(name1, Class, data1)
+    # class_final_deaths = hypixel.get_class_final_deaths(name, Class, data)
+    # class_losses = hypixel.get_class_losses(name, Class, data)
+
+    class_cp1 = class_wins1 * 10 + class_final_kills1 + class_final_assists1
+
+
+
+    class_final_kills_all1 = hypixel.get_class_finals_all(name1, Class, data1)
+    class_final_assists_all1 = hypixel.get_class_final_assists_all(name1, Class, data1)
+    class_wins_all1 = hypixel.get_class_wins_all(name1, Class, data1)
+    class_final_deaths_all1 = hypixel.get_class_final_deaths_all(name1, Class, data1)
+    class_losses_all1 = hypixel.get_class_losses_all(name1, Class, data1)
+    
+
+
+    if class_final_deaths_all1 == 0:
+        class_fkd1 = class_final_kills_all1
+    else:
+        class_fkd1 = round(class_final_kills_all1/class_final_deaths_all1, 2)
+    if class_losses_all1 == 0:
+        class_wlr1 = class_wins_all1
+    else:
+        class_wlr1 = round(class_wins_all1/class_losses_all1, 2)
+
+
+
+
+    data2 = hypixel.hypixel_api(name2)
+    try:
+        ign2 = hypixel.get_displayname(name2, data2)
+    except:
+        await ctx.send("Player not found! (Make sure to use the Minecraft username)")
+    class_final_kills2 = hypixel.get_class_finals(name2, Class, data2)
+    class_final_assists2 = hypixel.get_class_final_assists(name2, Class, data2)
+    class_wins2 = hypixel.get_class_wins(name2, Class, data2)
+    # class_final_deaths = hypixel.get_class_final_deaths(name, Class, data)
+    # class_losses = hypixel.get_class_losses(name, Class, data)
+
+    class_cp2 = class_wins2 * 10 + class_final_kills2 + class_final_assists2
+
+
+
+    class_final_kills_all2 = hypixel.get_class_finals_all(name2, Class, data2)
+    class_final_assists_all2 = hypixel.get_class_final_assists_all(name2, Class, data2)
+    class_wins_all2 = hypixel.get_class_wins_all(name2, Class, data2)
+    class_final_deaths_all2 = hypixel.get_class_final_deaths_all(name2, Class, data2)
+    class_losses_all2 = hypixel.get_class_losses_all(name2, Class, data2)
+    
+
+
+    if class_final_deaths_all2 == 0:
+        class_fkd2 = class_final_kills_all2
+    else:
+        class_fkd2 = round(class_final_kills_all2/class_final_deaths_all2, 2)
+    if class_losses_all2 == 0:
+        class_wlr2 = class_wins_all2
+    else:
+        class_wlr2 = round(class_wins_all2/class_losses_all2, 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # rand = get_random_string(12)
+
+
+    embed = discord.Embed(
+    title = f"{ign1} | {ign2}",
+    colour = discord.Colour.orange()
+    )
+
+
+    embed.set_author(name='Jagares Bot')
+
+    embed.add_field(name=f'{Class.capitalize()} Final Kills', value=f"{'{:,}'.format(class_final_kills_all1)} | {'{:,}'.format(class_final_kills_all2)}", inline=False)
+    embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists_all1)} | {'{:,}'.format(class_final_assists_all2)}", inline=False)
+    embed.add_field(name=f'{Class.capitalize()} FK/D Ratio', value=f"{'{:,}'.format(class_fkd1)} | {'{:,}'.format(class_fkd2)}", inline=False)
+    embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wins_all1)} | {'{:,}'.format(class_wins_all2)}", inline=False)
+    embed.add_field(name=f'{Class.capitalize()} Losses', value=f"{'{:,}'.format(class_losses_all1)} | {'{:,}'.format(class_losses_all2)}", inline=False)
+    embed.add_field(name=f'{Class.capitalize()} W/L Ratio', value=f"{'{:,}'.format(class_wlr1)} | {'{:,}'.format(class_wlr2)}", inline=False)   
+    embed.add_field(name=f'{Class.capitalize()} Class Points', value=f"{'{:,}'.format(class_cp1)} | {'{:,}'.format(class_cp2)}", inline=False)
+
+
+    # embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png?random={rand}")
+    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+
+    await ctx.send(embed=embed)
 
 
 
@@ -927,6 +1043,23 @@ async def nh(ctx, name):
     embed6.set_footer(text=f"© 2020 LazBoi All Rights Reserved | Page 6/{pages} ")
 
 
+    embed7 = discord.Embed(
+    title = f"{ign}'s Name History",
+    colour = discord.Colour.orange()
+    )
+
+
+    embed6.set_author(name='Jagares Bot')
+
+
+    for value in nameHistory[60:69]:
+        embed7.add_field(name=f'\u200b', value=f"``{value}`` \u200b", inline=False)
+    
+
+    embed7.set_footer(text=f"© 2020 LazBoi All Rights Reserved | Page 7/{pages} ")
+
+
+
     if nameLength <= 10:
         embeds = [embed1]
     elif nameLength <= 20:
@@ -939,6 +1072,8 @@ async def nh(ctx, name):
         embeds = [embed1, embed2, embed3, embed4, embed5]
     elif nameLength <= 60:
         embeds = [embed1, embed2, embed3, embed4, embed5, embed6]
+    elif nameLength <= 70:
+        embeds = [embed1, embed2, embed3, embed4, embed5, embed6, embed7]
 
 
 

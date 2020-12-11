@@ -235,7 +235,7 @@ async def verify(ctx, name):
     # await ctx.send(f'username: {username} \nplayerDiscord: {playerDiscord}')
 
 
-    if ctx.channel.id == "787080811064328283":
+    if ctx.channel.id == 787080811064328283:
         if playerDiscord is None:
             await ctx.send(embed=embedFail)
 
@@ -263,7 +263,7 @@ async def verify(ctx, name):
 
         await ctx.channel.purge(limit=25)
     else:
-        await ctx.send(f'You can only verify in `#verification`, CHANNEL_ID={ctx.channel.id}')
+        await ctx.send(f'You can only verify in `#verification`')
 
 
 

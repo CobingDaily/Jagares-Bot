@@ -222,6 +222,8 @@ async def verify(ctx, name):
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
+    await ctx.send(f'username: {username}n\playerDiscord: {playerDiscord}')
+
     if playerDiscord is None:
         await ctx.send('You need to link your discord on hypixel.')
     elif username == playerDiscord:

@@ -763,9 +763,19 @@ async def classcompare(ctx, Class, name1, name2):
 
 
 
+    if class_cp1 > class_cp2:
+        class_cp_dif = class_cp1 - class_cp2
+    elif class_cp1 < class_cp2:
+        class_cp_dif = class_cp2 - class_cp1
+    else:
+        class_cp_dif = 0
 
-
-
+    if class_final_kills_all1 > class_final_kills_all2:
+        class_fks_dif = class_final_kills_all1 - class_final_kills_all2
+    elif class_final_kills_all1 < class_final_kills_all2:
+        class_fks_dif = class_final_kills_all2 - class_final_kills_all2
+    else:
+        class_fks_dif = 0
 
 
 
@@ -779,20 +789,22 @@ async def classcompare(ctx, Class, name1, name2):
 
 
     embed = discord.Embed(
-    title = f"{ign1} | {ign2}",
+    title = f"`{ign1} | {ign2}`",
     colour = discord.Colour.orange()
     )
 
 
-    embed.set_author(name='Jagares Bot')
+    embed.set_author(name='{Class.capitalize()} ')
 
-    embed.add_field(name=f'{Class.capitalize()} Final Kills', value=f"{'{:,}'.format(class_final_kills_all1)} | {'{:,}'.format(class_final_kills_all2)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"{'{:,}'.format(class_final_assists_all1)} | {'{:,}'.format(class_final_assists_all2)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} FK/D Ratio', value=f"{'{:,}'.format(class_fkd1)} | {'{:,}'.format(class_fkd2)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} Wins', value=f"{'{:,}'.format(class_wins_all1)} | {'{:,}'.format(class_wins_all2)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} Losses', value=f"{'{:,}'.format(class_losses_all1)} | {'{:,}'.format(class_losses_all2)}", inline=False)
-    embed.add_field(name=f'{Class.capitalize()} W/L Ratio', value=f"{'{:,}'.format(class_wlr1)} | {'{:,}'.format(class_wlr2)}", inline=False)   
-    embed.add_field(name=f'{Class.capitalize()} Class Points', value=f"{'{:,}'.format(class_cp1)} | {'{:,}'.format(class_cp2)}", inline=False)
+    embed.add_field(name=f'Final Kills', value=f"{'{:,}'.format(class_final_kills_all1)} | {'{:,}'.format(class_final_kills_all2)}", inline=False)
+    embed.add_field(name=f'Final Assists', value=f"{'{:,}'.format(class_final_assists_all1)} | {'{:,}'.format(class_final_assists_all2)}", inline=False)
+    embed.add_field(name=f'FK/D Ratio', value=f"{'{:,}'.format(class_fkd1)} | {'{:,}'.format(class_fkd2)}", inline=False)
+    embed.add_field(name=f'Wins', value=f"{'{:,}'.format(class_wins_all1)} | {'{:,}'.format(class_wins_all2)}", inline=False)
+    embed.add_field(name=f'Losses', value=f"{'{:,}'.format(class_losses_all1)} | {'{:,}'.format(class_losses_all2)}", inline=False)
+    embed.add_field(name=f'W/L Ratio', value=f"{'{:,}'.format(class_wlr1)} | {'{:,}'.format(class_wlr2)}", inline=False)   
+    embed.add_field(name=f'Class Points', value=f"{'{:,}'.format(class_cp1)} | {'{:,}'.format(class_cp2)}", inline=False)
+    embed.add_field(name=f'Class Point Difference', value=f"{'{:,}'.format(class_cp_dif)}", inline=False)
+    embed.add_field(name=f'Final Kill Difference', value=f"{'{:,}'.format(class_fks_dif)}", inline=False)
 
 
     # embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png?random={rand}")

@@ -246,9 +246,9 @@ async def verify(ctx, name):
             await username.add_roles(discord.utils.get(username.guild.roles, name="Verified"))
             await username.add_roles(discord.utils.get(username.guild.roles, name="Community Members"))
 
-            time.sleep(3)
+            # time.sleep(3)
 
-            await ctx.channel.purge(limit=7)
+            # await ctx.channel.purge(limit=7)
 
             await ctx.send(embed=embedSuccess)
         except Exception as e:

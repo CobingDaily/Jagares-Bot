@@ -235,7 +235,7 @@ async def verify(ctx, name):
     # await ctx.send(f'username: {username} \nplayerDiscord: {playerDiscord}')
 
 
-    if get(username.roles, id=787080811064328283):
+    if ctx.message.channel.id == "787080811064328283":
         if playerDiscord is None:
             await ctx.send(embed=embedFail)
 

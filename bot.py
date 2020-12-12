@@ -270,10 +270,8 @@ async def verify(ctx, name):
                 elif newPackageRank == "MVP_PLUS":
                     await username.add_roles(discord.utils.get(username.guild.roles, name="MVP+"))
 
-
-
-                if monthlyPackageRank == "SUPERSTAR":
-                    await username.add_roles(discord.utils.get(username.guild.roles, name="MVP++"))
+                    if monthlyPackageRank == "SUPERSTAR":
+                        await username.add_roles(discord.utils.get(username.guild.roles, name="MVP++"))
 
 
 

@@ -212,7 +212,7 @@ async def verify(ctx, name):
     ign = hypixel.get_displayname(name, data)
 
     newPackageRank = hypixel.get_newPackageRank(name, data)
-    monthlyPackageRank = hypixel.get_newPackageRank(name, data)
+    monthlyPackageRank = hypixel.get_monthlyPackageRank(name, data)
 
 
     playerDiscord = hypixel.get_playerDiscord(name, data)
@@ -261,9 +261,7 @@ async def verify(ctx, name):
                 await username.add_roles(discord.utils.get(username.guild.roles, name="Community Members"))
                 
 
-                
-                if monthlyPackageRank == "SUPERSTAR":
-                    await username.add_roles(discord.utils.get(username.guild.roles, name="MVP++"))
+
 
 
 
@@ -276,6 +274,10 @@ async def verify(ctx, name):
                 elif newPackageRank == "MVP_PLUS":
                     await username.add_roles(discord.utils.get(username.guild.roles, name="MVP+"))
 
+
+
+                if monthlyPackageRank == "SUPERSTAR":
+                    await username.add_roles(discord.utils.get(username.guild.roles, name="MVP++"))
 
 
 

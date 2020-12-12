@@ -248,6 +248,24 @@ def get_playerDiscord(name, data):
 
 
 
+def get_newPackageRank(name, data):
+    try:
+        newPackageRank = str(data["player"]["newPackageRank"])
+    except:
+        newPackageRank = "Unknown"
+
+    return newPackageRank
+
+
+def get_monthlyPackageRank(name, data):
+    try:
+        monthlyPackageRank = str(data["player"]["monthlyPackageRank"])
+    except:
+        monthlyPackageRank = "Unknown"
+
+    return monthlyPackageRank
+
+
 
 
 

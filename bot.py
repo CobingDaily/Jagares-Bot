@@ -211,6 +211,9 @@ async def verify(ctx, name):
     data = hypixel.hypixel_api(name)
     ign = hypixel.get_displayname(name, data)
 
+    newPackageRank = hypixel.get_newPackageRank(name, data)
+    monthlyPackageRank = hypixel.get_newPackageRank(name, data)
+
 
     playerDiscord = hypixel.get_playerDiscord(name, data)
     username = ctx.message.author
@@ -246,11 +249,33 @@ async def verify(ctx, name):
 
                 time.sleep(1)
 
+
+
+
+
+
+
+
                 await ctx.message.author.edit(nick=ign)
                 await username.add_roles(discord.utils.get(username.guild.roles, name="Verified"))
                 await username.add_roles(discord.utils.get(username.guild.roles, name="Community Members"))
-
                 
+
+                if newPackageRank == "VIP":
+                    await username.add_roles(discord.utils.get(username.guild.roles, name="VIP"))
+                elif newPackageRank == "VIP_PLUS":
+                    await username.add_roles(discord.utils.get(username.guild.roles, name="VIP+"))
+                elif newPackageRank == "MVP":
+                    await username.add_roles(discord.utils.get(username.guild.roles, name="MVP"))
+                elif newPackageRank == "MVP_PLUS":
+                    await username.add_roles(discord.utils.get(username.guild.roles, name="MVP+"))
+
+
+
+                if monthlyPackageRank == "SUPERSTAR":
+                    await username.add_roles(discord.utils.get(username.guild.roles, name="MVP++"))
+
+
 
                 # await ctx.channel.purge(limit=7)
 

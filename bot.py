@@ -585,7 +585,7 @@ async def duel(ctx, p1=None, p2=None):
 
 
 @bot.command()
-async def mw(ctx, name):
+async def mw(ctx, name=None):
     if name is None:
         name = ctx.message.author.display_name
     data = hypixel.hypixel_api(name)

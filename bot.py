@@ -63,7 +63,7 @@ async def info(ctx, name=None):
         achievementPoints = hypixel.get_achievementPoints(name, data2)
         quests = hypixel.get_quests(name, data2)
     except:
-        await ctx.send("Player not found! (Make sure to use their Minecraft username)")
+        await ctx.send(f"Player `{name}` is not found!")
     version = hypixel.get_mcVersionRp(name, data)
     firstLogin = hypixel.get_firstLogin(name, data)
    
@@ -423,7 +423,7 @@ async def purge(ctx, ammount=3):
 async def purge_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         		    	    
-        await ctx.send("Looks like you don't have the permission lol")
+        await ctx.send("You don't have the permission to delete messages.")
 		    
 
 		    
@@ -731,11 +731,10 @@ async def cp(ctx, name=None):
 
 
 @bot.command(aliases=['class'])
-async def mwclass(ctx, Class=None, name=None):
+async def mwclass(ctx, Class, name=None):
     if name is None:
         name = ctx.message.author.display_name
-    if Class is None:
-        await ctx.send(f"/mwclass `class` Player")
+
 
     data = hypixel.hypixel_api(name)
     try:
@@ -806,13 +805,11 @@ async def mwclass(ctx, Class=None, name=None):
 
 
 @bot.command(aliases=['compare'])
-async def classcompare(ctx, Class=None, name1=None, name2=None):
-    if name1 is None:
-        name1 = ctx.message.author.display_name
+async def classcompare(ctx, Class, name1=None, name2=None):
     if name2 is None:
-        await ctx.send(f"/compare class Player1 `Player2`")
-    if Class is None:
-        await ctx.send(f"/mwclass `class` Player1 Player2")
+        name2 = ctx.message.author.display_name
+
+
     data1 = hypixel.hypixel_api(name1)
     try:
         ign1 = hypixel.get_displayname(name1, data1)

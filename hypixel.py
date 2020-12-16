@@ -50,6 +50,9 @@ def hypixel_gapi(name):
     return gdata
 
 
+
+
+
 def hypixel_wdapi():
     wdurl = f"https://api.hypixel.net/watchdogstats?key={API_KEY}"
     wdres = requests.get(wdurl)

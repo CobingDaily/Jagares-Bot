@@ -47,7 +47,7 @@ async def servers(ctx):
 
 
 @bot.command(aliases=['stats', 'hypixel', 'statistics'])
-async def info(ctx, name):
+async def info(ctx, name=None):
     # name is None
     # await ctx.send(f'Command Currently Unavailable!')
     try:
@@ -585,7 +585,9 @@ async def duel(ctx, p1=None, p2=None):
 
 
 @bot.command()
-async def mw(ctx, name):
+async def mw(ctx, name=None):
+    if name is None:
+        name = ctx.message.author.display_name
     data = hypixel.hypixel_api(name)
     try:
         ign = hypixel.get_displayname(name, data)

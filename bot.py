@@ -48,6 +48,8 @@ async def servers(ctx):
 
 @bot.command(aliases=['stats', 'hypixel', 'statistics'])
 async def info(ctx, name=None):
+    if name is None:
+        name = ctx.message.author.display_name
     # name is None
     # await ctx.send(f'Command Currently Unavailable!')
     try:
@@ -800,9 +802,7 @@ async def mwclass(ctx, Class, name=None):
 
 
 @bot.command(aliases=['compare'])
-async def classcompare(ctx, Class, name1=None, name2=None):
-    if name1 is None:
-        name1 = ctx.message.author.display_name
+async def classcompare(ctx, Class, name1, name2=None):
     if name2 is None:
         name2 = ctx.message.author.display_name
     data1 = hypixel.hypixel_api(name1)
@@ -1054,7 +1054,9 @@ async def watchdog(ctx):
 
 
 @bot.command(aliases=['name', 'namehistory'])
-async def nh(ctx, name):
+async def nh(ctx, name=None):
+    if name is None:
+        name = ctx.message.author.display_name
     
     data = hypixel.hypixel_api(name)
     try:
@@ -1237,7 +1239,9 @@ async def nh(ctx, name):
 
 
 @bot.command(aliases=['blitz', 'sg', 'hg'])
-async def bsg(ctx, name):
+async def bsg(ctx, name=None):
+    if name is None:
+        name = ctx.message.author.display_name
     data = hypixel.hypixel_api(name)
     try:
         ign = hypixel.get_displayname(name, data)

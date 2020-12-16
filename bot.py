@@ -594,7 +594,7 @@ async def mw(ctx, name=None):
     try:
         ign = hypixel.get_displayname(name, data)
     except:
-        await ctx.send("Player not found! (Make sure to use their Minecraft username)")
+        await ctx.send(f"Player `{name}` is not found!")
     final_kills = hypixel.get_final_kills(name, data) 
     wins = hypixel.get_wins(name, data)
     fds1 = hypixel.get_final_deaths_post(name, data)
@@ -647,12 +647,14 @@ async def mw(ctx, name=None):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def cp(ctx, name):
+async def cp(ctx, name=None):
+    if name is None:
+        name = ctx.message.author.display_name
     data = hypixel.hypixel_api(name)
     try:
         ign = hypixel.get_displayname(name, data)
     except:
-        await ctx.send("Player not found! (Make sure to use their Minecraft username)")
+        await ctx.send(f"Player `{name}` is not found!")
 
     hunter_class_points = hypixel.get_hunter_class_points(name, data)
     zombie_class_points = hypixel.get_zombie_class_points(name, data)
@@ -729,15 +731,17 @@ async def cp(ctx, name):
 
 
 @bot.command(aliases=['class'])
-async def mwclass(ctx, Class, name=None):
+async def mwclass(ctx, Class=None, name=None):
     if name is None:
         name = ctx.message.author.display_name
+    if Class is None:
+        await ctx.send(f"/mwclass `class` Player")
 
     data = hypixel.hypixel_api(name)
     try:
         ign = hypixel.get_displayname(name, data)
     except:
-        await ctx.send("Player not found! (Make sure to use the Minecraft username)")
+        await ctx.send(f"Player `{name}` is not found!")
     class_final_kills = hypixel.get_class_finals(name, Class, data)
     class_final_assists = hypixel.get_class_final_assists(name, Class, data)
     class_wins = hypixel.get_class_wins(name, Class, data)
@@ -802,14 +806,18 @@ async def mwclass(ctx, Class, name=None):
 
 
 @bot.command(aliases=['compare'])
-async def classcompare(ctx, Class, name1, name2=None):
+async def classcompare(ctx, Class=None, name1=None, name2=None):
+    if name1 is None:
+        name1 = ctx.message.author.display_name
     if name2 is None:
-        name2 = ctx.message.author.display_name
+        await ctx.send(f"/compare class Player1 `Player2`")
+    if Class is None:
+        await ctx.send(f"/mwclass `class` Player1 Player2")
     data1 = hypixel.hypixel_api(name1)
     try:
         ign1 = hypixel.get_displayname(name1, data1)
     except:
-        await ctx.send("Player not found! (Make sure to use the Minecraft username)")
+        await ctx.send(f"Player `{name1}` is not found!")
     class_final_kills1 = hypixel.get_class_finals(name1, Class, data1)
     class_final_assists1 = hypixel.get_class_final_assists(name1, Class, data1)
     class_wins1 = hypixel.get_class_wins(name1, Class, data1)
@@ -844,7 +852,7 @@ async def classcompare(ctx, Class, name1, name2=None):
     try:
         ign2 = hypixel.get_displayname(name2, data2)
     except:
-        await ctx.send("Player not found! (Make sure to use the Minecraft username)")
+        await ctx.send(f"Player `{name2}` is not found!")
     class_final_kills2 = hypixel.get_class_finals(name2, Class, data2)
     class_final_assists2 = hypixel.get_class_final_assists(name2, Class, data2)
     class_wins2 = hypixel.get_class_wins(name2, Class, data2)
@@ -1062,7 +1070,7 @@ async def nh(ctx, name=None):
     try:
         ign = hypixel.get_displayname(name, data)
     except:
-        await ctx.send("Player not found! (Make sure to use the Minecraft username)")
+        await ctx.send(f"Player `{name}` is not found!")
 
     nameHistory = hypixel.get_knownAliases(name, data)
     nameHistory.reverse()
@@ -1246,7 +1254,7 @@ async def bsg(ctx, name=None):
     try:
         ign = hypixel.get_displayname(name, data)
     except:
-        await ctx.send("Player not found! (Make sure to use their Minecraft username)")
+        await ctx.send(f"Player `{name}` is not found!")
     kills = hypixel.get_bsg_kills(name, data) 
     wins_solo = hypixel.get_bsg_wins_solo_normal(name, data)
     wins_teams = hypixel.get_bsg_wins_teams_normal(name, data)

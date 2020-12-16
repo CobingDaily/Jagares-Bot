@@ -727,7 +727,7 @@ async def cp(ctx, name):
 
 
 @bot.command(aliases=['class'])
-async def mwclass(ctx, Class="Herobrine", name=None):
+async def mwclass(ctx, Class, name=None):
     if name is None:
         name = ctx.message.author.display_name
 
@@ -800,7 +800,11 @@ async def mwclass(ctx, Class="Herobrine", name=None):
 
 
 @bot.command(aliases=['compare'])
-async def classcompare(ctx, Class, name1, name2):
+async def classcompare(ctx, Class, name1=None, name2=None):
+    if name1 is None:
+        name1 = ctx.message.author.display_name
+    if name2 is None:
+        name2 = ctx.message.author.display_name
     data1 = hypixel.hypixel_api(name1)
     try:
         ign1 = hypixel.get_displayname(name1, data1)

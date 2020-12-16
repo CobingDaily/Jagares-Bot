@@ -727,7 +727,10 @@ async def cp(ctx, name):
 
 
 @bot.command(aliases=['class'])
-async def mwclass(ctx, Class, name):
+async def mwclass(ctx, Class="Herobrine", name=None):
+    if name is None:
+        name = ctx.message.author.display_name
+
     data = hypixel.hypixel_api(name)
     try:
         ign = hypixel.get_displayname(name, data)

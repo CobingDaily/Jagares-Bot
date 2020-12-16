@@ -805,7 +805,7 @@ async def mwclass(ctx, Class, name=None):
 
 
 @bot.command(aliases=['compare'])
-async def classcompare(ctx, Class, name1=None, name2=None):
+async def classcompare(ctx, Class, name1, name2=None):
     if name2 is None:
         name2 = ctx.message.author.display_name
 

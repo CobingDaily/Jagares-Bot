@@ -730,7 +730,7 @@ async def cp(ctx, name=None):
 
 
 
-@bot.command(aliases=['class'])
+@bot.command(aliases=['class', 'mwc'])
 async def mwclass(ctx, Class, name=None):
     if name is None:
         name = ctx.message.author.display_name

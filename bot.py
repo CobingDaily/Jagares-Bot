@@ -769,6 +769,15 @@ async def mwclass(ctx, Class, name=None):
         class_wlr = round(class_wins_all/class_losses_all, 2)
 
 
+    class_next_fkd = math.floor(class_fkd + 1)
+
+    if class_final_deaths_all == 0:
+        class_need_fks = class_next_fkd - class_final_kills_all
+    else:
+        class_need_fks = (class_final_deaths_all * class_next_fkd) - class_final_kills_all
+
+
+
     rand = get_random_string(12)
 
 
@@ -783,6 +792,7 @@ async def mwclass(ctx, Class, name=None):
     embed.add_field(name=f'{Class.capitalize()} Final Kills', value=f"`{'{:,}'.format(class_final_kills_all)}`", inline=False)
     embed.add_field(name=f'{Class.capitalize()} Final Assists', value=f"`{'{:,}'.format(class_final_assists_all)}`", inline=False)
     embed.add_field(name=f'{Class.capitalize()} FK/D Ratio', value=f"`{'{:,}'.format(class_fkd)}`", inline=False)
+    embed.add_field(name=f'{Class.capitalize()} Finals For {class_next_fkd} FK/D Ratio', value=f"`{'{:,}'.format(class_need_fks)}`", inline=False)
     embed.add_field(name=f'{Class.capitalize()} Wins', value=f"`{'{:,}'.format(class_wins_all)}`", inline=False)
     embed.add_field(name=f'{Class.capitalize()} Losses', value=f"`{'{:,}'.format(class_losses_all)}`", inline=False)
     embed.add_field(name=f'{Class.capitalize()} Final Deaths', value=f"`{'{:,}'.format(class_final_deaths_all)}`", inline=False)

@@ -782,7 +782,7 @@ async def mwclass(ctx, Class, name=None):
 
 
     embed = discord.Embed(
-    title = f"{ign}'s `{Class.capitalize()}` Stats",
+    title = f"{ign}'s {Class.capitalize()} Stats",
     colour = discord.Colour.orange()
     )
 
@@ -791,10 +791,10 @@ async def mwclass(ctx, Class, name=None):
 
     embed.add_field(name=f'FKs | FAs', value=f"`{'{:,}'.format(class_final_kills_all)}`   `{'{:,}'.format(class_final_assists_all)}`", inline=False)
     # embed.add_field(name=f'Final Assists', value=f"`{'{:,}'.format(class_final_assists_all)}`", inline=False)
+    embed.add_field(name=f'Wins | Losses', value=f"`{'{:,}'.format(class_wins_all)}`   `{'{:,}'.format(class_losses_all)}`", inline=False)
     embed.add_field(name=f'FK/D | W/L', value=f"`{'{:,}'.format(class_fkd)}`   `{'{:,}'.format(class_wlr)}`", inline=False)
     # embed.add_field(name=f'W/L Ratio', value=f"`{'{:,}'.format(class_wlr)}`", inline=False)   
     embed.add_field(name=f'Finals For {class_next_fkd} FK/D Ratio', value=f"`{'{:,}'.format(class_need_fks)}`", inline=False)
-    embed.add_field(name=f'Wins | Losses', value=f"`{'{:,}'.format(class_wins_all)}`   `{'{:,}'.format(class_losses_all)}`", inline=False)
     # embed.add_field(name=f'Losses', value=f"`{'{:,}'.format(class_losses_all)}`", inline=False)
     embed.add_field(name=f'Final Deaths', value=f"`{'{:,}'.format(class_final_deaths_all)}`", inline=False)
     embed.add_field(name=f'Class Points', value=f"`{'{:,}'.format(class_cp)}`", inline=False)

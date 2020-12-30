@@ -789,9 +789,9 @@ async def mwclass(ctx, Class, name=None):
 
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
-    embed.add_field(name=f'Final Kills | Final Assists', value=f"`{'{:,}'.format(class_final_kills_all)}`   `{'{:,}'.format(class_final_assists_all)}`", inline=False)
+    embed.add_field(name=f'FKs | FAs', value=f"`{'{:,}'.format(class_final_kills_all)}`   `{'{:,}'.format(class_final_assists_all)}`", inline=False)
     # embed.add_field(name=f'Final Assists', value=f"`{'{:,}'.format(class_final_assists_all)}`", inline=False)
-    embed.add_field(name=f'FK/D Ratio | W/L Ratio', value=f"`{'{:,}'.format(class_fkd)}`   `{'{:,}'.format(class_wlr)}`", inline=False)
+    embed.add_field(name=f'FK/D | W/L', value=f"`{'{:,}'.format(class_fkd)}`   `{'{:,}'.format(class_wlr)}`", inline=False)
     # embed.add_field(name=f'W/L Ratio', value=f"`{'{:,}'.format(class_wlr)}`", inline=False)   
     embed.add_field(name=f'Finals For {class_next_fkd} FK/D Ratio', value=f"`{'{:,}'.format(class_need_fks)}`", inline=False)
     embed.add_field(name=f'Wins | Losses', value=f"`{'{:,}'.format(class_wins_all)}`   `{'{:,}'.format(class_losses_all)}`", inline=False)

@@ -756,7 +756,12 @@ async def mwclass(ctx, Class, name=None):
     class_wins_all = hypixel.get_class_wins_all(name, Class, data)
     class_final_deaths_all = hypixel.get_class_final_deaths_all(name, Class, data)
     class_losses_all = hypixel.get_class_losses_all(name, Class, data)
-    
+
+    class_games_all = class_wins_all + class_losses_all
+    if class_games_all == 0:
+        class_cpg = class_cp
+    else:
+        class_cpg = class_cp / class_games_all
 
 
     if class_final_deaths_all == 0:
@@ -798,7 +803,7 @@ async def mwclass(ctx, Class, name=None):
     # embed.add_field(name=f'Losses', value=f"`{'{:,}'.format(class_losses_all)}`", inline=False)
     embed.add_field(name=f'Final Deaths', value=f"`{'{:,}'.format(class_final_deaths_all)}`", inline=False)
     embed.add_field(name=f'Class Points', value=f"`{'{:,}'.format(class_cp)}`", inline=False)
-
+    embed.add_field(name=f'Class Point/Game', value=f"`{'{:,}'.format(class_cpg)}`", inline=False)
 
     embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png?random={rand}")
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")

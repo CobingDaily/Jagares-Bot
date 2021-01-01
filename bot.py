@@ -567,7 +567,7 @@ async def test(ctx, input):
 
     if uuid_matches == []:
         await ctx.send('uuid')
-    elif len(name_matches) == []:
+    elif name_matches == []:
         await ctx.send('name')
     else:
         await ctx.send('invalid')

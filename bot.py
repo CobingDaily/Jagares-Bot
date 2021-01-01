@@ -632,7 +632,7 @@ async def mw(ctx, name=None):
         cakes_found = hypixel.get_cakes_found(name, data)
         fas = hypixel.get_final_assists(name, data)
 
-    if result == "uuid":
+    elif result == "uuid":
         data_uuid = hypixel.hypixel_api_uuid(name)
         try:
             ign = hypixel.get_displayname_uuid(uuid, data_uuid)

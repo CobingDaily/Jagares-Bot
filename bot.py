@@ -4,7 +4,7 @@ import random
 import string
 from discord.ext import commands
 import datetime
-import os
+import os, re
 import time
 import math
 from discord.utils import get
@@ -557,6 +557,13 @@ async def panda(ctx):
 
 
 
+@bot.command()
+async def test(ctx, input):
+    pattern = re.compile(r'^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$')
+    matches = pattern.finditer(input)
+    for match in matches:
+        await ctx.send(str(match))
+
 
 
 
@@ -583,6 +590,7 @@ async def duel(ctx, p1=None, p2=None):
 
     else:
         await ctx.send(f'`{random.choice(players)}` won the duel.')
+
 
 
 

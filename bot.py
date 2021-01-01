@@ -565,9 +565,9 @@ async def test(ctx, input):
     name_pattern = re.compile(r'^\w{1,16}$')
     name_matches = name_pattern.finditer(input)
 
-    if len(uuid_matches) > 0:
+    if uuid_matches == []:
         await ctx.send('uuid')
-    elif len(name_matches) > 0:
+    elif len(name_matches) == []:
         await ctx.send('name')
     else:
         await ctx.send('invalid')

@@ -557,20 +557,24 @@ async def panda(ctx):
 
 
 
-@bot.command()
-async def test(ctx, input):
+
+def uuid_or_name(input):
     uuid_pattern = re.compile(r'^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$', re.IGNORECASE)
     uuid_matches = uuid_pattern.finditer(input)
 
-    name_pattern = re.compile(r'^\w{1,16}$', re.IGNORECASE)
-    name_matches = name_pattern.finditer(input)
-
+    mcname_pattern = re.compile(r'^\w{1,16}$', re.IGNORECASE)
+    mcname_matches = mcname_pattern.finditer(input)
+    result = None
     if list(uuid_matches) != []:
-        await ctx.send('uuid')
-    elif list(name_matches) != []:
-        await ctx.send('name')
+        # await ctx.send('uuid')
+        result = "uuid"
+    elif list(mcname_matches) != []:
+        # await ctx.send('name')
+        result = "mcname"
     else:
-        await ctx.send('invalid')
+        # await ctx.send('invalid')
+        result = "Input-Error"
+    return result
 
 
 
@@ -606,23 +610,47 @@ async def duel(ctx, p1=None, p2=None):
 async def mw(ctx, name=None):
     if name is None:
         name = ctx.message.author.display_name
-    data = hypixel.hypixel_api(name)
-    try:
-        ign = hypixel.get_displayname(name, data)
-    except:
-        await ctx.send(f"Player `{name}` is not found!")
-    final_kills = hypixel.get_final_kills(name, data) 
-    wins = hypixel.get_wins(name, data)
-    fds1 = hypixel.get_final_deaths_post(name, data)
-    fds2 = hypixel.get_final_deaths_pre(name, data)
-    losses = hypixel.get_losses(name, data)
-    coins = hypixel.get_coins(name, data)
-    chosen_class = hypixel.get_chosen_class(name, data)
-    chosen_skin = hypixel.get_chosen_skin(name, chosen_class, data)
-    wither_damage = hypixel.get_wither_damage(name, data)
-    mythic_favor = hypixel.get_mythic_favor(name, data)
-    cakes_found = hypixel.get_cakes_found(name, data)
-    fas = hypixel.get_final_assists(name, data)
+    result = uuid_or_name(name)
+    if result == "mcname":
+        data = hypixel.hypixel_api(name)
+        try:
+            ign = hypixel.get_displayname(name, data)
+        except:
+            await ctx.send(f"Player `{name}` is not found!")
+
+        final_kills = hypixel.get_final_kills(name, data) 
+        wins = hypixel.get_wins(name, data)
+        fds1 = hypixel.get_final_deaths_post(name, data)
+        fds2 = hypixel.get_final_deaths_pre(name, data)
+        losses = hypixel.get_losses(name, data)
+        coins = hypixel.get_coins(name, data)
+        chosen_class = hypixel.get_chosen_class(name, data)
+        chosen_skin = hypixel.get_chosen_skin(name, chosen_class, data)
+        wither_damage = hypixel.get_wither_damage(name, data)
+        mythic_favor = hypixel.get_mythic_favor(name, data)
+        cakes_found = hypixel.get_cakes_found(name, data)
+        fas = hypixel.get_final_assists(name, data)
+
+    if result == "uuid":
+        data_uuid = hypixel.hypixel_api_uuid(name)
+        try:
+            ign = hypixel.get_displayname_uuid(uuid, data_uuid)
+        except:
+            await ctx.send(f"Player `{name}` is not found!")
+
+        final_kills = hypixel.get_final_kills_uuid(name, data_uuid) 
+        wins = hypixel.get_wins_uuid(name, data_uuid)
+        fds1 = hypixel.get_final_deaths_post_uuid(name, data_uuid)
+        fds2 = hypixel.get_final_deaths_pre_uuid(name, data_uuid)
+        losses = hypixel.get_losses_uuid(name, data_uuid)
+        coins = hypixel.get_coins_uuid(name, data_uuid)
+        chosen_class = hypixel.get_chosen_class_uuid(name, data_uuid)
+        chosen_skin = hypixel.get_chosen_skin_uuid(name, chosen_class, data_uuid)
+        wither_damage = hypixel.get_wither_damage_uuid(name, data_uuid)
+        mythic_favor = hypixel.get_mythic_favor_uuid(name, data_uuid)
+        cakes_found = hypixel.get_cakes_found_uuid(name, data_uuid)
+        fas = hypixel.get_final_assists_uuid(name, data_uuid)
+    
     fds = fds1 + fds2
     cps = final_kills + fas + (wins * 10)
 

@@ -559,10 +559,18 @@ async def panda(ctx):
 
 @bot.command()
 async def test(ctx, input):
-    pattern = re.compile(r'^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$')
-    matches = pattern.finditer(input)
-    for match in matches:
-        await ctx.send(str(match))
+    uuid_pattern = re.compile(r'^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$')
+    uuid_matches = uuid_pattern.finditer(input)
+
+    name_pattern = re.compile(r'^\w{1,16}$')
+    name_matches = name_pattern.finditer(input)
+
+    if len(uuid_matches) > 0:
+        await ctx.send('uuid')
+    elif len(name_matches) > 0:
+        await ctx.send('name')
+    else:
+        await ctx.send('invalid')
 
 
 

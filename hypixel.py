@@ -399,7 +399,7 @@ def get_chosen_class(name, data):
 
 def get_chosen_skin(name, chosen_class, data):
     try:
-        chosen_skin = str(data["player"]["stats"]["Walls3"][f"chosen_class_{chosen_class.capitalize()}"])
+        chosen_skin = str(data["player"]["stats"]["Walls3"][f"chosen_skin_{chosen_class.capitalize()}"])
     except:
         chosen_skin = "none"
     return chosen_skin

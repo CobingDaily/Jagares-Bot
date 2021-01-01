@@ -602,11 +602,14 @@ async def mw(ctx, name=None):
     losses = hypixel.get_losses(name, data)
     coins = hypixel.get_coins(name, data)
     chosen_class = hypixel.get_chosen_class(name, data)
+    chosen_skin = hypixel.get_chosen_skin(name, chosen_class, data)
     wither_damage = hypixel.get_wither_damage(name, data)
     mythic_favor = hypixel.get_mythic_favor(name, data)
     cakes_found = hypixel.get_cakes_found(name, data)
     fas = hypixel.get_final_assists(name, data)
     fds = fds1 + fds2
+    cps = final_kills + fas + (wins * 10)
+
     if fds == 0:
         fkd = final_kills
     else:
@@ -624,6 +627,9 @@ async def mw(ctx, name=None):
         need_fks = next_fkd - final_kills
     else:
         need_fks = (fds * next_fkd) - final_kills
+
+
+
 
 
 
@@ -650,6 +656,8 @@ async def mw(ctx, name=None):
     embed.add_field(name='Wither Damage', value=f"`{'{:,}'.format(wither_damage)}`", inline=True)
     embed.add_field(name='Chosen Class', value=f"`{chosen_class}`", inline=True)
     embed.add_field(name='Cakes Found', value=f"`{'{:,}'.format(cakes_found)}`", inline=True)
+    embed.add_field(name='Class Points', value=f"`{'{:,}'.format(cps)}`", inline=True)
+    embed.add_field(name='Chosen Skin', value=f"`{chosen_skin}`", inline=True)
     embed.set_image(url=f"https://gen.plancke.io/mw/{ign}/2.png?random={rand}")
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")

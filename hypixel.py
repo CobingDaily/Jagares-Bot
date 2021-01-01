@@ -397,6 +397,13 @@ def get_chosen_class(name, data):
         chosen_class = "none"
     return chosen_class
 
+def get_chosen_skin(name, chosen_class, data):
+    try:
+        chosen_skin = str(data["player"]["stats"]["Walls3"][f"chosen_class_{chosen_class.capitalize()}"])
+    except:
+        chosen_skin = "none"
+    return chosen_skin
+
 
 def get_cakes_found(name, data):
     try:

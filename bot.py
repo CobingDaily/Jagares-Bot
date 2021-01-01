@@ -641,7 +641,7 @@ async def mw(ctx, name=None):
     embed.add_field(name='Final Assists', value=f"`{'{:,}'.format(fas)}`", inline=True)
     embed.add_field(name='Final Deaths', value=f"`{'{:,}'.format(fds)}`", inline=True)
     embed.add_field(name='FK/D Ratio', value=f'`{fkd}`', inline=True)
-    embed.add_field(name=f'Finals For {next_fkd} FK/D Ratio', value=f"``{'{:,}'.format(need_fks)}``", inline=False)
+    embed.add_field(name=f'Finals For {next_fkd} FK/D Ratio', value=f"``{'{:,}'.format(need_fks)}``", inline=True)
     embed.add_field(name='Wins', value=f"`{'{:,}'.format(wins)}`", inline=True)
     embed.add_field(name='Losses', value=f"`{'{:,}'.format(losses)}`", inline=True)
     embed.add_field(name='W/L Ratio', value=f"`{'{:,}'.format(wl)}`", inline=True)

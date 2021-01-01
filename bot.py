@@ -761,7 +761,7 @@ async def mwclass(ctx, Class, name=None):
     if class_games_all == 0:
         class_cpg = class_cp
     else:
-        class_cpg = class_cp / class_games_all
+        class_cpg = round(class_cp / class_games_all, 2)
 
 
     if class_final_deaths_all == 0:

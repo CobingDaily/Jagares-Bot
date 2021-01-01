@@ -611,7 +611,7 @@ async def mw(ctx, name=None):
     if name is None:
         name = ctx.message.author.display_name
     result = uuid_or_name(name)
-    await ctx.send(result)
+    # await ctx.send(result)
     if result == "mcname":
         data = hypixel.hypixel_api(name)
         try:
@@ -651,7 +651,10 @@ async def mw(ctx, name=None):
         mythic_favor = hypixel.get_mythic_favor_uuid(name, data_uuid)
         cakes_found = hypixel.get_cakes_found_uuid(name, data_uuid)
         fas = hypixel.get_final_assists_uuid(name, data_uuid)
-    
+    elif result == "Input-Error":
+        await ctx.send("Invalid name/uuid!")
+
+
     fds = fds1 + fds2
     cps = final_kills + fas + (wins * 10)
 

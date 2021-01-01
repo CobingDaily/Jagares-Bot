@@ -611,6 +611,7 @@ async def mw(ctx, name=None):
     if name is None:
         name = ctx.message.author.display_name
     result = uuid_or_name(name)
+    await ctx.send(result)
     if result == "mcname":
         data = hypixel.hypixel_api(name)
         try:

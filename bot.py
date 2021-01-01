@@ -635,7 +635,7 @@ async def mw(ctx, name=None):
     elif result == "uuid":
         data_uuid = hypixel.hypixel_api_uuid(name)
         try:
-            ign = hypixel.get_displayname_uuid(uuid, data_uuid)
+            ign = hypixel.get_displayname_uuid(name, data_uuid)
         except:
             await ctx.send(f"Player `{name}` is not found!")
 

@@ -560,14 +560,14 @@ async def panda(ctx):
 @bot.command()
 async def test(ctx, input):
     uuid_pattern = re.compile(r'^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$', re.IGNORECASE)
-    uuid_matches = uuid_pattern.match(input)
+    uuid_matches = uuid_pattern.finditer(input)
 
     name_pattern = re.compile(r'^\w{1,16}$', re.IGNORECASE)
-    name_matches = name_pattern.match(input)
+    name_matches = name_pattern.finditer(input)
 
-    if list(uuid_matches) != None:
+    if list(uuid_matches) != []:
         await ctx.send('uuid')
-    elif list(name_matches) != None:
+    elif list(name_matches) != []:
         await ctx.send('name')
     else:
         await ctx.send('invalid')

@@ -1,5 +1,5 @@
 import requests
-import math
+import math, re
 
 
 API_KEY = "d52f4c03-9f60-4358-8a24-d5d97b46ceb1"
@@ -11,15 +11,41 @@ GROWTH_DIVIDES_2 = 2 / GROWTH
 
 
 
+def uuid_or_name(input):
+    uuid_pattern = re.compile(r'^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$', re.IGNORECASE)
+    uuid_matches = uuid_pattern.finditer(input)
+
+    mcname_pattern = re.compile(r'^\w{1,16}$', re.IGNORECASE)
+    mcname_matches = mcname_pattern.finditer(input)
+    result = None
+    if list(uuid_matches) != []:
+        # await ctx.send('uuid')
+        result = "uuid"
+    else:
+        list(mcname_matches) != []
+        # await ctx.send('name')
+        result = "name"
+
+
+    return result
+
+
+
+
+
 
 # API
 # API
 # API
+
+
+
 
 
 
 def hypixel_api(name):
-    url = f"https://api.hypixel.net/player?key={API_KEY}&name={name}"
+    result = uuid_or_name(name)
+    url = f"https://api.hypixel.net/player?key={API_KEY}&{result}={name}"
     res = requests.get(url)
     data = res.json()
     if data["player"] is None:

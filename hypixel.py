@@ -399,7 +399,7 @@ def get_losses(name, data):
     try:
         losses = int(data["player"]["stats"]["Walls3"]["losses"])
     except:
-        losses = 1
+        losses = 0
     return losses
 
 

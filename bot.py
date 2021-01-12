@@ -15,6 +15,11 @@ bot = commands.Bot(command_prefix = "/")
 bot.remove_command('help')
 
 
+classes = ["Hunter", "Zombie", "Creeper", "Arcanist", "Shaman", "Dreadlord", "Golem", "Squid", "Moleman", "Enderman", "Herobrine", "Blaze",
+           "Pigman", "Spider", "Werewolf", "Pirate", "Phoenix", "Skeleton", "Assassin", "Renengade", "Snowman", "Automaton", "Cow", "Shark"]
+
+
+
 @bot.event
 async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=discord.Game('/help'))
@@ -781,84 +786,86 @@ async def mwclass(ctx, Class, name=None):
     if name is None:
         name = ctx.message.author.display_name
 
+    if Class.capitalize() in classes:
+        
+        data = hypixel.hypixel_api(name)
+        try:
+            ign = hypixel.get_displayname(name, data)
+        except:
+            await ctx.send(f"Player `{name}` is not found!")
+        class_final_kills = hypixel.get_class_finals(name, Class, data)
+        class_final_assists = hypixel.get_class_final_assists(name, Class, data)
+        class_wins = hypixel.get_class_wins(name, Class, data)
+        # class_final_deaths = hypixel.get_class_final_deaths(name, Class, data)
+        # class_losses = hypixel.get_class_losses(name, Class, data)
 
-    data = hypixel.hypixel_api(name)
-    try:
-        ign = hypixel.get_displayname(name, data)
-    except:
-        await ctx.send(f"Player `{name}` is not found!")
-    class_final_kills = hypixel.get_class_finals(name, Class, data)
-    class_final_assists = hypixel.get_class_final_assists(name, Class, data)
-    class_wins = hypixel.get_class_wins(name, Class, data)
-    # class_final_deaths = hypixel.get_class_final_deaths(name, Class, data)
-    # class_losses = hypixel.get_class_losses(name, Class, data)
-
-    class_cp = class_wins * 10 + class_final_kills + class_final_assists
+        class_cp = class_wins * 10 + class_final_kills + class_final_assists
 
 
 
-    class_final_kills_all = hypixel.get_class_finals_all(name, Class, data)
-    class_final_assists_all = hypixel.get_class_final_assists_all(name, Class, data)
-    class_wins_all = hypixel.get_class_wins_all(name, Class, data)
-    class_final_deaths_all = hypixel.get_class_final_deaths_all(name, Class, data)
-    class_losses_all = hypixel.get_class_losses_all(name, Class, data)
+        class_final_kills_all = hypixel.get_class_finals_all(name, Class, data)
+        class_final_assists_all = hypixel.get_class_final_assists_all(name, Class, data)
+        class_wins_all = hypixel.get_class_wins_all(name, Class, data)
+        class_final_deaths_all = hypixel.get_class_final_deaths_all(name, Class, data)
+        class_losses_all = hypixel.get_class_losses_all(name, Class, data)
 
-    class_games_all = class_wins_all + class_losses_all
-    if class_games_all == 0:
-        class_cpg = class_cp
+        class_games_all = class_wins_all + class_losses_all
+        if class_games_all == 0:
+            class_cpg = class_cp
+        else:
+            class_cpg = round(class_cp / class_games_all, 2)
+
+
+        if class_final_deaths_all == 0:
+            class_fkd = class_final_kills_all
+        else:
+            class_fkd = round(class_final_kills_all/class_final_deaths_all, 2)
+        if class_losses_all == 0:
+            class_wlr = class_wins_all
+        else:
+            class_wlr = round(class_wins_all/class_losses_all, 2)
+
+
+        class_next_fkd = math.floor(class_fkd + 1)
+
+        if class_final_deaths_all == 0:
+            class_need_fks = class_next_fkd - class_final_kills_all
+        else:
+            class_need_fks = (class_final_deaths_all * class_next_fkd) - class_final_kills_all
+
+
+
+        rand = get_random_string(12)
+
+
+        embed = discord.Embed(
+        title = f"{ign}'s {Class.capitalize()} Stats",
+        colour = discord.Colour.orange()
+        )
+
+
+        embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
+
+        embed.add_field(name=f'FKs | FAs', value=f"`{'{:,}'.format(class_final_kills_all)}`   `{'{:,}'.format(class_final_assists_all)}`", inline=False)
+        # embed.add_field(name=f'Final Assists', value=f"`{'{:,}'.format(class_final_assists_all)}`", inline=False)
+        embed.add_field(name=f'Wins | Losses', value=f"`{'{:,}'.format(class_wins_all)}`   `{'{:,}'.format(class_losses_all)}`", inline=False)
+        embed.add_field(name=f'FK/D | W/L', value=f"`{'{:,}'.format(class_fkd)}`   `{'{:,}'.format(class_wlr)}`", inline=False)
+        # embed.add_field(name=f'W/L Ratio', value=f"`{'{:,}'.format(class_wlr)}`", inline=False)   
+        embed.add_field(name=f'Finals For {class_next_fkd} FK/D Ratio', value=f"`{'{:,}'.format(class_need_fks)}`", inline=False)
+        # embed.add_field(name=f'Losses', value=f"`{'{:,}'.format(class_losses_all)}`", inline=False)
+        embed.add_field(name=f'Final Deaths', value=f"`{'{:,}'.format(class_final_deaths_all)}`", inline=False)
+        embed.add_field(name=f'Class Points', value=f"`{'{:,}'.format(class_cp)}`", inline=False)
+        embed.add_field(name=f'Class Point/Game', value=f"`{'{:,}'.format(class_cpg)}`", inline=False)
+
+        embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png?random={rand}")
+        embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+
+        await ctx.send(embed=embed)
     else:
-        class_cpg = round(class_cp / class_games_all, 2)
-
-
-    if class_final_deaths_all == 0:
-        class_fkd = class_final_kills_all
-    else:
-        class_fkd = round(class_final_kills_all/class_final_deaths_all, 2)
-    if class_losses_all == 0:
-        class_wlr = class_wins_all
-    else:
-        class_wlr = round(class_wins_all/class_losses_all, 2)
-
-
-    class_next_fkd = math.floor(class_fkd + 1)
-
-    if class_final_deaths_all == 0:
-        class_need_fks = class_next_fkd - class_final_kills_all
-    else:
-        class_need_fks = (class_final_deaths_all * class_next_fkd) - class_final_kills_all
-
-
-
-    rand = get_random_string(12)
-
-
-    embed = discord.Embed(
-    title = f"{ign}'s {Class.capitalize()} Stats",
-    colour = discord.Colour.orange()
-    )
-
-
-    embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
-
-    embed.add_field(name=f'FKs | FAs', value=f"`{'{:,}'.format(class_final_kills_all)}`   `{'{:,}'.format(class_final_assists_all)}`", inline=False)
-    # embed.add_field(name=f'Final Assists', value=f"`{'{:,}'.format(class_final_assists_all)}`", inline=False)
-    embed.add_field(name=f'Wins | Losses', value=f"`{'{:,}'.format(class_wins_all)}`   `{'{:,}'.format(class_losses_all)}`", inline=False)
-    embed.add_field(name=f'FK/D | W/L', value=f"`{'{:,}'.format(class_fkd)}`   `{'{:,}'.format(class_wlr)}`", inline=False)
-    # embed.add_field(name=f'W/L Ratio', value=f"`{'{:,}'.format(class_wlr)}`", inline=False)   
-    embed.add_field(name=f'Finals For {class_next_fkd} FK/D Ratio', value=f"`{'{:,}'.format(class_need_fks)}`", inline=False)
-    # embed.add_field(name=f'Losses', value=f"`{'{:,}'.format(class_losses_all)}`", inline=False)
-    embed.add_field(name=f'Final Deaths', value=f"`{'{:,}'.format(class_final_deaths_all)}`", inline=False)
-    embed.add_field(name=f'Class Points', value=f"`{'{:,}'.format(class_cp)}`", inline=False)
-    embed.add_field(name=f'Class Point/Game', value=f"`{'{:,}'.format(class_cpg)}`", inline=False)
-
-    embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png?random={rand}")
-    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-
-
-
-
-    await ctx.send(embed=embed)
-
+         await ctx.send(f"{Class} class does not exist!")
 
 
 

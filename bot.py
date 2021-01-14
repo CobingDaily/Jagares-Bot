@@ -827,7 +827,7 @@ async def mwclass(ctx, Class, name=None):
     elif Class.capitalize() == "Spi":
         Class = "Spider"
     
-    elif Class.capitalize() == "Wer" or Class.capitalize() == "Wolf":
+    elif Class.capitalize() == "Wer" or Class.capitalize() == "Ww":
         Class = "Werewolf"
     
     elif Class.capitalize() == "Pir":

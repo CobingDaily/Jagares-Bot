@@ -800,19 +800,19 @@ async def mwclass(ctx, Class, name=None):
     elif Class.capitalize() == "Sha":
         Class = "Shaman"
     
-    elif Class.capitalize() == "Dre" or "Dreadroad" or "Dread":
+    elif Class.capitalize() == "Dre" or Class.capitalize() == "Dreadroad" or Class.capitalize() == "Dread":
         Class = "Dreadlord"
     
-    elif Class.capitalize() == "Squ" or "Sqd":
+    elif Class.capitalize() == "Squ" or Class.capitalize() == "Sqd":
         Class = "Squid"
     
-    elif Class.capitalize() == "Mol" or "Mole" or "Mm":
+    elif Class.capitalize() == "Mol" or Class.capitalize() == "Mole" or Class.capitalize() == "Mm":
         Class = "Moleman"
     
-    elif Class.capitalize() == "End" or "Endy":
+    elif Class.capitalize() == "End" or Class.capitalize() == "Endy":
         Class = "Enderman"
     
-    elif Class.capitalize() == "Hbr" or "Hb" or "Him":
+    elif Class.capitalize() == "Hbr" or Class.capitalize() == "Hb" or Class.capitalize() == "Him":
         Class = "Herobrine"
     
     elif Class.capitalize() == "Bla":
@@ -824,7 +824,7 @@ async def mwclass(ctx, Class, name=None):
     elif Class.capitalize() == "Spi":
         Class = "Spider"
     
-    elif Class.capitalize() == "Wer" or "Wolf":
+    elif Class.capitalize() == "Wer" or Class.capitalize() == "Wolf":
         Class = "Werewolf"
     
     elif Class.capitalize() == "Pir":
@@ -833,7 +833,7 @@ async def mwclass(ctx, Class, name=None):
     elif Class.capitalize() == "Phx":
         Class = "Phoenix"
     
-    elif Class.capitalize() == "Ske" or "Skele":
+    elif Class.capitalize() == "Ske" or Class.capitalize() == "Skele":
         Class = "Skeleton"
     
     elif Class.capitalize() == "Asn":
@@ -845,10 +845,10 @@ async def mwclass(ctx, Class, name=None):
     elif Class.capitalize() == "Sno":
         Class = "Snowman"
     
-    elif Class.capitalize() == "Aut" or "Atn" or "Auto":
+    elif Class.capitalize() == "Aut" or Class.capitalize() == "Atn" or Class.capitalize() == "Auto":
         Class = "Automaton"
     
-    elif Class.capitalize() == "Shr" or "Srk":
+    elif Class.capitalize() == "Shr" or Class.capitalize() == "Srk":
         Class = "Shark"
     
    

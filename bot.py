@@ -16,7 +16,7 @@ bot.remove_command('help')
 
 
 classes = ["Hunter", "Zombie", "Creeper", "Arcanist", "Shaman", "Dreadlord", "Golem", "Squid", "Moleman", "Enderman", "Herobrine", "Blaze",
-           "Pigman", "Spider", "Werewolf", "Pirate", "Phoenix", "Skeleton", "Assassin", "Renengade", "Snowman", "Automaton", "Cow", "Shark"]
+           "Pigman", "Spider", "Werewolf", "Pirate", "Phoenix", "Skeleton", "Assassin", "Renegade", "Snowman", "Automaton", "Cow", "Shark"]
 
 
 
@@ -786,6 +786,74 @@ async def mwclass(ctx, Class, name=None):
     if name is None:
         name = ctx.message.author.display_name
 
+    if Class.capitalize() == "Hun":
+        Class = "Hunter"
+    elif Class.capitalize() == "Zom":
+        Class = "Zombie"
+    
+    elif Class.capitalize() == "Cre":
+        Class = "Creeper"
+    
+    elif Class.capitalize() == "Arc":
+        Class = "Arcanist"
+    
+    elif Class.capitalize() == "Sha":
+        Class = "Shaman"
+    
+    elif Class.capitalize() == "Dre" or "Dreadroad" or "Dread":
+        Class = "Dreadlord"
+    
+    elif Class.capitalize() == "Squ" or "Sqd":
+        Class = "Squid"
+    
+    elif Class.capitalize() == "Mol" or "Mole" or "Mm":
+        Class = "Moleman"
+    
+    elif Class.capitalize() == "End" or "Endy":
+        Class = "Enderman"
+    
+    elif Class.capitalize() == "Hbr" or "Hb" or "Him":
+        Class = "Herobrine"
+    
+    elif Class.capitalize() == "Bla":
+        Class = "Blaze"
+    
+    elif Class.capitalize() == "Pig":
+        Class = "Pigman"
+    
+    elif Class.capitalize() == "Spi":
+        Class = "Spider"
+    
+    elif Class.capitalize() == "Wer" or "Wolf":
+        Class = "Werewolf"
+    
+    elif Class.capitalize() == "Pir":
+        Class = "Pirate"
+    
+    elif Class.capitalize() == "Phx":
+        Class = "Phoenix"
+    
+    elif Class.capitalize() == "Ske" or "Skele":
+        Class = "Skeleton"
+    
+    elif Class.capitalize() == "Asn":
+        Class = "Assassin"
+    
+    elif Class.capitalize() == "Ren":
+        Class = "Renegade"
+    
+    elif Class.capitalize() == "Sno":
+        Class = "Snowman"
+    
+    elif Class.capitalize() == "Aut" or "Atn" or "Auto":
+        Class = "Automaton"
+    
+    elif Class.capitalize() == "Shr" or "Srk":
+        Class = "Shark"
+    
+   
+    
+
     if Class.capitalize() in classes:
         
         data = hypixel.hypixel_api(name)
@@ -865,7 +933,7 @@ async def mwclass(ctx, Class, name=None):
 
         await ctx.send(embed=embed)
     else:
-         await ctx.send(f"{Class} class does not exist!")
+         await ctx.send(f"`{Class}` class does not exist!")
 
 
 

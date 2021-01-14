@@ -802,7 +802,10 @@ async def mwclass(ctx, Class, name=None):
     
     elif Class.capitalize() == "Dre" or Class.capitalize() == "Dreadroad" or Class.capitalize() == "Dread":
         Class = "Dreadlord"
-    
+
+    elif Class.capitalize() == "Gol":
+        Class = "Golem"
+
     elif Class.capitalize() == "Squ" or Class.capitalize() == "Sqd":
         Class = "Squid"
     

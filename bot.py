@@ -639,8 +639,14 @@ async def mw(ctx, name=None):
     fds = fds1 + fds2
     cps = final_kills + fas + (wins * 10)
 
+
+
     if chosen_skin == chosen_class:
         chosen_skin = "Default"
+
+    if chosen_skin == "none":
+        chosen_skin = "Default"
+
 
 
     if fds == 0:

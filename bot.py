@@ -713,30 +713,6 @@ async def cp(ctx, name=None):
     except:
         await ctx.send(f"Player `{name}` is not found!")
 
-    hunter_class_points = hypixel.get_hunter_class_points(name, data)
-    zombie_class_points = hypixel.get_zombie_class_points(name, data)
-    creeper_class_points = hypixel.get_creeper_class_points(name, data)
-    arcanist_class_points = hypixel.get_arcanist_class_points(name, data)
-    shaman_class_points = hypixel.get_shaman_class_points(name, data)
-    dreadlord_class_points = hypixel.get_dreadlord_class_points(name, data)
-    golem_class_points = hypixel.get_golem_class_points(name, data)
-    squid_class_points = hypixel.get_squid_class_points(name, data)
-    moleman_class_points = hypixel.get_moleman_class_points(name, data)
-    enderman_class_points = hypixel.get_enderman_class_points(name, data)
-    herobrine_class_points = hypixel.get_herobrine_class_points(name, data)
-    blaze_class_points = hypixel.get_blaze_class_points(name, data)
-    pigman_class_points = hypixel.get_pigman_class_points(name, data)
-    spider_class_points = hypixel.get_spider_class_points(name, data)
-    werewolf_class_points = hypixel.get_werewolf_class_points(name, data)
-    pirate_class_points = hypixel.get_pirate_class_points(name, data)
-    phoenix_class_points = hypixel.get_phoenix_class_points(name, data)
-    skeleton_class_points = hypixel.get_skeleton_class_points(name, data)
-    assassin_class_points = hypixel.get_assassin_class_points(name, data)
-    renegade_class_points = hypixel.get_renegade_class_points(name, data)
-    snowman_class_points = hypixel.get_snowman_class_points(name, data)
-    automaton_class_points = hypixel.get_automaton_class_points(name, data)
-    cow_class_points = hypixel.get_cow_class_points(name, data)
-    shark_class_points = hypixel.get_shark_class_points(name, data)
 
        
 
@@ -750,30 +726,11 @@ async def cp(ctx, name=None):
 
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
-    embed.add_field(name='Hunter', value=f"{'{:,}'.format(hunter_class_points)}", inline=True)
-    embed.add_field(name='Zombie', value=f"{'{:,}'.format(zombie_class_points)}", inline=True)
-    embed.add_field(name='Creeper', value=f"{'{:,}'.format(creeper_class_points)}", inline=True)
-    embed.add_field(name='Arcanist', value=f"{'{:,}'.format(arcanist_class_points)}", inline=True)
-    embed.add_field(name='Shaman', value=f"{'{:,}'.format(shaman_class_points)}", inline=True)
-    embed.add_field(name='Dreadlord', value=f"{'{:,}'.format(dreadlord_class_points)}", inline=True)
-    embed.add_field(name='Golem', value=f"{'{:,}'.format(golem_class_points)}", inline=True)
-    embed.add_field(name='Squid', value=f"{'{:,}'.format(squid_class_points)}", inline=True)
-    embed.add_field(name='Moleman', value=f"{'{:,}'.format(moleman_class_points)}", inline=True)
-    embed.add_field(name='Enderman', value=f"{'{:,}'.format(enderman_class_points)}", inline=True)
-    embed.add_field(name='Herobrine', value=f"{'{:,}'.format(herobrine_class_points)}", inline=True)
-    embed.add_field(name='Blaze', value=f"{'{:,}'.format(blaze_class_points)}", inline=True)
-    embed.add_field(name='Pigman', value=f"{'{:,}'.format(pigman_class_points)}", inline=True)
-    embed.add_field(name='Spider', value=f"{'{:,}'.format(spider_class_points)}", inline=True)
-    embed.add_field(name='Werewolf', value=f"{'{:,}'.format(werewolf_class_points)}", inline=True)
-    embed.add_field(name='Pirate', value=f"{'{:,}'.format(pirate_class_points)}", inline=True)
-    embed.add_field(name='Phoenix', value=f"{'{:,}'.format(phoenix_class_points)}", inline=True)
-    embed.add_field(name='Skeleton', value=f"{'{:,}'.format(skeleton_class_points)}", inline=True)
-    embed.add_field(name='Assassin', value=f"{'{:,}'.format(assassin_class_points)}", inline=True)
-    embed.add_field(name='Renegade', value=f"{'{:,}'.format(renegade_class_points)}", inline=True)
-    embed.add_field(name='Snowman', value=f"{'{:,}'.format(snowman_class_points)}", inline=True)
-    embed.add_field(name='Automaton', value=f"{'{:,}'.format(automaton_class_points)}", inline=True)
-    embed.add_field(name='Cow', value=f"{'{:,}'.format(cow_class_points)}", inline=True)
-    embed.add_field(name='Shark', value=f"{'{:,}'.format(shark_class_points)}", inline=True)
+    for Class in classes:
+        class_points = (hypixel.get_class_wins(name, Class, data) * 10) + hypixel.get_class_finals(
+            name, Class, data) + hypixel.get_class_final_assists(name, Class, data)
+        embed.add_field(name=f'{Class.capitalize()}',
+                        value=f"{'{:,}'.format(class_points)}", inline=True)
 
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")

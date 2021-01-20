@@ -1071,7 +1071,7 @@ async def guild(ctx, name):
     except:
         await ctx.send("Guild not found!")
     guild_members = hypixel.get_guild_members(name, gdata)
-    i = 0
+
     
     # guild_tag = hypixel.get_guild_tag(name, gdata)
     # guild_description = hypixel.get_guild_description(name, gdata)
@@ -1108,14 +1108,14 @@ async def guild(ctx, name):
     #      await ctx.send(embed=embed)
     
     for member in guild_members:
-        i = i + 1
-        exp = 0
+        i = 0
+        exp = []
         for dailyExpHistory in member["expHistory"]:
-            exp = exp + member["expHistory"][dailyExpHistory]
-    await ctx.send(f"{exp} exp")
+            exp[i] += member["expHistory"][dailyExpHistory]
+            i = i + 1
+    await ctx.send(f"{exp} exp") 
     # await ctx.send(str(member["expHistory"][dailyExpHistory]))
     # await ctx.send(f"{i} Members in {guild_name}")
-
 
 
 

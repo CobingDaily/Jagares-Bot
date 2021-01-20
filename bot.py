@@ -1072,7 +1072,7 @@ async def guild(ctx, name):
         await ctx.send("Guild not found!")
     guild_members = hypixel.get_guild_members(name, gdata)
     i = 0
-    member is None
+    member = []
     
     # guild_tag = hypixel.get_guild_tag(name, gdata)
     # guild_description = hypixel.get_guild_description(name, gdata)
@@ -1110,6 +1110,7 @@ async def guild(ctx, name):
     
     for member in guild_members:
         i = i + 1
+    await ctx.send(f"{guild_name}")
     await ctx.send(f"{i} Members")
 
 

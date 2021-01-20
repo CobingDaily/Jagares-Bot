@@ -1110,7 +1110,7 @@ async def guild(ctx, name):
     for member in guild_members:
         i = i + 1
         # await ctx.send(member["uuid"])
-        await ctx.send("@shtruz#6010")
+        # await ctx.send("@shtruz#6010")
     await ctx.send(f"{i} Members in {guild_name}")
 
 

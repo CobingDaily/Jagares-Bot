@@ -1109,7 +1109,7 @@ async def guild(ctx, name):
     
     for member in guild_members:
         i = 0
-        exp = []
+        exp = [0, 0, 0, 0, 0, 0, 0]
         for dailyExpHistory in member["expHistory"]:
             exp[i] += member["expHistory"][dailyExpHistory]
             i = i + 1

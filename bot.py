@@ -1106,10 +1106,10 @@ async def guild(ctx, name):
     #     await ctx.send("Guild not found!")
     # else:
     #      await ctx.send(embed=embed)
-    
+    exp = [0, 0, 0, 0, 0, 0, 0]
+
     for member in guild_members:
         i = 0
-        exp = [0, 0, 0, 0, 0, 0, 0]
         for dailyExpHistory in member["expHistory"]:
             exp[i] += member["expHistory"][dailyExpHistory]
             i = i + 1

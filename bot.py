@@ -1081,7 +1081,7 @@ async def guild(ctx, name):
     # guild_exp_history = hypixel.get_guild_exp_history(name, gdata)
 
     embed = discord.Embed(
-    title = 'Jagares Bot',
+    # title = 'Jagares Bot',
     colour = discord.Colour.orange()
     )
 
@@ -1096,7 +1096,7 @@ async def guild(ctx, name):
             exp[i] += member["expHistory"][dailyExpHistory]
             i = i + 1
     for dailyExpHistory in member["expHistory"]:
-        expValue += f"{dailyExpHistory}: {'{:,}'.format(exp[k])} \n"
+        expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
         k = k + 1 
 
     embed.add_field(name=f'Weekly Experience', value=expValue, inline=False)

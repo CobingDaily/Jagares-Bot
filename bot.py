@@ -1089,6 +1089,7 @@ async def guild(ctx, name):
 
     exp = [0, 0, 0, 0, 0, 0, 0]
     k = 0
+    expValue = ""
     for member in guild_members:
         i = 0
         for dailyExpHistory in member["expHistory"]:

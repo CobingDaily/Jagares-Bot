@@ -1069,7 +1069,11 @@ async def guild(ctx, name):
     try:
         guild_name = hypixel.get_guild_name(name, gdata)
     except:
-        await ctx.send("Guild not found! (Make sure to use the guild name)")
+        await ctx.send("Guild not found!")
+    guild_members = hypixel.get_guild_members(name, gdata)
+    i = 0
+    member is None
+    
     # guild_tag = hypixel.get_guild_tag(name, gdata)
     # guild_description = hypixel.get_guild_description(name, gdata)
     # guild_exp = hypixel.get_guild_exp(name, gdata)
@@ -1103,9 +1107,10 @@ async def guild(ctx, name):
     #     await ctx.send("Guild not found!")
     # else:
     #      await ctx.send(embed=embed)
-
-    await ctx.send(f"{guild_name}")
-
+    
+    for member in guild_members:
+        i = i + 1
+    await ctx.send(f"{i} Members")
 
 
 

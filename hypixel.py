@@ -641,6 +641,12 @@ def get_guild_name(name, gdata):
     guild_name = str(gdata["guild"]["name"])
     return guild_name
 
+def get_guild_members(name, gdata):
+    guild_members = gdata["guild"]["members"]
+    return guild_members
+
+
+
 def get_guild_tag(name, gdata):
     try:
         guild_tag = str(gdata["tag"])

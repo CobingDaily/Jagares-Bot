@@ -1063,13 +1063,13 @@ async def classcompare(ctx, Class, name1, name2=None):
 
 @bot.command()
 async def guild(ctx, name):
-    name is None
-    await ctx.send(f'Command Currently Unavailable!')
-    # gdata = hypixel.hypixel_gapi(name)
-    # try:
-    #     guild_name = hypixel.get_guild_name(name, gdata)
-    # except:
-    #     await ctx.send("Guild not found! (Make sure to use the guild name)")
+    # name is None
+    # await ctx.send(f'Command Currently Unavailable!')
+    gdata = hypixel.hypixel_gapi(name)
+    try:
+        guild_name = hypixel.get_guild_name(name, gdata)
+    except:
+        await ctx.send("Guild not found! (Make sure to use the guild name)")
     # guild_tag = hypixel.get_guild_tag(name, gdata)
     # guild_description = hypixel.get_guild_description(name, gdata)
     # guild_exp = hypixel.get_guild_exp(name, gdata)
@@ -1104,7 +1104,7 @@ async def guild(ctx, name):
     # else:
     #      await ctx.send(embed=embed)
 
-
+    await ctx.send(f"{guild_name}")
 
 
 

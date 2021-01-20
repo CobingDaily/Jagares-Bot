@@ -52,13 +52,6 @@ def hypixel_api(name):
         return None
     return data
 
-def hypixel_api_uuid(uuid):
-    url = f"https://api.hypixel.net/player?key={API_KEY}&uuid={uuid}"
-    res = requests.get(url)
-    data_uuid = res.json()
-    if data_uuid["player"] is None:
-        return None
-    return data_uuid
 
 
 
@@ -75,10 +68,10 @@ def hypixel_api2(name):
 
 
 def hypixel_gapi(name):
-    gurl = f"https://api.slothpixel.me/api/guilds/{name}"
+    gurl = f"https://api.hypixel.net/guild?key={API_KEY}&player={name}"
     gres = requests.get(gurl)
     gdata = gres.json()
-    if gdata["name"] is None:
+    if gdata["success"] == False:
         return None
     return gdata
 
@@ -645,7 +638,7 @@ def get_bsg_losses_solo_normal(name, data):
 
 
 def get_guild_name(name, gdata):
-    guild_name = str(gdata["name"])
+    guild_name = str(gdata["guild"]["name"])
     return guild_name
 
 def get_guild_tag(name, gdata):

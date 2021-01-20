@@ -1102,7 +1102,7 @@ async def guild(ctx, name):
         k = k + 1 
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-
+    await ctx.send(embed=embed)
 
 
 
@@ -1146,14 +1146,7 @@ async def watchdog(ctx):
     except:
          embed.add_field(name=f'Watchdog Stats', value=f"Watchdog Stats Unavailable", inline=False)
 
-
-
-
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-
-
-
-
     await ctx.send(embed=embed)
 
 

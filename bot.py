@@ -1095,12 +1095,10 @@ async def guild(ctx, name):
             exp[i] += member["expHistory"][dailyExpHistory]
             i = i + 1
     for dailyExpHistory in member["expHistory"]:
-        
-        # await ctx.send(f"{dailyExpHistory}: {exp[k]}")
-    
-        embed.add_field(name=f'Weekly Experience', value=f"{dailyExpHistory}: {'{:,}'.format(exp[k])} \u200b", inline=False)
+        expValue = f"{dailyExpHistory}: {'{:,}'.format(exp[k])}"
         k = k + 1 
 
+    embed.add_field(name=f'Weekly Experience', value=expValue, inline=False)
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
     await ctx.send(embed=embed)
 

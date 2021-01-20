@@ -1110,7 +1110,7 @@ async def guild(ctx, name):
     for member in guild_members:
         i = i + 1
         for dailyExpHistory in member["expHistory"]:
-            await ctx.send(dailyExpHistory + ": " + member["expHistory"][str(dailyExpHistory)])
+            await ctx.send(str(dailyExpHistory) + ": " + str(member["expHistory"][dailyExpHistory]))
     await ctx.send(f"{i} Members in {guild_name}")
 
 

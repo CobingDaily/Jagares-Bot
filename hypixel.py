@@ -70,7 +70,7 @@ def hypixel_api2(name):
 def hypixel_gapi(name):
     result = uuid_or_name(name)
     if result == "name":
-        uuid = hypixel_api(name)["uuid"]
+        uuid = hypixel_api(name)["player"]["uuid"]
         name = uuid
     else:
         gurl = f"https://api.hypixel.net/guild?key={API_KEY}&player={name}"

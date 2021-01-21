@@ -1067,7 +1067,7 @@ async def classcompare(ctx, Class, name1, name2=None):
 async def guild(ctx, name):
     # name is None
     # await ctx.send(f'Command Currently Unavailable!')
-    data = hypixel.hypixel_api(name)
+    # data = hypixel.hypixel_api(name)
     gdata = hypixel.hypixel_gapi(name)
     try:
         guild_name = hypixel.get_guild_name(name, gdata)
@@ -1126,27 +1126,29 @@ async def guild(ctx, name):
     
     ranks = ["Guild Master"]
     rank_tags = ["GM"]
-    try:
+    if gdata["guild"]["ranks"] in gdata["guild"]:
         for rank in gdata["guild"]["ranks"]:
-            ranks.append(rank["name"])
-            rank_tags.append(rank["tag"])
+            if rank["name"] in rank:
+                ranks.append(rank["name"])
+            if rank["tag"] in rank:
+                rank_tags.append(rank["tag"])
+            if rank["default"] in rank:
+                if rank["default"] == True:
+                        default_rank = rank["name"]
+                        default_rank_tag = rank["tag"]
+                else:
+                        default_rank = "none"
+                        default_rank_tag = "none"
 
-            if rank["default"] == True:
-                    default_rank = rank["name"]
-                    default_rank_tag = rank["tag"]
-    except:
-        pass
             
-    try:    
-        guild_stats = f'''
+   
+    guild_stats = f'''
 Guild Name ➠ **{guild_name}**
 Guild Tag ➠ **{guild_tag}**
 Tag Color ➠ **{guild_tag_color}**
 Guild Master ➠ **{owner_name}**
 Default Rank ➠ **{default_rank} [{default_rank_tag}]**
     '''
-    except:
-        pass
 
     guild_ranks = f'''
 Guild Name ➠ **{guild_name}**

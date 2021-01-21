@@ -1106,7 +1106,6 @@ async def guild(ctx, name):
         k = k + 1 
     
     ranks = ["Guild Master"]
-    rank_tags = ["GM"]
 
     if "ranks" in gdata["guild"]:
         for rank in gdata["guild"]["ranks"]:
@@ -1114,10 +1113,6 @@ async def guild(ctx, name):
                 ranks.append(rank["name"])
             except:
                 ranks.append("")
-            try:
-                rank_tags.append(rank["tag"])
-            except:
-                rank_tags.append("")
             if "default" in rank:
                 if rank["default"] == True:
                     default_rank = rank["name"]
@@ -1135,11 +1130,10 @@ Default Rank ➠ **{default_rank}**
 Total GEXP ➠ **{'{:,}'.format(guild_exp_total)}**
 Level ➠ 
     '''
-    f = 0
+
     guild_ranks = ""
     for guild_rank in ranks:
-        guild_ranks += "◈ " + str(guild_rank) + " [" + str(rank_tags[f]) + "] \n"
-        f = f + 1
+        guild_ranks += "◈ " + str(guild_rank) + "\n"
 
     embed.set_author(name=f'{guild_name} [{guild_tag}]')
     embed.add_field(name=f'Stats', value=guild_stats, inline=True)

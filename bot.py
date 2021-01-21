@@ -1138,7 +1138,7 @@ Level ➠
     f = 0
     guild_ranks = ""
     for guild_rank in ranks:
-        guild_ranks += str(guild_rank) + " [" + rank_tags[f] + "] \n"
+        guild_ranks += "◈ " + str(guild_rank) + " **〖" + rank_tags[f] + "〗** \n"
         f = f + 1
 
     embed.set_author(name=f'{guild_name} [{guild_tag}]')

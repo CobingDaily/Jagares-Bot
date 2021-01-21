@@ -1076,9 +1076,17 @@ async def guild(ctx, name):
 
 
     try:
-        guild_tag_color = str(gdata["guild"]["tagColor"]).lower()
+        guild_tag_color = str(gdata["guild"]["tagColor"]).capitalize()
     except:
-        guild_tag_color = "grey"
+        guild_tag_color = "Gray"
+    
+    try:
+        guild_tag = str(gdata["guild"]["tag"])
+    except:
+        guild_tag = "none"
+
+
+
     # if guild_tag_color == "yellow":
     #     guild_tag_color = "#ddcd37"
     # elif guild_tag_color == "dark_green":
@@ -1095,7 +1103,8 @@ async def guild(ctx, name):
     colour = discord.Colour.orange()
     )
 
-    embed.set_author(name=f'{guild_name}')
+
+
 
     exp = [0, 0, 0, 0, 0, 0, 0]
     expEachDay = []
@@ -1106,14 +1115,34 @@ async def guild(ctx, name):
         for dailyExpHistory in member["expHistory"]:
             exp[i] += member["expHistory"][dailyExpHistory]
             i = i + 1
+        if member["rank"] == "Guild Master":
+            owner_uuid = member["uuid"]
     for dailyExpHistory in member["expHistory"]:
         expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
         expEachDay.append(dailyExpHistory)
         k = k + 1 
+    
+    for 
 
+    guild_stats = f'''
+Guild Name ➠ {guild_name}
+Guild Tag ➠ {guild_tag}
+Tag Color ➠ {guild_tag_color}
+Guild Master ➠ {owner_uuid} 
+
+    '''
+
+
+
+    embed.set_author(name=f'{guild_name} [{guild_tag}]')
+
+
+
+    embed.add_field(name=f'Stats', value=guild_stats, inline=False)
+
+
+    
     embed.add_field(name=f'Weekly Experience', value=expValue, inline=False)
-
-
     expEachDay.reverse()
     exp.reverse()
 

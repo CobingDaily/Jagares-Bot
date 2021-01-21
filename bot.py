@@ -1064,7 +1064,7 @@ async def classcompare(ctx, Class, name1, name2=None):
 
 
 @bot.command(aliases=['Guild', 'g'])
-async def guild(ctx, name):
+async def guild(ctx, name=None):
     if name is None:
         name = ctx.message.author.display_name
     # data = hypixel.hypixel_api(name)

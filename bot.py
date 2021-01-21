@@ -1139,8 +1139,8 @@ Level ➠
 
 
     embed.set_author(name=f'{guild_name} [{guild_tag}]')
-    embed.add_field(name=f'Stats', value=guild_stats, inline=False)
-    embed.add_field(name=f'Weekly Experience', value=expValue, inline=False)
+    embed.add_field(name=f'Stats', value=guild_stats, inline=True)
+    embed.add_field(name=f'Weekly Experience', value=expValue, inline=True)
     expEachDay.reverse()
     exp.reverse()
 

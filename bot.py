@@ -1108,7 +1108,7 @@ async def guild(ctx, name):
 
 
     # plt.figure(figsize=(7, 3))
-    axis_x = dailyExpHistory
+    axis_x = expEachDay
     axis_y = exp
     plt.style.use("fivethirtyeight")
     plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#e1a924")

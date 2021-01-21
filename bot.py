@@ -1080,7 +1080,7 @@ async def guild(ctx, name):
     except:
         guild_tag_color = "grey"
     if guild_tag_color == "yellow":
-        guild_tag_color = "#c1b112"
+        guild_tag_color = "#ddcd37"
     elif guild_tag_color == "dark_green":
         guild_tag_color = "#0d7e14"
     elif guild_tag_color == "dark_aqua":

@@ -1117,7 +1117,7 @@ async def guild(ctx, name):
     plt.savefig(buf, format='png', transparent=True)
     buf.seek(0)
     im = Image.open(buf)
-    # im.show()
+    im.show()
     buf.close()
     embed.set_image(url=f"{im}")
 

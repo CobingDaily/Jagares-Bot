@@ -661,7 +661,7 @@ def get_guild_tag(name, gdata):
     try:
         guild_tag = str(gdata["guild"]["tag"])
     except:
-        guild_tag = "none"
+        guild_tag = "no tag"
     return guild_tag
 
 def get_guild_tag_color(name, gdata):

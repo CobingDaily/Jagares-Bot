@@ -1111,7 +1111,7 @@ async def guild(ctx, name):
 
     plt.plot(axis_x, axis_y, linewidth=4, color="#e1a924")
 
-    plt.title("test", size=50)
+    # plt.title("test", size=30)
     plt.savefig("graph.png", transparent=True)
     img = discord.File("graph.png", filename="graph.png")
     embed.set_image(url="attachment://graph.png")

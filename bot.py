@@ -1112,8 +1112,8 @@ async def guild(ctx, name):
     plt.plot(axis_x, axis_y)
 
     plt.title("test")
-    plt.savefig(f"/Graphs/graph.png", transparent=True)
-    embed.set_image(url=f"/Graphs/graph.png")
+    plt.savefig("graph.png", transparent=True)
+    embed.set_image(url=f"graph.png")
 
 
 

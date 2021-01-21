@@ -1113,14 +1113,16 @@ async def guild(ctx, name):
 
     plt.title("test")
     plt.savefig("graph.png", transparent=True)
-    embed.set_image(url=f"graph.png")
+    img = discord.File("image.png", filename="image.png")
+    embed.set_image(url="attachment://image.png")
+
 
 
 
 
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-    await ctx.send(embed=embed)
+    await ctx.send(file=img, embed=embed)
 
 
 

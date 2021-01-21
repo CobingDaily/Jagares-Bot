@@ -1127,11 +1127,17 @@ async def guild(ctx, name):
     ranks = ["Guild Master"]
     rank_tags = ["GM"]
     for rank in gdata["guild"]["ranks"]:
-        ranks.append(rank["name"])
-        rank_tags.append(rank["tag"])
+        try:
+            ranks.append(rank["name"])
+            rank_tags.append(rank["tag"])
+        except:
+            pass
         if rank["default"] == True:
-            default_rank = rank["name"]
-            default_rank_tag = rank["tag"]
+            try:
+                default_rank = rank["name"]
+                default_rank_tag = rank["tag"]
+            except:
+                pass
             
         
     guild_stats = f'''

@@ -4,12 +4,14 @@ import random
 import string
 from discord.ext import commands
 import datetime
-import os, re
+import os, re, io
 import time
 import math
 from discord.utils import get
 from discord.ext.commands import has_permissions, CheckFailure, MissingPermissions
 from Cybernator import Paginator as pag
+from PIL import Image
+import matplotlib.pyplot as plt
 
 bot = commands.Bot(command_prefix = "/")
 bot.remove_command('help')
@@ -1100,6 +1102,29 @@ async def guild(ctx, name):
         k = k + 1 
 
     embed.add_field(name=f'Weekly Experience', value=expValue, inline=False)
+
+
+
+    plt.figure()
+
+    axis_x = [10, 15, 20, 25, 30, 35, 40]
+    axis_y = [17, 64, 51, 25, 30, 47, 22]
+
+    plt.plot(axis_x, axis_y)
+
+    plt.title("test")
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', transparent=True)
+    buf.seek(0)
+    im = Image.open(buf)
+    # im.show()
+    buf.close()
+    embed.set_image(url=f"{im}")
+
+
+
+
+
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
     await ctx.send(embed=embed)
 

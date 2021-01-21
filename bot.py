@@ -1109,7 +1109,7 @@ async def guild(ctx, name):
     axis_x = [10, 15, 20, 25, 30, 35, 40]
     axis_y = [17, 64, 51, 25, 30, 47, 22]
 
-    plt.plot(axis_x, axis_y, linewidth=3, color="#ecdd4f")
+    plt.plot(axis_x, axis_y, linewidth=5, color="#e1a924", size=10)
 
     plt.title("test")
     plt.savefig("graph.png", transparent=True)

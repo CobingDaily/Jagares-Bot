@@ -1137,14 +1137,16 @@ async def guild(ctx, name):
     except:
         pass
             
-        
-    guild_stats = f'''
+    try:    
+        guild_stats = f'''
 Guild Name ➠ **{guild_name}**
 Guild Tag ➠ **{guild_tag}**
 Tag Color ➠ **{guild_tag_color}**
 Guild Master ➠ **{owner_name}**
 Default Rank ➠ **{default_rank} [{default_rank_tag}]**
     '''
+    except:
+        pass
 
     guild_ranks = f'''
 Guild Name ➠ **{guild_name}**

@@ -1126,19 +1126,14 @@ async def guild(ctx, name):
     
     ranks = ["Guild Master"]
     rank_tags = ["GM"]
-    # if gdata["guild"]["ranks"] in gdata["guild"]:
+
     for rank in gdata["guild"]["ranks"]:
-        if rank["name"] in rank:
-            ranks.append(rank["name"])
-        if rank["tag"] in rank:
-            rank_tags.append(rank["tag"])
-        if rank["default"] in rank:
-            if rank["default"] == True:
-                default_rank = rank["name"]
-                default_rank_tag = rank["tag"]
-            else:
-                default_rank = "none"
-                default_rank_tag = "none"
+        ranks.append(rank["name"])
+        rank_tags.append(rank["tag"])
+        if rank["default"] == True:
+            default_rank = rank["name"]
+            default_rank_tag = rank["tag"]
+
 
             
    
@@ -1150,13 +1145,6 @@ Guild Master ➠ **{owner_name}**
 Default Rank ➠ **{default_rank} [{default_rank_tag}]**
     '''
 
-    guild_ranks = f'''
-Guild Name ➠ **{guild_name}**
-Guild Tag ➠ **{guild_tag}**
-Tag Color ➠ **{guild_tag_color}**
-Guild Master ➠ **{owner_uuid}**
-
-    '''
 
 
     embed.set_author(name=f'{guild_name} [{guild_tag}]')

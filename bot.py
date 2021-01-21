@@ -1109,7 +1109,7 @@ async def guild(ctx, name):
     expEachDay.reverse()
     exp.reverse()
 
-    plt.figure(figsize=(8, 4), dpi=600)
+    plt.figure(figsize=(10, 4), dpi=600)
     axis_x = expEachDay
     axis_y = exp
     plt.style.use("fivethirtyeight")

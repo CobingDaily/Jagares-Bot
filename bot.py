@@ -1106,10 +1106,10 @@ async def guild(ctx, name):
 
 
     # plt.figure(figsize=(7, 3))
-    axis_x = list(dailyExpHistory)
-    axis_y = list(exp)
+    print(dailyExpHistory)
+    print(exp)
     plt.style.use("fivethirtyeight")
-    plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#e1a924")
+    # plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#e1a924")
 
     # plt.title("test", size=30)
     plt.legend()

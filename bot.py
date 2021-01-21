@@ -1063,10 +1063,10 @@ async def classcompare(ctx, Class, name1, name2=None):
 
 
 
-@bot.command()
+@bot.command(aliases=['Guild', 'g'])
 async def guild(ctx, name):
-    # name is None
-    # await ctx.send(f'Command Currently Unavailable!')
+    if name is None:
+        name = ctx.message.author.display_name
     # data = hypixel.hypixel_api(name)
     gdata = hypixel.hypixel_gapi(name)
     try:

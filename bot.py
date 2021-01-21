@@ -1114,8 +1114,7 @@ async def guild(ctx, name):
     axis_y = exp
     plt.style.use("ggplot")
     plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#e1a924", marker="o")
-    plt.tight_layout()
-
+    # plt.tight_layout()
     # plt.title("test", size=30)
     plt.legend()
     plt.savefig("graph.png", transparent=False, bbox_inches='tight')

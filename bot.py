@@ -1122,16 +1122,31 @@ async def guild(ctx, name):
         expEachDay.append(dailyExpHistory)
         k = k + 1 
     
-    # for 
-
+    ranks = ["Guild Master"]
+    rank_tags = ["GM"]
+    for rank in gdata["guild"]["ranks"]:
+        ranks.append(rank["name"])
+        rank_tags.append(rank["tag"])
+        if rank["default"] == True:
+            default_rank = rank["name"]
+            default_rank_tag = rank["tag"]
+            
+        
     guild_stats = f'''
-Guild Name ➠ {guild_name}
-Guild Tag ➠ {guild_tag}
-Tag Color ➠ {guild_tag_color}
-Guild Master ➠ {owner_uuid} 
-
+Guild Name ➠ **{guild_name}**
+Guild Tag ➠ **{guild_tag}**
+Tag Color ➠ **{guild_tag_color}**
+Guild Master ➠ **{owner_uuid}**
+Default Rank ➠ **{default_rank} [{default_rank_tag}]**
     '''
 
+    guild_ranks = f'''
+Guild Name ➠ **{guild_name}**
+Guild Tag ➠ **{guild_tag}**
+Tag Color ➠ **{guild_tag_color}**
+Guild Master ➠ **{owner_uuid}**
+
+    '''
 
 
     embed.set_author(name=f'{guild_name} [{guild_tag}]')

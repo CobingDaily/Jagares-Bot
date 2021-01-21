@@ -1105,7 +1105,6 @@ async def guild(ctx, name):
 
 
 
-    plt.figure()
 
     axis_x = [10, 15, 20, 25, 30, 35, 40]
     axis_y = [17, 64, 51, 25, 30, 47, 22]
@@ -1113,13 +1112,8 @@ async def guild(ctx, name):
     plt.plot(axis_x, axis_y)
 
     plt.title("test")
-    buf = io.BytesIO()
-    plt.savefig(buf, format='png', transparent=True)
-    buf.seek(0)
-    im = Image.open(buf)
-    im.show()
-    buf.close()
-    embed.set_image(url=f"{im}")
+    plt.savefig(f"{os.path.abspath(__file__)}/Graphs/graph.png", transparent=True)
+    embed.set_image(url=f"{os.path.abspath(__file__)}/Graphs/graph.png")
 
 
 

@@ -1138,13 +1138,13 @@ Level ➠
     f = 0
     guild_ranks = ""
     for guild_rank in ranks:
-        guild_ranks = str(guild_rank) + " [" + rank_tags[f] + "]"
+        guild_ranks += str(guild_rank) + " [" + rank_tags[f] + "] \n"
         f = f + 1
 
     embed.set_author(name=f'{guild_name} [{guild_tag}]')
     embed.add_field(name=f'Stats', value=guild_stats, inline=True)
     embed.add_field(name=f'Weekly Experience', value=expValue, inline=True)
-    embed.add_field(name=f'Ranks', value=guild_ranks, inline=True)
+    embed.add_field(name=f'Ranks', value=guild_ranks, inline=False)
 
     expEachDay.reverse()
     exp.reverse()

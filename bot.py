@@ -1106,10 +1106,12 @@ async def guild(ctx, name):
     embed.add_field(name=f'Weekly Experience', value=expValue, inline=False)
 
 
+    expEachDay.reverse()
+    exp.reverse()
 
     plt.figure(figsize=(8, 4))
-    axis_x = expEachDay.reverse()
-    axis_y = exp.reverse()
+    axis_x = expEachDay
+    axis_y = exp
     plt.style.use("fivethirtyeight")
     plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#e1a924")
 

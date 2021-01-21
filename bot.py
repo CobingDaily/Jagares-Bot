@@ -1067,6 +1067,7 @@ async def classcompare(ctx, Class, name1, name2=None):
 async def guild(ctx, name):
     # name is None
     # await ctx.send(f'Command Currently Unavailable!')
+    data = hypixel.hypixel_api(name)
     gdata = hypixel.hypixel_gapi(name)
     try:
         guild_name = hypixel.get_guild_name(name, gdata)
@@ -1117,6 +1118,7 @@ async def guild(ctx, name):
             i = i + 1
         if member["rank"] == "Guild Master":
             owner_uuid = member["uuid"]
+            owner_name = hypixel.hypixel_gapi(owner_uuid)["player"]["uuid"]
     for dailyExpHistory in member["expHistory"]:
         expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
         expEachDay.append(dailyExpHistory)

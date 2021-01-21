@@ -1122,7 +1122,7 @@ async def guild(ctx, name):
         expEachDay.append(dailyExpHistory)
         k = k + 1 
     
-    for 
+    # for 
 
     guild_stats = f'''
 Guild Name ➠ {guild_name}

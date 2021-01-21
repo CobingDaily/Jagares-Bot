@@ -1079,12 +1079,12 @@ async def guild(ctx, name):
         guild_tag_color = str(gdata["guild"]["tagColor"]).lower()
     except:
         guild_tag_color = "grey"
-    if guild_tag_color == "yellow":
-        guild_tag_color = "#ddcd37"
-    elif guild_tag_color == "dark_green":
-        guild_tag_color = "#0d7e14"
-    elif guild_tag_color == "dark_aqua":
-        guild_tag_color = "#0da7ab"
+    # if guild_tag_color == "yellow":
+    #     guild_tag_color = "#ddcd37"
+    # elif guild_tag_color == "dark_green":
+    #     guild_tag_color = "#0d7e14"
+    # elif guild_tag_color == "dark_aqua":
+    #     guild_tag_color = "#0da7ab"
     # guild_description = hypixel.get_guild_description(name, gdata)
     # guild_exp = hypixel.get_guild_exp(name, gdata)
     # guild_date = datetime.datetime.utcfromtimestamp(round(hypixel.get_guild_date(name, gdata)/1000))
@@ -1121,7 +1121,7 @@ async def guild(ctx, name):
     axis_x = expEachDay
     axis_y = exp
     plt.style.use("ggplot")
-    plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color=guild_tag_color, marker="o")
+    plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#443377", marker="o")
     plt.ticklabel_format(axis="y", style="plain")
     # plt.tight_layout()
     # plt.title("test", size=30)

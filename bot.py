@@ -1080,11 +1080,11 @@ async def guild(ctx, name):
     except:
         guild_tag_color = "grey"
     if guild_tag_color == "yellow":
-        guild_tag_color == "#bfa300"
+        guild_tag_color == "#000000"
     elif guild_tag_color == "dark_green":
-        guild_tag_color = "#52ba1e"
+        guild_tag_color = "#0d7e14"
     elif guild_tag_color == "dark_aqua":
-        guild_tag_color = "#1bc9c5"
+        guild_tag_color = "#00896a"
     # guild_description = hypixel.get_guild_description(name, gdata)
     # guild_exp = hypixel.get_guild_exp(name, gdata)
     # guild_date = datetime.datetime.utcfromtimestamp(round(hypixel.get_guild_date(name, gdata)/1000))

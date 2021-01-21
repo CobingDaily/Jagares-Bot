@@ -1090,6 +1090,7 @@ async def guild(ctx, name):
     embed.set_author(name=f'{guild_name}')
 
     exp = [0, 0, 0, 0, 0, 0, 0]
+    expEachDay = []
     k = 0
     expValue = ""
     for member in guild_members:
@@ -1099,6 +1100,7 @@ async def guild(ctx, name):
             i = i + 1
     for dailyExpHistory in member["expHistory"]:
         expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
+        expEachDay.append(dailyExpHistory)
         k = k + 1 
 
     embed.add_field(name=f'Weekly Experience', value=expValue, inline=False)
@@ -1106,10 +1108,10 @@ async def guild(ctx, name):
 
 
     # plt.figure(figsize=(7, 3))
-    print(dailyExpHistory)
-    print(exp)
+    axis_x = dailyExpHistory
+    axis_y = exp
     plt.style.use("fivethirtyeight")
-    # plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#e1a924")
+    plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#e1a924")
 
     # plt.title("test", size=30)
     plt.legend()

@@ -1105,13 +1105,14 @@ async def guild(ctx, name):
 
 
 
-
-    axis_x = [10, 15, 20, 25, 30, 35, 40]
-    axis_y = [17, 64, 51, 25, 30, 47, 22]
+    # plt.figure(figsize=(7, 3))
+    axis_x = dailyExpHistory
+    axis_y = member["expHistory"]
     plt.style.use("fivethirtyeight")
-    plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=4, color="#e1a924")
+    plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#e1a924")
 
     # plt.title("test", size=30)
+    plt.legend()
     plt.savefig("graph.png", transparent=True)
     img = discord.File("graph.png", filename="graph.png")
     embed.set_image(url="attachment://graph.png")

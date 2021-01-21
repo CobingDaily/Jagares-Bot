@@ -1112,12 +1112,12 @@ async def guild(ctx, name):
     plt.figure(figsize=(10, 4), dpi=600)
     axis_x = expEachDay
     axis_y = exp
-    plt.style.use("fivethirtyeight")
+    plt.style.use("ggplot")
     plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#e1a924")
 
     # plt.title("test", size=30)
     plt.legend()
-    plt.savefig("graph.png", transparent=True, dpi=600)
+    plt.savefig("graph.png", transparent=False, dpi=600)
     img = discord.File("graph.png", filename="graph.png")
     embed.set_image(url="attachment://graph.png")
 

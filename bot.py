@@ -1109,7 +1109,7 @@ async def guild(ctx, name):
     expEachDay.reverse()
     exp.reverse()
 
-    plt.figure(figsize=(8, 4), dpi=300)
+    plt.figure(figsize=(8, 4), dpi=600)
     axis_x = expEachDay
     axis_y = exp
     plt.style.use("fivethirtyeight")
@@ -1117,7 +1117,7 @@ async def guild(ctx, name):
 
     # plt.title("test", size=30)
     plt.legend()
-    plt.savefig("graph.png", transparent=True, dpi=300)
+    plt.savefig("graph.png", transparent=True, dpi=600)
     img = discord.File("graph.png", filename="graph.png")
     embed.set_image(url="attachment://graph.png")
 

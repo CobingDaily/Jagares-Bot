@@ -642,47 +642,60 @@ def get_bsg_losses_solo_normal(name, data):
 
 
 def get_guild_name(name, gdata):
-    guild_name = str(gdata["guild"]["name"])
+    try:
+        guild_name = str(gdata["guild"]["name"])
+    except:
+        guild_name = "none"
     return guild_name
 
 def get_guild_members(name, gdata):
-    guild_members = gdata["guild"]["members"]
+    try:
+        guild_members = gdata["guild"]["members"]
+    except:
+        guild_members = []
     return guild_members
 
 
 
 def get_guild_tag(name, gdata):
     try:
-        guild_tag = str(gdata["tag"])
+        guild_tag = str(gdata["guild"]["tag"])
     except:
-        guild_tag = "unknown guild tag"
+        guild_tag = "none"
     return guild_tag
 
-def get_guild_description(name, gdata):
+def get_guild_tag_color(name, gdata):
     try:
-        guild_description = str(gdata["description"])
+        get_guild_tag_color = str(gdata["guild"]["tagColor"])
     except:
-        guild_description = "unknown guild description"
-    if guild_description == "":
-        guild_description = "No Guild Description"
+        get_guild_tag_color = "grey"
+    return get_guild_tag_color
+
+# def get_guild_description(name, gdata):
+#     try:
+#         guild_description = str(gdata["description"])
+#     except:
+#         guild_description = "unknown guild description"
+#     if guild_description == "":
+#         guild_description = "No Guild Description"
         
 
-    return guild_description
+#     return guild_description
 
 def get_guild_exp(name, gdata):
     try:
-        guild_exp = int(gdata["exp"])
+        guild_exp = int(gdata["guild"]["exp"])
     except:
         guild_exp = 0
     return guild_exp
 
 
-def get_guild_date(name, gdata):
-    try:
-        guild_date = int(gdata["created"])
-    except:
-        guild_date = 0
-    return guild_date
+# def get_guild_date(name, gdata):
+#     try:
+#         guild_date = int(gdata["created"])
+#     except:
+#         guild_date = 0
+#     return guild_date
 
 def get_guild_exp_history(name, gdata):
     guild_exp_history = dict(gdata["exp_history"])

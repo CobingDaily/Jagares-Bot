@@ -1075,20 +1075,11 @@ async def guild(ctx, name):
         await ctx.send("Guild not found!")
     guild_members = hypixel.get_guild_members(name, gdata)
 
-    try:
-        guild_tag_color = str(gdata["guild"]["tagColor"]).capitalize()
-    except:
-        guild_tag_color = "Gray"
-    
-    try:
-        guild_tag = str(gdata["guild"]["tag"])
-    except:
-        guild_tag = "none"
-    
-    try:
-        guild_exp_total = gdata["guild"]["exp"]
-    except:
-        guild_exp_total = "none"
+
+    guild_tag_color = hypixel.get_guild_tag_color(name, gdata).capitalize()
+    guild_tag = hypixel.get_guild_tag(name, gdata)
+    guild_exp_total = hypixel.get_guild_exp(name, gdata)
+
 
 
 
@@ -1116,15 +1107,13 @@ async def guild(ctx, name):
     
     ranks = ["Guild Master"]
     rank_tags = ["GM"]
-    if "ranks" in gdata["guild"]:
-        for rank in gdata["guild"]["ranks"]:
-            if "name" in rank:
-                ranks.append(rank["name"])
-            if "name" in rank:
-                rank_tags.append(rank["tag"])
-            if rank["default"] == True:
-                default_rank = rank["name"]
-                # default_rank_tag = rank["tag"]
+
+    for rank in gdata["guild"]["ranks"]:
+        ranks.append(rank["name"])
+        rank_tags.append(rank["tag"])
+        if rank["default"] == True:
+            default_rank = rank["name"]
+            # default_rank_tag = rank["tag"]
 
 
             
@@ -1136,7 +1125,7 @@ Tag Color ➠ **{guild_tag_color}**
 Guild Master ➠ **{owner_name}**
 Default Rank ➠ **{default_rank}**
 Total GEXP ➠ **{'{:,}'.format(guild_exp_total)}**
-Level ➠
+Level ➠ 
     '''
 
 

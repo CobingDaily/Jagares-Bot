@@ -1075,7 +1075,6 @@ async def guild(ctx, name):
         await ctx.send("Guild not found!")
     guild_members = hypixel.get_guild_members(name, gdata)
 
-
     try:
         guild_tag_color = str(gdata["guild"]["tagColor"]).capitalize()
     except:
@@ -1086,26 +1085,10 @@ async def guild(ctx, name):
     except:
         guild_tag = "none"
 
-
-
-    # if guild_tag_color == "yellow":
-    #     guild_tag_color = "#ddcd37"
-    # elif guild_tag_color == "dark_green":
-    #     guild_tag_color = "#0d7e14"
-    # elif guild_tag_color == "dark_aqua":
-    #     guild_tag_color = "#0da7ab"
-    # guild_description = hypixel.get_guild_description(name, gdata)
-    # guild_exp = hypixel.get_guild_exp(name, gdata)
-    # guild_date = datetime.datetime.utcfromtimestamp(round(hypixel.get_guild_date(name, gdata)/1000))
-    # guild_exp_history = hypixel.get_guild_exp_history(name, gdata)
-
     embed = discord.Embed(
     # title = 'Jagares Bot',
     colour = discord.Colour.orange()
     )
-
-
-
 
     exp = [0, 0, 0, 0, 0, 0, 0]
     expEachDay = []
@@ -1132,7 +1115,7 @@ async def guild(ctx, name):
         rank_tags.append(rank["tag"])
         if rank["default"] == True:
             default_rank = rank["name"]
-            default_rank_tag = rank["tag"]
+            # default_rank_tag = rank["tag"]
 
 
             
@@ -1142,19 +1125,13 @@ Guild Name ➠ **{guild_name}**
 Guild Tag ➠ **{guild_tag}**
 Tag Color ➠ **{guild_tag_color}**
 Guild Master ➠ **{owner_name}**
-Default Rank ➠ **{default_rank} [{default_rank_tag}]**
+Default Rank ➠ **{default_rank}**
     '''
 
 
 
     embed.set_author(name=f'{guild_name} [{guild_tag}]')
-
-
-
     embed.add_field(name=f'Stats', value=guild_stats, inline=False)
-
-
-    
     embed.add_field(name=f'Weekly Experience', value=expValue, inline=False)
     expEachDay.reverse()
     exp.reverse()
@@ -1171,9 +1148,6 @@ Default Rank ➠ **{default_rank} [{default_rank_tag}]**
     plt.savefig("graph.png", transparent=False, bbox_inches='tight')
     img = discord.File("graph.png", filename="graph.png")
     embed.set_image(url="attachment://graph.png")
-
-
-
 
 
 

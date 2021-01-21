@@ -1084,6 +1084,13 @@ async def guild(ctx, name):
         guild_tag = str(gdata["guild"]["tag"])
     except:
         guild_tag = "none"
+    
+    try:
+        guild_exp_total = gdata["guild"]["exp"]
+    except:
+        guild_exp_total = "none"
+
+
 
     embed = discord.Embed(
     # title = 'Jagares Bot',
@@ -1109,13 +1116,13 @@ async def guild(ctx, name):
     
     ranks = ["Guild Master"]
     rank_tags = ["GM"]
-
-    for rank in gdata["guild"]["ranks"]:
-        ranks.append(rank["name"])
-        rank_tags.append(rank["tag"])
-        if rank["default"] == True:
-            default_rank = rank["name"]
-            # default_rank_tag = rank["tag"]
+    if "ranks" in gdata["guild"]:
+        for rank in gdata["guild"]["ranks"]:
+            ranks.append(rank["name"])
+            rank_tags.append(rank["tag"])
+            if rank["default"] == True:
+                default_rank = rank["name"]
+                # default_rank_tag = rank["tag"]
 
 
             
@@ -1126,6 +1133,8 @@ Guild Tag ➠ **{guild_tag}**
 Tag Color ➠ **{guild_tag_color}**
 Guild Master ➠ **{owner_name}**
 Default Rank ➠ **{default_rank}**
+Total GEXP ➠ **{'{:,}'.format(guild_exp_total)}**
+Guild Level
     '''
 
 

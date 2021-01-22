@@ -732,7 +732,7 @@ def get_guild_level(exp):
     for i in range(0, 1000):
         need = 0
         if i >= len(EXP_NEEDED):
-            need = EXP_NEEDED[len(EXP_NEEDED - 1)]
+            need = EXP_NEEDED[len(EXP_NEEDED) - 1]
         else:
             need = EXP_NEEDED[i]
         i += 1

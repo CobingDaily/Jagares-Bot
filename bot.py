@@ -1092,14 +1092,16 @@ async def guild(ctx, name=None):
     expEachDay = []
     k = 0
     expValue = ""
-    for member in guild_members:
-        i = 0
-        for dailyExpHistory in member["expHistory"]:
-            exp[i] += member["expHistory"][dailyExpHistory]
-            i = i + 1
-        if member["rank"] == "Guild Master":
-            owner_uuid = member["uuid"]
-            owner_name = hypixel.hypixel_api(owner_uuid)["player"]["displayname"]
+    if "ranks" in gdata["guild"]:
+        for member in guild_members:
+            i = 0
+            for dailyExpHistory in member["expHistory"]:
+                exp[i] += member["expHistory"][dailyExpHistory]
+                i = i + 1
+            if "ranks" in member:
+                if member["rank"] == "Guild Master":
+                    owner_uuid = member["uuid"]
+                    owner_name = hypixel.hypixel_api(owner_uuid)["player"]["displayname"]
     for dailyExpHistory in member["expHistory"]:
         expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
         expEachDay.append(dailyExpHistory)

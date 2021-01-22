@@ -1097,7 +1097,7 @@ async def guild(ctx, name=None):
     expEachDay = []
     k = 0
     expValue = ""
-    if success = True:
+    if success == True:
         if "ranks" in gdata["guild"]:
             for member in guild_members:
                 i = 0

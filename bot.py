@@ -1098,7 +1098,7 @@ async def guild(ctx, name=None):
             for dailyExpHistory in member["expHistory"]:
                 exp[i] += member["expHistory"][dailyExpHistory]
                 i = i + 1
-            if "ranks" in member:
+            if "uuid" in member:
                 if member["rank"] == "Guild Master":
                     owner_uuid = member["uuid"]
                     owner_name = hypixel.hypixel_api(owner_uuid)["player"]["displayname"]

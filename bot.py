@@ -1075,7 +1075,7 @@ async def guild(ctx, name=None):
     try:
         guild_name = hypixel.get_guild_name(name, gdata)
     except:
-        await ctx.send("Guild not found!")
+        guild_name = "none"
     guild_members = hypixel.get_guild_members(name, gdata)
 
 

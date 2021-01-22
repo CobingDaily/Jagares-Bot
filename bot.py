@@ -1068,10 +1068,12 @@ async def guild(ctx, name=None):
     if name is None:
         name = ctx.message.author.display_name
     # data = hypixel.hypixel_api(name)
-    try:
-        gdata = hypixel.hypixel_gapi(name)
-    except:
+    gdata = hypixel.hypixel_gapi(name)
+    success = False
+    if gdata is None:
         await ctx.send("Guild not found!")
+    else:
+        success = True
     try:
         guild_name = hypixel.get_guild_name(name, gdata)
     except:
@@ -1095,45 +1097,46 @@ async def guild(ctx, name=None):
     expEachDay = []
     k = 0
     expValue = ""
-    if "ranks" in gdata["guild"]:
-        for member in guild_members:
-            i = 0
-            for dailyExpHistory in member["expHistory"]:
-                exp[i] += member["expHistory"][dailyExpHistory]
-                i = i + 1
-            if member["rank"] == "Guild Master" or member["rank"] == "GUILDMASTER":
+    if success = True:
+        if "ranks" in gdata["guild"]:
+            for member in guild_members:
+                i = 0
+                for dailyExpHistory in member["expHistory"]:
+                    exp[i] += member["expHistory"][dailyExpHistory]
+                    i = i + 1
+                if member["rank"] == "Guild Master" or member["rank"] == "GUILDMASTER":
+                    try:
+                        owner_name = hypixel.hypixel_api(member["uuid"])["player"]["displayname"]
+                    except:
+                        owner_name = None
+        for dailyExpHistory in member["expHistory"]:
+            expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
+            expEachDay.append(dailyExpHistory)
+            k = k + 1 
+        
+        ranks = []
+
+        if "ranks" in gdata["guild"]:
+            for rank in gdata["guild"]["ranks"]:
                 try:
-                    owner_name = hypixel.hypixel_api(member["uuid"])["player"]["displayname"]
+                    ranks.append(rank["name"])
                 except:
-                    owner_name = None
-    for dailyExpHistory in member["expHistory"]:
-        expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
-        expEachDay.append(dailyExpHistory)
-        k = k + 1 
-    
-    ranks = []
-
-    if "ranks" in gdata["guild"]:
-        for rank in gdata["guild"]["ranks"]:
-            try:
-                ranks.append(rank["name"])
-            except:
-                ranks.append("")
-            if "default" in rank:
-                if rank["default"] == True:
-                    default_rank = rank["name"]
-                    # default_rank_tag = rank["tag"]
+                    ranks.append("")
+                if "default" in rank:
+                    if rank["default"] == True:
+                        default_rank = rank["name"]
+                        # default_rank_tag = rank["tag"]
 
 
 
 
-    embed.set_author(name=f'{guild_name} {guild_tag}')
+        embed.set_author(name=f'{guild_name} {guild_tag}')
 
 
 
-    if guild_tag == "":
-        guild_tag = "No Guild Tag"
-    guild_stats = f'''
+        if guild_tag == "":
+            guild_tag = "No Guild Tag"
+        guild_stats = f'''
 Guild Name ➠ **{guild_name}**
 Guild Tag ➠ **{guild_tag}**
 Tag Color ➠ **{guild_tag_color}**
@@ -1141,36 +1144,36 @@ Guild Master ➠ **{owner_name}**
 Default Rank ➠ **{default_rank}**
 Total GEXP ➠ **{'{:,}'.format(guild_exp_total)}**
 Level ➠ 
-    '''
+        '''
 
-    guild_ranks = ""
-    for guild_rank in ranks:
-        guild_ranks += "➠ " + str(guild_rank) + "\n"
+        guild_ranks = ""
+        for guild_rank in ranks:
+            guild_ranks += "➠ " + str(guild_rank) + "\n"
 
-    embed.add_field(name=f'Stats', value=guild_stats, inline=True)
-    embed.add_field(name=f'Weekly Experience', value=expValue, inline=True)
-    embed.add_field(name=f'Ranks', value=guild_ranks, inline=False)
+        embed.add_field(name=f'Stats', value=guild_stats, inline=True)
+        embed.add_field(name=f'Weekly Experience', value=expValue, inline=True)
+        embed.add_field(name=f'Ranks', value=guild_ranks, inline=False)
 
-    expEachDay.reverse()
-    exp.reverse()
+        expEachDay.reverse()
+        exp.reverse()
 
-    plt.figure(figsize=(10, 4))
-    axis_x = expEachDay
-    axis_y = exp
-    plt.style.use("ggplot")
-    plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#ec9b00", marker="o")
-    plt.ticklabel_format(axis="y", style="plain")
-    # plt.tight_layout()
-    # plt.title("test", size=30)
-    plt.legend()
-    plt.savefig("graph.png", transparent=False, bbox_inches='tight')
-    img = discord.File("graph.png", filename="graph.png")
-    embed.set_image(url="attachment://graph.png")
+        plt.figure(figsize=(10, 4))
+        axis_x = expEachDay
+        axis_y = exp
+        plt.style.use("ggplot")
+        plt.plot(axis_x, axis_y, label="Guild Exp",  linewidth=3, color="#ec9b00", marker="o")
+        plt.ticklabel_format(axis="y", style="plain")
+        # plt.tight_layout()
+        # plt.title("test", size=30)
+        plt.legend()
+        plt.savefig("graph.png", transparent=False, bbox_inches='tight')
+        img = discord.File("graph.png", filename="graph.png")
+        embed.set_image(url="attachment://graph.png")
 
 
 
-    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-    await ctx.send(file=img, embed=embed)
+        embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+        await ctx.send(file=img, embed=embed)
 
 
 

@@ -11,6 +11,22 @@ GROWTH_DIVIDES_2 = 2 / GROWTH
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def uuid_or_name(input):
     uuid_pattern = re.compile(r'^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$', re.IGNORECASE)
     uuid_matches = uuid_pattern.finditer(input)
@@ -693,17 +709,40 @@ def get_guild_exp(name, gdata):
     return guild_exp
 
 
-# def get_guild_date(name, gdata):
-#     try:
-#         guild_date = int(gdata["created"])
-#     except:
-#         guild_date = 0
-#     return guild_date
+def get_guild_level(exp):
+    EXP_NEEDED = [
+    100000,
+    150000,
+    250000,
+    500000,
+    750000,
+    1000000,
+    1250000,
+    1500000,
+    2000000,
+    2500000,
+    2500000,
+    2500000,
+    2500000,
+    2500000,
+    3000000,]
+    
+    level = 0
 
-def get_guild_exp_history(name, gdata):
-    guild_exp_history = dict(gdata["exp_history"])
+    for i in range(0, 1000):
+        need = 0
+        if i >= len(EXP_NEEDED):
+            need = EXP_NEEDED[len(EXP_NEEDED - 1)]
+        else:
+            need = EXP_NEEDED[i]
+        i += 1
 
-    return guild_exp_history
+        if (exp - need) < 0:
+            return round((level + (exp / need)) * 100) / 100
+        level += 1
+        exp -= need
+    
+    return 0
 
 
 

@@ -1085,7 +1085,7 @@ async def guild(ctx, name=None):
     guild_tag_color = hypixel.get_guild_tag_color(name, gdata).capitalize()
     guild_tag = hypixel.get_guild_tag(name, gdata)
     guild_exp_total = hypixel.get_guild_exp(name, gdata)
-
+    guild_level = hypixel.get_guild_level(guild_exp_total)
 
 
 
@@ -1144,7 +1144,7 @@ Tag Color ➠ **{guild_tag_color}**
 Guild Master ➠ **{owner_name}**
 Default Rank ➠ **{default_rank}**
 Total GEXP ➠ **{'{:,}'.format(guild_exp_total)}**
-Level ➠ 
+Level ➠ **{'{:,}'.format(guild_level)}**
         '''
 
         guild_ranks = ""

@@ -1100,9 +1100,9 @@ async def guild(ctx, name=None):
                 i = i + 1
             if member["rank"] == "Guild Master":
                 try:
-                    owner_name = hypixel.hypixel_api(member["uuid"])["player"]["displayname"]
+                    owner_name = member["uuid"]
                 except:
-                    owner_name = "none"
+                    owner_name = None
     for dailyExpHistory in member["expHistory"]:
         expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
         expEachDay.append(dailyExpHistory)

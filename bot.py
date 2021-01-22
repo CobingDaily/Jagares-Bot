@@ -1111,7 +1111,7 @@ async def guild(ctx, name=None):
         expEachDay.append(dailyExpHistory)
         k = k + 1 
     
-    ranks = ["Guild Master"]
+    ranks = []
 
     if "ranks" in gdata["guild"]:
         for rank in gdata["guild"]["ranks"]:
@@ -1145,7 +1145,7 @@ Level ➠
 
     guild_ranks = ""
     for guild_rank in ranks:
-        guild_ranks += "◈ " + str(guild_rank) + "\n"
+        guild_ranks += "➠ " + str(guild_rank) + "\n"
 
     embed.add_field(name=f'Stats', value=guild_stats, inline=True)
     embed.add_field(name=f'Weekly Experience', value=expValue, inline=True)

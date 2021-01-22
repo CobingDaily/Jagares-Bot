@@ -76,7 +76,7 @@ def hypixel_gapi(name):
     gres = requests.get(gurl)
     gdata = gres.json()
     if gdata["success"] == False:
-        return None
+        gdata = []
     return gdata
 
 

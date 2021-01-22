@@ -75,7 +75,7 @@ def hypixel_gapi(name):
     gurl = f"https://api.hypixel.net/guild?key={API_KEY}&player={name}"
     gres = requests.get(gurl)
     gdata = gres.json()
-    if gdata["success"] == False:
+    if gdata["success"] == False or gdata["guild"] == None:
         gdata = []
     return gdata
 

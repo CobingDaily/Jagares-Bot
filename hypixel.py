@@ -70,8 +70,11 @@ def hypixel_api2(name):
 def hypixel_gapi(name):
     result = uuid_or_name(name)
     if result == "name":
-        uuid = hypixel_api(name)["player"]["uuid"]
-        name = uuid
+        try:
+            uuid = hypixel_api(name)["player"]["uuid"]
+            name = uuid
+        except:
+            name = "none"
     gurl = f"https://api.hypixel.net/guild?key={API_KEY}&player={name}"
     gres = requests.get(gurl)
     gdata = gres.json()

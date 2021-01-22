@@ -1069,9 +1069,10 @@ async def guild(ctx, name=None):
         name = ctx.message.author.display_name
     # data = hypixel.hypixel_api(name)
     gdata = hypixel.hypixel_gapi(name)
-    success = False
+
     if gdata is None:
         await ctx.send("Guild not found!")
+        success = False
     else:
         success = True
     try:

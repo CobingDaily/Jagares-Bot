@@ -745,13 +745,14 @@ async def cp(ctx, name=None):
             if classpoints_for_class[k] == i:
                 sorted_dict[k] = classpoints_for_class[k]
                 break
+    colors = ["#f45d4c", "#f7a541", "#faca66", "#a1dbb2"]
     class_names_pie = list(sorted_dict.keys())
     class_values_pie = list(sorted_dict.values())       
     sizes = (class_values_pie[0], class_values_pie[1], class_values_pie[2], total_class_points-(class_values_pie[0] + class_values_pie[1] + class_values_pie[2]))
     labels = (class_names_pie[0], class_names_pie[1], class_names_pie[2], "Other")
 
     fig1, ax1 = plt.subplots()
-    ax1.pie(sizes, labels=labels, shadow=False, startangle=90)
+    ax1.pie(sizes, labels=labels, shadow=False, startangle=90, autopct='%1.1f%%', colors=colors)
     ax1.axis('equal')
 
     plt.savefig("piechart.png", transparent=False, bbox_inches='tight')

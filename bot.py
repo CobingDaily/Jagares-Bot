@@ -715,7 +715,6 @@ async def cp(ctx, name=None):
     except:
         await ctx.send(f"Player `{name}` is not found!")
     classpoints_for_class = {}
-    sorted_values = sorted(classpoints_for_class.values())
 
 
     
@@ -735,6 +734,7 @@ async def cp(ctx, name=None):
                         value=f"{'{:,}'.format(class_points)}", inline=True)
         classpoints_for_class[Class] = class_points
 
+    sorted_values = sorted(classpoints_for_class.values())
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 

@@ -716,10 +716,13 @@ async def cp(ctx, name=None):
         await ctx.send(f"Player `{name}` is not found!")
     classpoints_for_class = {}
 
-
+    final_kills = hypixel.get_final_kills(name, data) 
+    fas = hypixel.get_final_assists(name, data)    
+    wins = hypixel.get_wins(name, data)
+    total_class_points = final_kills + fas + (wins * 10)
     
     embed = discord.Embed(
-    title = f"{ign}'s class points",
+    title = f"{ign}'s Class Points - {total_class_points} In Total",
     colour = discord.Colour.orange()
     )
 
@@ -746,7 +749,6 @@ async def cp(ctx, name=None):
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
     await ctx.send(embed=embed)
-    await ctx.send(sorted_dict)
 
 
 

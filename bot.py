@@ -1097,7 +1097,7 @@ async def guild(ctx, name=None):
     exp = [0, 0, 0, 0, 0, 0, 0]
     playerExp = ""
     expEachDay = []
-    axis_y_player = []
+    # axis_y_player = []
     k = 0
     expValue = ""
     if success == True:
@@ -1118,7 +1118,7 @@ async def guild(ctx, name=None):
                     for dailyPlayerExpHistory in member["expHistory"]:
                         playerExpValue = member["expHistory"]
                         playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(playerExpValue[dailyPlayerExpHistory])}** \n"
-                        axis_y_player.append(playerExpValue[dailyPlayerExpHistory])
+                        # axis_y_player.append(playerExpValue[dailyPlayerExpHistory])
 
         for dailyExpHistory in member["expHistory"]:
             expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
@@ -1176,10 +1176,10 @@ Level ➠ **{'{:,}'.format(guild_level)}**
         plt.figure(figsize=(10, 4))
         axis_x = expEachDay
         axis_y = exp
-        axis_y_PL = axis_y_player
+        # axis_y_PL = axis_y_player
         plt.style.use("ggplot")
         plt.plot(axis_x, axis_y, label=f"GEXP",  linewidth=3, color="#ec9b00", marker="o")
-        plt.plot(axis_x, axis_y_PL, label=f"{player_ign}'s GEXP",  linewidth=3, color="#2A85EC", marker="o")
+        # plt.plot(axis_x, axis_y_PL, label=f"{player_ign}'s GEXP",  linewidth=3, color="#2A85EC", marker="o")
         plt.ticklabel_format(axis="y", style="plain")
         # plt.tight_layout()
         # plt.title("test", size=30)

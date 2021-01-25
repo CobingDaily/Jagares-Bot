@@ -1119,7 +1119,7 @@ async def guild(ctx, name=None):
                     for dailyPlayerExpHistory in member["expHistory"]:
                         playerExpValue = member["expHistory"]
                         playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(playerExpValue[dailyPlayerExpHistory])}** \n"
-                        axis_y_player.append(playerExpValue[dailyPlayerExpHistory)
+                        axis_y_player.append(playerExpValue[dailyPlayerExpHistory])
 
         for dailyExpHistory in member["expHistory"]:
             expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"

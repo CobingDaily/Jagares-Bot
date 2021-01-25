@@ -1099,7 +1099,6 @@ async def guild(ctx, name=None):
     expEachDay = []
     axis_y_player = []
     k = 0
-    l = 0
     expValue = ""
     if success == True:
         if "ranks" in gdata["guild"]:
@@ -1180,7 +1179,7 @@ Level ➠ **{'{:,}'.format(guild_level)}**
         axis_y_PL = axis_y_player
         plt.style.use("ggplot")
         plt.plot(axis_x, axis_y, label=f"GEXP",  linewidth=3, color="#ec9b00", marker="o")
-        plt.plot(axis_x, axis_y_PL, label=f"{ign}'s GEXP",  linewidth=3, color="#2A85EC", marker="o")
+        plt.plot(axis_x, axis_y_PL, label=f"{player_ign}'s GEXP",  linewidth=3, color="#2A85EC", marker="o")
         plt.ticklabel_format(axis="y", style="plain")
         # plt.tight_layout()
         # plt.title("test", size=30)

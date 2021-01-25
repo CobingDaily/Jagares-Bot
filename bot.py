@@ -746,9 +746,21 @@ async def cp(ctx, name=None):
                 sorted_dict[k] = classpoints_for_class[k]
                 break
 
+    labels = sorted_dict.keys()
+    sizes = sorted_dict.values()
+    explode = (0, 0, 0, 0)
+
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, shadow=False, startangle=90)
+    ax1.axis('equal')
+
+    plt.savefig("piechart.png", transparent=False, bbox_inches='tight')
+    img = discord.File("piechart.png", filename="piechart.png")
+    embed.set_image(url="attachment://piechart.png")
+
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
-    await ctx.send(embed=embed)
+    await ctx.send(file=img, embed=embed)
 
 
 

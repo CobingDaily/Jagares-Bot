@@ -748,10 +748,9 @@ async def cp(ctx, name=None):
 
     labels = sorted_dict.keys()
     sizes = sorted_dict.values()
-    explode = (0, 0, 0, 0)
 
     fig1, ax1 = plt.subplots()
-    ax1.pie(sizes, explode=explode, labels=labels, shadow=False, startangle=90)
+    ax1.pie(sizes, labels=labels, shadow=False, startangle=90)
     ax1.axis('equal')
 
     plt.savefig("piechart.png", transparent=False, bbox_inches='tight')

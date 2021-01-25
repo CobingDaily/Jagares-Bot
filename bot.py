@@ -722,7 +722,7 @@ async def cp(ctx, name=None):
     total_class_points = final_kills + fas + (wins * 10)
     
     embed = discord.Embed(
-    title = f"{total_class_points} In Total",
+    title = f"`{'{:,}'.format(total_class_points)}` Class Points In Total",
     colour = discord.Colour.orange()
     )
 

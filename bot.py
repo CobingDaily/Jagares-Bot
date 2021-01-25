@@ -714,9 +714,9 @@ async def cp(ctx, name=None):
         ign = hypixel.get_displayname(name, data)
     except:
         await ctx.send(f"Player `{name}` is not found!")
+    classpoints_for_class = {}
 
 
-       
 
     
     embed = discord.Embed(
@@ -733,12 +733,13 @@ async def cp(ctx, name=None):
             name, Class, data) + hypixel.get_class_final_assists(name, Class, data)
         embed.add_field(name=f'{Class.capitalize()}',
                         value=f"{'{:,}'.format(class_points)}", inline=True)
+        classpoints_for_class[Class] = class_points
 
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
     await ctx.send(embed=embed)
-
+    print(classpoints_for_class)
 
 
 

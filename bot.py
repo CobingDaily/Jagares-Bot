@@ -745,9 +745,10 @@ async def cp(ctx, name=None):
             if classpoints_for_class[k] == i:
                 sorted_dict[k] = classpoints_for_class[k]
                 break
-
-    labels = (sorted_dict.keys()[0], sorted_dict.keys()[1], sorted_dict.keys()[2], total_class_points-(sorted_dict.keys()[0] + sorted_dict.keys()[1] + sorted_dict.keys()[2]))
-    sizes = (sorted_dict.values()[0], sorted_dict.values()[1], sorted_dict.values()[2], "Other")
+    class_names_pie = sorted_dict.keys()
+    class_values_pie = sorted_dict.values()       
+    labels = (class_names_pie[0], class_names_pie[1], class_names_pie[2], total_class_points-(class_names_pie[0] + class_names_pie[1] + class_names_pie[2]))
+    sizes = (class_values_pie[0], class_values_pie[1], class_values_pie[2], "Other")
 
     fig1, ax1 = plt.subplots()
     ax1.pie(sizes, labels=labels, shadow=False, startangle=90)

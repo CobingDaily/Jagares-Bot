@@ -734,12 +734,12 @@ async def cp(ctx, name=None):
                         value=f"{'{:,}'.format(class_points)}", inline=True)
         classpoints_for_class[Class] = class_points
 
-    sorted_values = sorted(classpoints_for_class.values())
+    sorted_values = sorted(classpoints_for_class)
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
     await ctx.send(embed=embed)
-    print(sorted_values)
+    await ctx.send(sorted_values)
 
 
 

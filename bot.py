@@ -1067,7 +1067,7 @@ async def classcompare(ctx, Class, name1, name2=None):
 async def guild(ctx, name=None):
     if name is None:
         name = ctx.message.author.display_name
-    # data = hypixel.hypixel_api(name)
+    data = hypixel.hypixel_api(name)
     gdata = hypixel.hypixel_gapi(name)
 
     if gdata is None:
@@ -1086,8 +1086,8 @@ async def guild(ctx, name=None):
     guild_tag = hypixel.get_guild_tag(name, gdata)
     guild_exp_total = hypixel.get_guild_exp(name, gdata)
     guild_level = hypixel.get_guild_level(guild_exp_total)
-
-
+    player_ign = hypixel.get_displayname(name, data)
+    player_uuid = hypixel.get_uuid(name, data)
 
     embed = discord.Embed(
     # title = 'Jagares Bot',
@@ -1095,6 +1095,7 @@ async def guild(ctx, name=None):
     )
 
     exp = [0, 0, 0, 0, 0, 0, 0]
+    playerExp = ""
     expEachDay = []
     k = 0
     expValue = ""
@@ -1110,6 +1111,13 @@ async def guild(ctx, name=None):
                         owner_name = hypixel.hypixel_api(member["uuid"])["player"]["displayname"]
                     except:
                         owner_name = None
+        if "members" in gdata["guild"]:
+            for member in guild_members:
+                if member["uuid"] == player_uuid:
+                    for dailyPlayerExpHistory in member["expHistory"]:
+                        expHistory = member["expHistory"]
+                        playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(expHistory[dailyExpHistory])}** \n"
+
         for dailyExpHistory in member["expHistory"]:
             expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
             expEachDay.append(dailyExpHistory)
@@ -1151,8 +1159,11 @@ Level ➠ **{'{:,}'.format(guild_level)}**
         for guild_rank in ranks:
             guild_ranks += "➠ " + str(guild_rank) + "\n"
 
+
+
         embed.add_field(name=f'Stats', value=guild_stats, inline=True)
-        embed.add_field(name=f'Weekly Experience', value=expValue, inline=True)
+        embed.add_field(name=f'Weekly GEXP', value=expValue, inline=True)
+        embed.add_field(name=f"{player_ign}'s Weekly GEXP", value=player_stats, inline=False)
         embed.add_field(name=f'Ranks', value=guild_ranks, inline=False)
 
         expEachDay.reverse()

@@ -236,12 +236,18 @@ def panda_img_api():
 
 
 def get_displayname(name, data):
-    ign = str(data["player"]["displayname"])
+    try:
+        ign = str(data["player"]["displayname"])
+    except:
+        ign = "none"
     return ign
 
-def get_displayname_uuid(uuid, data_uuid):
-    ign = str(data_uuid["player"]["displayname"])
-    return ign
+def get_uuid(name, data):
+    try:
+        uuid = str(data["player"]["uuid"])
+    except:
+        uuid = "none"
+    return uuid
 
 
 def get_level(name, data2):

@@ -764,6 +764,8 @@ async def cp(ctx, name=None):
 
     if len(list(sorted_dict.keys())) > 3:
         await ctx.send(file=img, embed=embed)
+    elif ign == "none":
+        await ctx.send(f"Player `{name}` is not found!")
     else:
         await ctx.send(embed=embed)
 

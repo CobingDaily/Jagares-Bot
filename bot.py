@@ -1165,7 +1165,8 @@ Level ➠ **{'{:,}'.format(guild_level)}**
 
         embed.add_field(name=f'Stats', value=guild_stats, inline=True)
         embed.add_field(name=f'Weekly GEXP', value=expValue, inline=True)
-        embed.add_field(name=f'Ranks', value=guild_ranks, inline=False)
+        embed.add_field(name=f"\u200B", value="\u200B", inline=False)
+        embed.add_field(name=f'Ranks', value=guild_ranks, inline=True)
         embed.add_field(name=f"{player_ign}'s Weekly GEXP", value=playerExp, inline=True)
         
 

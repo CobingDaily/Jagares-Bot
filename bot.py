@@ -1098,6 +1098,7 @@ async def guild(ctx, name=None):
     playerExp = ""
     expEachDay = []
     k = 0
+    l = 0
     expValue = ""
     if success == True:
         if "ranks" in gdata["guild"]:
@@ -1116,7 +1117,8 @@ async def guild(ctx, name=None):
                 if member["uuid"] == player_uuid:
                     for dailyPlayerExpHistory in member["expHistory"]:
                         expHistory = member["expHistory"]
-                        playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(expHistory[dailyExpHistory])}** \n"
+                        playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(expHistory[dailyExpHistory][l])}** \n"
+                        l += 1
 
         for dailyExpHistory in member["expHistory"]:
             expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
@@ -1164,7 +1166,7 @@ Level ➠ **{'{:,}'.format(guild_level)}**
         embed.add_field(name=f'Stats', value=guild_stats, inline=True)
         embed.add_field(name=f'Weekly GEXP', value=expValue, inline=True)
         embed.add_field(name=f"{player_ign}'s Weekly GEXP", value=playerExp, inline=False)
-        embed.add_field(name=f'Ranks', value=guild_ranks, inline=False)
+        embed.add_field(name=f'Ranks', value=guild_ranks, inline=True)
 
         expEachDay.reverse()
         exp.reverse()

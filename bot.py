@@ -764,7 +764,7 @@ async def cp(ctx, name=None):
     if len(class_names_pie) > 3:
         await ctx.send(file=img, embed=embed)
     else:
-        await ctx.send(file=img, embed=embed)
+        await ctx.send(embed=embed)
 
 
 

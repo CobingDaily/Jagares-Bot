@@ -734,12 +734,19 @@ async def cp(ctx, name=None):
                         value=f"{'{:,}'.format(class_points)}", inline=True)
         classpoints_for_class[Class] = class_points
 
-    sorted_values = sorted(classpoints_for_class)
+    sorted_values = sorted(classpoints_for_class.values())
+    sorted_dict = {}
+    for i in sorted_values:
+        for k in classpoints_for_class.keys():
+            if classpoints_for_class[k] == i:
+                sorted_dict[k] = classpoints_for_class[k]
+                break
+
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
     await ctx.send(embed=embed)
-    await ctx.send(sorted_values)
+    await ctx.send(sorted_dict)
 
 
 

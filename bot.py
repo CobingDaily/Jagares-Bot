@@ -1116,10 +1116,9 @@ async def guild(ctx, name=None):
             for member in guild_members:
                 if member["uuid"] == player_uuid:
                     for dailyPlayerExpHistory in member["expHistory"]:
-
-                        dailyPlayerExp = dailyPlayerExpHistory
-                        print(dailyExpHistory)
-                        playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(dailyPlayerExp)}** \n"
+                        playerExpValue = member["expHistory"]
+                        print(dailyPlayerExpHistory)
+                        playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(playerExpValue[dailyPlayerExpHistory])}** \n"
                         l += 1
 
         for dailyExpHistory in member["expHistory"]:

@@ -722,19 +722,19 @@ async def cp(ctx, name=None):
     total_class_points = final_kills + fas + (wins * 10)
     
     embed = discord.Embed(
-    title = f"{ign}'s Class Points - {total_class_points} In Total",
+    title = f"{total_class_points} In Total",
     colour = discord.Colour.orange()
     )
 
 
 
-    embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
+    embed.set_author(name=f"{ign}'s Class Points", icon_url=f"https://minotar.net/helm/{ign}/300?random={get_random_string(12)}")
 
     for Class in classes:
         class_points = (hypixel.get_class_wins(name, Class, data) * 10) + hypixel.get_class_finals(
             name, Class, data) + hypixel.get_class_final_assists(name, Class, data)
         embed.add_field(name=f'{Class.capitalize()}',
-                        value=f"{'{:,}'.format(class_points)}", inline=True)
+                        value=f"`{'{:,}'.format(class_points)}`", inline=True)
         classpoints_for_class[Class] = class_points
 
     sorted_values = sorted(classpoints_for_class.values())

@@ -1168,7 +1168,7 @@ Level ➠ **{'{:,}'.format(guild_level)}**
         embed.add_field(name=f"\u200B", value="\u200B", inline=False)
         embed.add_field(name=f'Ranks', value=guild_ranks, inline=True)
         embed.add_field(name=f"{player_ign}'s Weekly GEXP", value=playerExp, inline=True)
-        embed.remove_field(3)
+        embed.remove_field(2)
 
         expEachDay.reverse()
         exp.reverse()

@@ -747,8 +747,8 @@ async def cp(ctx, name=None):
                 break
     class_names_pie = list(sorted_dict.keys())
     class_values_pie = list(sorted_dict.values())       
-    labels = (class_names_pie[0], class_names_pie[1], class_names_pie[2], total_class_points-(class_names_pie[0] + class_names_pie[1] + class_names_pie[2]))
-    sizes = (class_values_pie[0], class_values_pie[1], class_values_pie[2], "Other")
+    sizes = (class_values_pie[0], class_values_pie[1], class_values_pie[2], total_class_points-(class_values_pie[0] + class_values_pie[1] + class_values_pie[2]))
+    labels = (class_names_pie[0], class_names_pie[1], class_names_pie[2], "Other")
 
     fig1, ax1 = plt.subplots()
     ax1.pie(sizes, labels=labels, shadow=False, startangle=90)

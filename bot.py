@@ -735,13 +735,13 @@ async def cp(ctx, name=None):
         classpoints_for_class[Class] = class_points
 
     sorted_values = sorted(classpoints_for_class.values())
+    sorted_values.reverse()
     sorted_dict = {}
     for i in sorted_values:
         for k in classpoints_for_class.keys():
             if classpoints_for_class[k] == i:
                 sorted_dict[k] = classpoints_for_class[k]
                 break
-
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 

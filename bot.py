@@ -875,7 +875,8 @@ async def mwclass(ctx, Class, name=None):
         class_losses_all = hypixel.get_class_losses_all(name, Class, data)
 
         chosen_skin = hypixel.get_chosen_skin(name, Class, data)
-
+        if chosen_skin == Class:
+            chosen_skin = chosen_skin.capitalize()
 
         class_games_all = class_wins_all + class_losses_all
         if class_games_all == 0:

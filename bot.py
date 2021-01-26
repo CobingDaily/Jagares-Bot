@@ -930,14 +930,14 @@ async def mwclass(ctx, Class, name=None):
 
         layer1 = Image.new("RGBA", (400, 200), (0, 0, 0, 0))
         draw = ImageDraw.Draw(layer1)
-        draw.text((215, 8), str1, font=font, fill=color)
-        draw.text((215, 32), str2, font=font, fill=color)
-        draw.text((215, 56), str3, font=font, fill=color)
-        draw.text((215, 80), str4, font=font, fill=color)
-        draw.text((215, 104), str5, font=font, fill=color)
-        draw.text((215, 128), unlocked, font=font, fill=color)
-        if class_prestige > 0:
-            draw.text((215, 158), pres, font=font, fill="darkred")
+        # draw.text((215, 8), str1, font=font, fill=color)
+        # draw.text((215, 32), str2, font=font, fill=color)
+        # draw.text((215, 56), str3, font=font, fill=color)
+        # draw.text((215, 80), str4, font=font, fill=color)
+        # draw.text((215, 104), str5, font=font, fill=color)
+        # draw.text((215, 128), unlocked, font=font, fill=color)
+        # if class_prestige > 0:
+        #     draw.text((215, 158), pres, font=font, fill="darkred")
         im = Image.open(f"./MWSkins/{chosen_skin.capitalize()}.png")
         bgArea = (8, 8, 16, 16)
         fgArea = (40, 8, 48, 16)

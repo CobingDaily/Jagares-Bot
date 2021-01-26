@@ -912,7 +912,7 @@ async def mwclass(ctx, Class, name=None):
         background = im.crop(bgArea)
         foreground = im.crop(fgArea)
         background.paste(foreground, (0, 0), foreground) 
-        upscaledIm = background.resize((64, 64), resample=Image.BOX)
+        upscaledIm = background.resize((128, 128), resample=Image.BOX)
         upscaledIm.save('skin.png')
 
         embed = discord.Embed(

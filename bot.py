@@ -938,13 +938,13 @@ async def mwclass(ctx, Class, name=None):
         draw.text((215, 128), unlocked, font=font1, fill=color)
         if class_prestige > 0:
             draw.text((215, 158), pres, font=font2, fill="darkred")
-        im = Image.open(f"./MWSkins/{chosen_skin.capitalize()}.png")
+        im = Image.open(f"./Skins/{chosen_skin.lower()}.png")
         bgArea = (8, 8, 16, 16)
         fgArea = (40, 8, 48, 16)
         background = im.crop(bgArea)
         foreground = im.crop(fgArea)
         background.paste(foreground, (0, 0), foreground) 
-        layer2 = background.resize((200,200), resample=Image.BOX)
+        layer2 = background.resize((150, 150), resample=Image.BOX)
         layer1.paste(layer2, (0, 0)) 
         layer1.save('skin.png')
 

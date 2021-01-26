@@ -875,8 +875,8 @@ async def mwclass(ctx, Class, name=None):
         class_losses_all = hypixel.get_class_losses_all(name, Class, data)
 
         chosen_skin = hypixel.get_chosen_skin(name, Class, data)
-        if chosen_skin == Class:
-            chosen_skin = chosen_skin.capitalize()
+        # if chosen_skin == Class:
+        #     chosen_skin = chosen_skin.capitalize()
 
         class_games_all = class_wins_all + class_losses_all
         if class_games_all == 0:
@@ -906,7 +906,7 @@ async def mwclass(ctx, Class, name=None):
 
         # rand = get_random_string(12)
 
-        im = Image.open(f"./skins/{chosen_skin}.png")
+        im = Image.open(f"./MWSkins/{chosen_skin.capitalize()}.png")
         bgArea = (8, 8, 16, 16)
         fgArea = (40, 8, 48, 16)
         background = im.crop(bgArea)

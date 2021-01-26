@@ -10,7 +10,7 @@ import math
 from discord.utils import get
 from discord.ext.commands import has_permissions, CheckFailure, MissingPermissions
 from Cybernator import Paginator as pag
-from PIL import Image
+from PIL import Image, ImageFont, ImageDraw
 import matplotlib.pyplot as plt
 
 bot = commands.Bot(command_prefix = "/")
@@ -874,6 +874,14 @@ async def mwclass(ctx, Class, name=None):
         class_final_deaths_all = hypixel.get_class_final_deaths_all(name, Class, data)
         class_losses_all = hypixel.get_class_losses_all(name, Class, data)
 
+        class_prestige = hypixel.get_class_prestige(name, Class, data)
+        class_unlocked = hypixel.get_class_unlocked(name, Class, data)
+        class_kit = hypixel.get_class_kit(name, Class, data)
+        class_skill = hypixel.get_class_skill(name, Class, data)
+        class_passive1 = hypixel.get_class_passive1(name, Class, data)
+        class_passive2 = hypixel.get_class_passive2(name, Class, data)
+        class_passive3 = hypixel.get_class_passive3(name, Class, data)
+
         chosen_skin = hypixel.get_chosen_skin(name, Class, data)
         if chosen_skin == "none":
             chosen_skin = Class
@@ -906,14 +914,38 @@ async def mwclass(ctx, Class, name=None):
 
         # rand = get_random_string(12)
 
+        font1 = ImageFont.truetype("arial.ttf", 20)
+        font2 = ImageFont.truetype("arial.ttf", 30)
+        color = "black"
+        unlocked = f"Unlocked: {str(class_unlocked)}"
+        str1 = f"Kit -> {class_kit}"
+        str2 = f"Skill -> {class_skill}"
+        str3 = f"Passive 1 -> {class_passive1}"
+        str4 = f"Passive 2 -> {class_passive2}"
+        str5 = f"Passive 3 -> {class_passive3}"
+        pres = f"Prestige {class_prestige}"
+
+
+
+        layer1 = Image.new("RGBA", (400, 200), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(layer1)
+        draw.text((215, 8), str1, font=font1, fill=color)
+        draw.text((215, 32), str2, font=font1, fill=color)
+        draw.text((215, 56), str3, font=font1, fill=color)
+        draw.text((215, 80), str4, font=font1, fill=color)
+        draw.text((215, 104), str5, font=font1, fill=color)
+        draw.text((215, 128), unlocked, font=font1, fill=color)
+        if class_prestige > 0:
+            draw.text((215, 158), pres, font=font2, fill="darkred")
         im = Image.open(f"./MWSkins/{chosen_skin.capitalize()}.png")
         bgArea = (8, 8, 16, 16)
         fgArea = (40, 8, 48, 16)
         background = im.crop(bgArea)
         foreground = im.crop(fgArea)
         background.paste(foreground, (0, 0), foreground) 
-        upscaledIm = background.resize((128, 128), resample=Image.BOX)
-        upscaledIm.save('skin.png')
+        layer2 = background.resize((200,200), resample=Image.BOX)
+        layer1.paste(layer2, (0, 0)) 
+        layer1.save('skin.png')
 
         embed = discord.Embed(
         title = f"{ign}'s {Class.capitalize()} Stats",

@@ -581,6 +581,77 @@ def get_class_losses_all(name, Class, data):
 
 
 
+def get_class_prestige(name, Class, data):
+    
+    try:
+        class_prestige = int(data["player"]["stats"]["Walls3"]["classes"][f"{Class.lower()}"]["prestige"])
+    except:
+        class_prestige = 0
+    return class_prestige
+
+
+def get_class_unlocked(name, Class, data):
+    
+    try:
+        class_unlocked = data["player"]["stats"]["Walls3"]["classes"][f"{Class.lower()}"]["unlocked"]
+    except:
+        class_unlocked = False
+    return class_unlocked
+
+
+
+def get_class_kit(name, Class, data):
+    
+    try:
+        class_kit = int(data["player"]["stats"]["Walls3"]["classes"][f"{Class.lower()}"]["skill_level_d"])
+    except:
+        class_kit = 1
+    return class_kit
+
+def get_class_skill(name, Class, data):
+    
+    try:
+        class_skill = int(data["player"]["stats"]["Walls3"]["classes"][f"{Class.lower()}"]["skill_level_a"])
+    except:
+        class_skill = 1
+    return class_skill
+
+def get_class_passive1(name, Class, data):
+    
+    try:
+        class_passive1 = int(data["player"]["stats"]["Walls3"]["classes"][f"{Class.lower()}"]["skill_level_b"])
+    except:
+        class_passive1 = 1
+    return class_passive1
+
+def get_class_passive2(name, Class, data):
+    
+    try:
+        class_passive2 = int(data["player"]["stats"]["Walls3"]["classes"][f"{Class.lower()}"]["skill_level_c"])
+    except:
+        class_passive2 = 1
+    return class_passive2
+
+def get_class_passive3(name, Class, data):
+    
+    try:
+        class_passive3 = int(data["player"]["stats"]["Walls3"]["classes"][f"{Class.lower()}"]["skill_level_g"])
+    except:
+        class_passive3 = 1
+    return class_passive3
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # BLITZ SURVIVAL GAMES

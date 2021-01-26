@@ -914,8 +914,8 @@ async def mwclass(ctx, Class, name=None):
 
         # rand = get_random_string(12)
 
-        # font1 = ImageFont.truetype("arial.ttf", 20)
-        # font2 = ImageFont.truetype("arial.ttf", 30)
+        font1 = ImageFont.truetype("./Fonts/arial.ttf", 20)
+        font2 = ImageFont.truetype("./Fonts/arial.ttf", 30)
         # font = ImageFont.load_default()
         color = "black"
         unlocked = f"Unlocked: {str(class_unlocked)}"

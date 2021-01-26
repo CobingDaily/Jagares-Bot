@@ -944,7 +944,7 @@ async def mwclass(ctx, Class, name=None):
         background = im.crop(bgArea)
         foreground = im.crop(fgArea)
         background.paste(foreground, (0, 0), foreground) 
-        layer2 = background.resize((150, 150), resample=Image.BOX)
+        layer2 = background.resize((160, 160), resample=Image.BOX)
         layer1.paste(layer2, (0, 0)) 
         layer1.save('skin.png')
 

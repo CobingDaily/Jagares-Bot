@@ -914,17 +914,17 @@ async def mwclass(ctx, Class, name=None):
 
         # rand = get_random_string(12)
 
-        font1 = ImageFont.truetype("arial.ttf", 20)
-        font2 = ImageFont.truetype("arial.ttf", 30)
-        font = ImageFont.load_default()
-        color = "black"
-        unlocked = f"Unlocked: {str(class_unlocked)}"
-        str1 = f"Kit -> {class_kit}"
-        str2 = f"Skill -> {class_skill}"
-        str3 = f"Passive 1 -> {class_passive1}"
-        str4 = f"Passive 2 -> {class_passive2}"
-        str5 = f"Passive 3 -> {class_passive3}"
-        pres = f"Prestige {class_prestige}"
+        # font1 = ImageFont.truetype("arial.ttf", 20)
+        # font2 = ImageFont.truetype("arial.ttf", 30)
+        # font = ImageFont.load_default()
+        # color = "black"
+        # unlocked = f"Unlocked: {str(class_unlocked)}"
+        # str1 = f"Kit -> {class_kit}"
+        # str2 = f"Skill -> {class_skill}"
+        # str3 = f"Passive 1 -> {class_passive1}"
+        # str4 = f"Passive 2 -> {class_passive2}"
+        # str5 = f"Passive 3 -> {class_passive3}"
+        # pres = f"Prestige {class_prestige}"
 
 
 

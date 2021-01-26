@@ -917,27 +917,27 @@ async def mwclass(ctx, Class, name=None):
         # font1 = ImageFont.truetype("arial.ttf", 20)
         # font2 = ImageFont.truetype("arial.ttf", 30)
         # font = ImageFont.load_default()
-        # color = "black"
-        # unlocked = f"Unlocked: {str(class_unlocked)}"
-        # str1 = f"Kit -> {class_kit}"
-        # str2 = f"Skill -> {class_skill}"
-        # str3 = f"Passive 1 -> {class_passive1}"
-        # str4 = f"Passive 2 -> {class_passive2}"
-        # str5 = f"Passive 3 -> {class_passive3}"
-        # pres = f"Prestige {class_prestige}"
+        color = "black"
+        unlocked = f"Unlocked: {str(class_unlocked)}"
+        str1 = f"Kit -> {class_kit}"
+        str2 = f"Skill -> {class_skill}"
+        str3 = f"Passive 1 -> {class_passive1}"
+        str4 = f"Passive 2 -> {class_passive2}"
+        str5 = f"Passive 3 -> {class_passive3}"
+        pres = f"Prestige {class_prestige}"
 
 
 
         layer1 = Image.new("RGBA", (400, 200), (0, 0, 0, 0))
         draw = ImageDraw.Draw(layer1)
-        # draw.text((215, 8), str1, font=font, fill=color)
-        # draw.text((215, 32), str2, font=font, fill=color)
-        # draw.text((215, 56), str3, font=font, fill=color)
-        # draw.text((215, 80), str4, font=font, fill=color)
-        # draw.text((215, 104), str5, font=font, fill=color)
-        # draw.text((215, 128), unlocked, font=font, fill=color)
-        # if class_prestige > 0:
-        #     draw.text((215, 158), pres, font=font, fill="darkred")
+        draw.text((215, 8), str1, fill=color)
+        draw.text((215, 32), str2, fill=color)
+        draw.text((215, 56), str3, fill=color)
+        draw.text((215, 80), str4, fill=color)
+        draw.text((215, 104), str5, fill=color)
+        draw.text((215, 128), unlocked, fill=color)
+        if class_prestige > 0:
+            draw.text((215, 158), pres, fill="darkred")
         im = Image.open(f"./MWSkins/{chosen_skin.capitalize()}.png")
         bgArea = (8, 8, 16, 16)
         fgArea = (40, 8, 48, 16)

@@ -914,7 +914,7 @@ async def mwclass(ctx, Class, name=None):
 
         # rand = get_random_string(12)
 
-        font1 = ImageFont.truetype("./Fonts/minecraft.ttf", 20)
+        font1 = ImageFont.truetype("./Fonts/minecraft.ttf", 18)
         # font2 = ImageFont.truetype("./Fonts/arial.ttf", 30)
         # font = ImageFont.load_default()
         color = "black"
@@ -930,14 +930,14 @@ async def mwclass(ctx, Class, name=None):
 
         layer1 = Image.new("RGBA", (400, 200), (0, 0, 0, 0))
         draw = ImageDraw.Draw(layer1)
-        draw.text((201, 8), str1, font=font1, fill=color)
-        draw.text((201, 32), str2, font=font1, fill=color)
-        draw.text((201, 56), str3, font=font1, fill=color)
-        draw.text((201, 80), str4, font=font1, fill=color)
-        draw.text((201, 104), str5, font=font1, fill=color)
-        draw.text((201, 128), unlocked, font=font1, fill=color)
+        draw.text((180, 8), str1, font=font1, fill=color)
+        draw.text((180, 32), str2, font=font1, fill=color)
+        draw.text((180, 56), str3, font=font1, fill=color)
+        draw.text((180, 80), str4, font=font1, fill=color)
+        draw.text((180, 104), str5, font=font1, fill=color)
+        draw.text((180, 128), unlocked, font=font1, fill=color)
         if class_prestige > 0:
-            draw.text((215, 158), pres, font=font1, fill="darkred")
+            draw.text((180, 152), pres, font=font1, fill=color)
         im = Image.open(f"./Skins/{chosen_skin.lower()}.png")
         bgArea = (8, 8, 16, 16)
         fgArea = (40, 8, 48, 16)

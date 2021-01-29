@@ -975,10 +975,12 @@ async def mwclass(ctx, Class, name=None):
         # embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png?random={rand}")
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
-
-        await ctx.send(file=img, embed=embed)
-    else:
-         await ctx.send(f"`{Class}` class does not exist!")
+        if ign != "none":
+                await ctx.send(file=img, embed=embed)
+            else:
+                await ctx.send(f"`{Class}` class does not exist!")
+        else:
+            await ctx.send(f"Player `{name}` is not found!")
 
 
 

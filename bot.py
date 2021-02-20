@@ -943,7 +943,7 @@ async def mwclass(ctx, Class, name=None):
         try:
             im = Image.open(f"./Skins/{chosen_skin.lower()}.png")
         except:
-            im = Image.open(f"./Skins/{chosen_class.lower()}.png")
+            im = Image.open(f"./Skins/{Class.lower()}.png")
         bgArea = (8, 8, 16, 16)
         fgArea = (40, 8, 48, 16)
         background = im.crop(bgArea)

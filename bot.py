@@ -20,7 +20,7 @@ bot.remove_command('help')
 classes = ["Hunter", "Zombie", "Creeper", "Arcanist", "Shaman", "Dreadlord", "Golem", "Squid", "Moleman", "Enderman", "Herobrine", "Blaze",
            "Pigman", "Spider", "Werewolf", "Pirate", "Phoenix", "Skeleton", "Assassin", "Renegade", "Snowman", "Automaton", "Cow", "Shark"]
 
-
+defaultClasses = ["Hunter", "Cow", "Shark"]
 
 @bot.event
 async def on_ready():
@@ -876,6 +876,8 @@ async def mwclass(ctx, Class, name=None):
 
         class_prestige = hypixel.get_class_prestige(name, Class, data)
         class_unlocked = hypixel.get_class_unlocked(name, Class, data)
+        if Class.capitalize() in defaultClasses:
+            class_unlocked = True
         class_kit = hypixel.get_class_kit(name, Class, data)
         class_skill = hypixel.get_class_skill(name, Class, data)
         class_passive1 = hypixel.get_class_passive1(name, Class, data)
@@ -938,7 +940,10 @@ async def mwclass(ctx, Class, name=None):
         draw.text((180, 128), unlocked, font=font1, fill=color)
         if class_prestige > 0:
             draw.text((180, 152), pres, font=font1, fill=color)
-        im = Image.open(f"./Skins/{chosen_skin.lower()}.png")
+        try:
+            im = Image.open(f"./Skins/{chosen_skin.lower()}.png")
+        except:
+            im = Image.open(f"./Skins/{chosen_class.lower()}.png")
         bgArea = (8, 8, 16, 16)
         fgArea = (40, 8, 48, 16)
         background = im.crop(bgArea)

@@ -669,6 +669,24 @@ def get_bsg_kills(name, data):
         bsg_kills = 0
     return bsg_kills
 
+def get_bsg_kills_solo_normal(name, data):
+    try:
+        bsg_kills_solo_normal = int(data["player"]["stats"]["HungerGames"]["kills_solo_normal"])
+    except:
+        bsg_kills_solo_normal = 0
+    return bsg_kills_solo_normal
+
+def get_bsg_kills_teams_normal(name, data):
+    try:
+        bsg_kills_teams_normal = int(data["player"]["stats"]["HungerGames"]["kills_teams_normal"])
+    except:
+        bsg_kills_teams_normal = 0
+    return bsg_kills_teams_normal
+
+
+
+
+
 
 
 def get_bsg_deaths(name, data):

@@ -1582,8 +1582,8 @@ async def bsg(ctx, name=None):
     embed.add_field(name='Deaths', value=f"`{'{:,}'.format(deaths)}`", inline=True)
     embed.add_field(name='K/D Ratio', value=f"`{'{:,}'.format(kd)}`", inline=True)
     embed.add_field(name='Wins', value=f"`{'{:,}'.format(wins)}`", inline=True)
-    embed.add_field(name='Losses', value=f"`{'{:,}'.format(losses)}`", inline=True)
-    embed.add_field(name='W/L Ratio', value=f"`{'{:,}'.format(wl)}`", inline=True)
+    # embed.add_field(name='Losses', value=f"`{'{:,}'.format(losses)}`", inline=True)
+    # embed.add_field(name='W/L Ratio', value=f"`{'{:,}'.format(wl)}`", inline=True)
 
 
 

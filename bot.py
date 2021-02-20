@@ -1578,24 +1578,15 @@ async def bsg(ctx, name=None):
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
 
-    embed.add_field(name='Kills', value=f"`{'{:,}'.format(kills)}`", inline=True)    
+    embed.add_field(name='Kills', value=f"`{'{:,}'.format(kills)}`", inline=True)
+    embed.add_field(name='Kills Solo', value=f"`{'{:,}'.format(kills_solo)}`", inline=True)  
+    embed.add_field(name='Kills Teams', value=f"`{'{:,}'.format(kills_teams)}`", inline=True)    
     embed.add_field(name='Deaths', value=f"`{'{:,}'.format(deaths)}`", inline=True)
     embed.add_field(name='K/D Ratio', value=f"`{'{:,}'.format(kd)}`", inline=True)
     embed.add_field(name='Wins', value=f"`{'{:,}'.format(wins)}`", inline=True)
-    # embed.add_field(name='Losses', value=f"`{'{:,}'.format(losses)}`", inline=True)
-    # embed.add_field(name='W/L Ratio', value=f"`{'{:,}'.format(wl)}`", inline=True)
+    embed.add_field(name='Wins Solo', value=f"`{'{:,}'.format(wins_solo)}`", inline=True)
+    embed.add_field(name='Wins Teams', value=f"`{'{:,}'.format(wins_teams)}`", inline=True)
 
-
-
-    embed.add_field(name='Solo', value=f'''Kills ➠ **{'{:,}'.format(kills_solo)}**
-    Kills ➠ **{'{:,}'.format(kills_solo)}**
-    Wins ➠ **{'{:,}'.format(wins_solo)}**
-    ''', inline=True)
-
-    embed.add_field(name='Teams', value=f'''Kills ➠ **{'{:,}'.format(kills_teams)}**
-    Kills ➠ **{'{:,}'.format(kills_teams)}**
-    Wins ➠ **{'{:,}'.format(wins_teams)}**
-    ''', inline=True)
 
     embed.add_field(name='Coins', value=f"`{'{:,}'.format(coins)}`", inline=True)
 

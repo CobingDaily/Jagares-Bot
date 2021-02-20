@@ -1532,9 +1532,9 @@ async def bsg(ctx, name=None):
     deaths = hypixel.get_bsg_deaths(name, data)
 
 
-    losses_solo = hypixel.get_bsg_losses_solo_normal(name, data)
-    losses_teams = hypixel.get_bsg_losses_teams_normal(name, data)
-    losses = hypixel.get_bsg_losses_solo_normal(name, data) + hypixel.get_bsg_losses_teams_normal(name, data)
+    # losses_solo = hypixel.get_bsg_losses_solo_normal(name, data)
+    # losses_teams = hypixel.get_bsg_losses_teams_normal(name, data)
+    # losses = hypixel.get_bsg_losses_solo_normal(name, data) + hypixel.get_bsg_losses_teams_normal(name, data)
     coins = hypixel.get_bsg_coins(name, data)
     if deaths == 0:
         kd = kills
@@ -1545,21 +1545,21 @@ async def bsg(ctx, name=None):
 
 
 
-    if losses ==0:
-        wl = wins
-    else:
-        wl = round(wins/losses, 2)
+    # if losses ==0:
+    #     wl = wins
+    # else:
+    #     wl = round(wins/losses, 2)
 
-    if losses_solo ==0:
-        wl_solo = wins_solo
-    else:
-        wl_solo = round(wins_solo/losses_solo, 2)
+    # if losses_solo ==0:
+    #     wl_solo = wins_solo
+    # else:
+    #     wl_solo = round(wins_solo/losses_solo, 2)
 
 
-    if losses_teams ==0:
-        wl_teams = wins_teams
-    else:
-        wl_teams = round(wins_teams/losses_teams, 2)
+    # if losses_teams ==0:
+    #     wl_teams = wins_teams
+    # else:
+    #     wl_teams = round(wins_teams/losses_teams, 2)
 
 
 
@@ -1580,28 +1580,24 @@ async def bsg(ctx, name=None):
 
     embed.add_field(name='Kills', value=f"`{'{:,}'.format(kills)}`", inline=True)    
     embed.add_field(name='Deaths', value=f"`{'{:,}'.format(deaths)}`", inline=True)
-    embed.add_field(name='K/D Ratio', value=f'{kd}', inline=True)
+    embed.add_field(name='K/D Ratio', value=f"`{'{:,}'.format(kd)}`", inline=True)
     embed.add_field(name='Wins', value=f"`{'{:,}'.format(wins)}`", inline=True)
     embed.add_field(name='Losses', value=f"`{'{:,}'.format(losses)}`", inline=True)
     embed.add_field(name='W/L Ratio', value=f"`{'{:,}'.format(wl)}`", inline=True)
-    embed.add_field(name='Coins', value=f"`{'{:,}'.format(coins)}`", inline=True)
 
 
 
     embed.add_field(name='Solo', value=f'''Kills ➠ **{'{:,}'.format(kills_solo)}**
     Kills ➠ **{'{:,}'.format(kills_solo)}**
     Wins ➠ **{'{:,}'.format(wins_solo)}**
-    Losses ➠ **{'{:,}'.format(losses_solo)}**
-    W/L Ratio ➠ **{'{:,}'.format(wl_solo)}**    
     ''', inline=True)
 
     embed.add_field(name='Teams', value=f'''Kills ➠ **{'{:,}'.format(kills_teams)}**
     Kills ➠ **{'{:,}'.format(kills_teams)}**
     Wins ➠ **{'{:,}'.format(wins_teams)}**
-    Losses ➠ **{'{:,}'.format(losses_teams)}**
-    W/L Ratio ➠ **{'{:,}'.format(wl_teams)}**    
     ''', inline=True)
 
+    embed.add_field(name='Coins', value=f"`{'{:,}'.format(coins)}`", inline=True)
 
 
 

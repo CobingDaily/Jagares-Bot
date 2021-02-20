@@ -698,12 +698,19 @@ def get_bsg_deaths(name, data):
 
 
 
+
+
+
+
 def get_bsg_coins(name, data):
     try:
         bsg_coins = int(data["player"]["stats"]["HungerGames"]["coins"])
     except:
         bsg_coins = 0
     return bsg_coins
+
+
+
 
 
 def get_bsg_wins_teams_normal(name, data):
@@ -720,6 +727,8 @@ def get_bsg_wins_solo_normal(name, data):
     except:
         bsg_wins_solo_normal = 0
     return bsg_wins_solo_normal
+
+
 
 
 

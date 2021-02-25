@@ -713,41 +713,81 @@ def get_bsg_coins(name, data):
 
 
 
-def get_bsg_wins_teams_normal(name, data):
+def get_bsg_wins(name, data):
     try:
-        bsg_wins_teams_normal = int(data["player"]["stats"]["HungerGames"]["wins_teams_normal"])
+        bsg_wins = int(data["player"]["stats"]["HungerGames"]["wins"])
     except:
-        bsg_wins_teams_normal = 0
-    return bsg_wins_teams_normal
+        bsg_wins = 0
+    return bsg_wins
 
 
-def get_bsg_wins_solo_normal(name, data):
+
+
+def get_bsg_games_played(name, data):
     try:
-        bsg_wins_solo_normal = int(data["player"]["stats"]["HungerGames"]["wins_solo_normal"])
+        bsg_games_played = int(data["player"]["stats"]["HungerGames"]["games_played"])
     except:
-        bsg_wins_solo_normal = 0
-    return bsg_wins_solo_normal
+        bsg_games_played = 0
+    return bsg_games_played
 
 
 
 
 
-def get_bsg_losses_teams_normal(name, data):
+def get_bsg_wins_rambo(name, data):
     try:
-        bsg_losses_teams_normal = int(data["player"]["stats"]["HungerGames"]["losses_teams_normal"])
+        bsg_wins_rambo = int(data["player"]["stats"]["HungerGames"]["wins_rambo"])
     except:
-        bsg_losses_teams_normal = 0
-    return bsg_losses_teams_normal
+        bsg_wins_rambo = 0
+    return bsg_wins_rambo
 
 
-def get_bsg_losses_solo_normal(name, data):
+
+def get_bsg_kills_rambo(name, data):
     try:
-        bsg_losses_solo_normal = int(data["player"]["stats"]["HungerGames"]["losses_solo_normal"])
+        bsg_kills_rambo = int(data["player"]["stats"]["HungerGames"]["kills_rambo"])
     except:
-        bsg_losses_solo_normal = 0
-    return bsg_losses_solo_normal
+        bsg_kills_rambo = 0
+    return bsg_kills_rambo
 
 
+
+def get_bsg_chosen_victorydance(name, data):
+    try:
+        bsg_chosen_victorydance = str(data["player"]["stats"]["HungerGames"]["chosen_victorydance"])
+    except:
+        bsg_chosen_victorydance = "N/A"
+    return bsg_chosen_victorydance
+
+
+def get_bsg_chosen_finisher(name, data):
+    try:
+        bsg_chosen_finisher = str(data["player"]["stats"]["HungerGames"]["chosen_finisher"])
+    except:
+        bsg_chosen_finisher = "N/A"
+    return bsg_chosen_finisher
+
+def get_bsg_chosen_taunt(name, data):
+    try:
+        bsg_chosen_taunt = str(data["player"]["stats"]["HungerGames"]["chosen_taunt"])
+    except:
+        bsg_chosen_taunt = "N/A"
+    return bsg_chosen_taunt
+
+
+def get_bsg_taunt_kills(name, data):
+    try:
+        bsg_taunt_kills = int(data["player"]["stats"]["HungerGames"]["taunt_kills"])
+    except:
+        bsg_taunt_kills = 0
+    return bsg_taunt_kills
+
+def get_bsg_time_played(name, data):
+    try:
+        bsg_time_played = int(data["player"]["stats"]["HungerGames"]["time_played"])
+    except:
+        bsg_time_played = 0
+    return bsg_time_played
 
 
 

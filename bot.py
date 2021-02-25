@@ -1522,20 +1522,21 @@ async def bsg(ctx, name=None):
     except:
         await ctx.send(f"Player `{name}` is not found!")
     kills = hypixel.get_bsg_kills(name, data) 
-    kills_solo = hypixel.get_bsg_kills_solo_normal(name, data)
-    kills_teams = hypixel.get_bsg_kills_teams_normal(name, data) 
-
-    wins_solo = hypixel.get_bsg_wins_solo_normal(name, data)
-    wins_teams = hypixel.get_bsg_wins_teams_normal(name, data)
-    wins = wins_solo + wins_teams
-
     deaths = hypixel.get_bsg_deaths(name, data)
-
-
-    # losses_solo = hypixel.get_bsg_losses_solo_normal(name, data)
-    # losses_teams = hypixel.get_bsg_losses_teams_normal(name, data)
-    # losses = hypixel.get_bsg_losses_solo_normal(name, data) + hypixel.get_bsg_losses_teams_normal(name, data)
+    wins = hypixel.get_bsg_wins(name, data)
+    games_played = hypixel.get_bsg_games_played(name, data)
+    losses = games_played - wins
     coins = hypixel.get_bsg_coins(name, data)
+
+    kills_rambo = hypixel.get_bsg_kills_rambo(name, data)
+    wins_rambo = hypixel.get_bsg_wins_rambo(name, data)
+    victorydance = hypixel.get_bsg_chosen_victorydance(name, data)
+    finisher = hypixel.get_bsg_chosen_finisher(name, data)
+    taunt = hypixel.get_bsg_chosen_taunt(name, data)
+    taunt_kills = hypixel.get_bsg_taunt_kills(name, data)
+    time_played = time.strftime('%H:%M:%S', time.gmtime(hypixel.get_bsg_time_played(name, data)))
+
+
     if deaths == 0:
         kd = kills
     else:
@@ -1545,10 +1546,10 @@ async def bsg(ctx, name=None):
 
 
 
-    # if losses ==0:
-    #     wl = wins
-    # else:
-    #     wl = round(wins/losses, 2)
+    if losses ==0:
+        wl = wins
+    else:
+        wl = round(wins/losses, 2)
 
     # if losses_solo ==0:
     #     wl_solo = wins_solo
@@ -1578,18 +1579,32 @@ async def bsg(ctx, name=None):
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
 
-    embed.add_field(name='Kills', value=f"`{'{:,}'.format(kills)}`", inline=True)
-    embed.add_field(name='Kills Solo', value=f"`{'{:,}'.format(kills_solo)}`", inline=True)  
-    embed.add_field(name='Kills Teams', value=f"`{'{:,}'.format(kills_teams)}`", inline=True)    
-    embed.add_field(name='Deaths', value=f"`{'{:,}'.format(deaths)}`", inline=True)
-    embed.add_field(name='K/D Ratio', value=f"`{'{:,}'.format(kd)}`", inline=True)
-    embed.add_field(name='Wins', value=f"`{'{:,}'.format(wins)}`", inline=True)
-    embed.add_field(name='Wins Solo', value=f"`{'{:,}'.format(wins_solo)}`", inline=True)
-    embed.add_field(name='Wins Teams', value=f"`{'{:,}'.format(wins_teams)}`", inline=True)
+    # embed.add_field(name='Kills', value=f"`{'{:,}'.format(kills)}`", inline=True)  
+    # embed.add_field(name='Deaths', value=f"`{'{:,}'.format(deaths)}`", inline=True)
+    # embed.add_field(name='K/D Ratio', value=f"`{'{:,}'.format(kd)}`", inline=True)
+    # embed.add_field(name='Wins', value=f"`{'{:,}'.format(wins)}`", inline=True)
+    # embed.add_field(name='Losses', value=f"`{'{:,}'.format(losses)}`", inline=True)
+    # embed.add_field(name='Coins', value=f"`{'{:,}'.format(coins)}`", inline=True)
 
+    embed.add_field(name='\u200b', value=f'''
+    Kills: `{'{:,}'.format(kills)}`
+    Deaths: `{'{:,}'.format(deaths)}`
+    K/D Ratio: `{'{:,}'.format(kd)}`
+    Wins: `{'{:,}'.format(wins)}`
+    Losses: `{'{:,}'.format(losses)}`
+    W/L Ratio: `{'{:,}'.format(wl)}`
+    Coins: `{'{:,}'.format(coins)}`
+    ''', inline=True)
 
-    embed.add_field(name='Coins', value=f"`{'{:,}'.format(coins)}`", inline=True)
-
+    embed.add_field(name='\u200b', value=f'''
+    Rambo Kills: `{'{:,}'.format(kills_rambo)}`
+    Rambo Wins: `{'{:,}'.format(wins_rambo)}`
+    Victory Dance: `{victorydance}`
+    Finisher: `{finisher}`
+    Taunt: `{taunt}`
+    Taunt Kills: `{'{:,}'.format(taunt_kills)}`
+    Playtime: `{time_played}`
+    ''', inline=True)
 
 
 

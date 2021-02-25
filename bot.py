@@ -1534,7 +1534,7 @@ async def bsg(ctx, name=None):
     finisher = hypixel.get_bsg_chosen_finisher(name, data)
     taunt = hypixel.get_bsg_chosen_taunt(name, data)
     taunt_kills = hypixel.get_bsg_taunt_kills(name, data)
-    time_played = time.strftime('%H:%M:%S', time.gmtime(hypixel.get_bsg_time_played(name, data)))
+    time_played = time.strftime('%Hh %Mm %Ss', time.gmtime(hypixel.get_bsg_time_played(name, data)))
 
 
     if deaths == 0:
@@ -1587,23 +1587,23 @@ async def bsg(ctx, name=None):
     # embed.add_field(name='Coins', value=f"`{'{:,}'.format(coins)}`", inline=True)
 
     embed.add_field(name='\u200b', value=f'''
-    Kills: `{'{:,}'.format(kills)}`
-    Deaths: `{'{:,}'.format(deaths)}`
-    K/D Ratio: `{'{:,}'.format(kd)}`
-    Wins: `{'{:,}'.format(wins)}`
-    Losses: `{'{:,}'.format(losses)}`
-    W/L Ratio: `{'{:,}'.format(wl)}`
-    Coins: `{'{:,}'.format(coins)}`
+    Kills ➠ **{'{:,}'.format(kills)}**
+    Deaths ➠ **{'{:,}'.format(deaths)}**
+    K/D Ratio ➠ **{'{:,}'.format(kd)}**
+    Wins ➠ **{'{:,}'.format(wins)}**
+    Losses ➠ **{'{:,}'.format(losses)}**
+    W/L Ratio ➠ **{'{:,}'.format(wl)}**
+    Coins ➠ **{'{:,}'.format(coins)}**
     ''', inline=True)
 
     embed.add_field(name='\u200b', value=f'''
-    Rambo Kills: `{'{:,}'.format(kills_rambo)}`
-    Rambo Wins: `{'{:,}'.format(wins_rambo)}`
-    Victory Dance: `{victorydance}`
-    Finisher: `{finisher}`
-    Taunt: `{taunt}`
-    Taunt Kills: `{'{:,}'.format(taunt_kills)}`
-    Playtime: `{time_played}`
+    Rambo Kills ➠ **{'{:,}'.format(kills_rambo)}**
+    Rambo Wins ➠ **{'{:,}'.format(wins_rambo)}**
+    Victory Dance ➠ **{victorydance}**
+    Finisher ➠ **{finisher}**
+    Taunt ➠ **{taunt}**
+    Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
+    Playtime ➠ **{time_played}**
     ''', inline=True)
 
 

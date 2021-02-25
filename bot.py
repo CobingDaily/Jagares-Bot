@@ -1534,7 +1534,7 @@ async def bsg(ctx, name=None):
     finisher = hypixel.get_bsg_chosen_finisher(name, data)
     taunt = hypixel.get_bsg_chosen_taunt(name, data)
     taunt_kills = hypixel.get_bsg_taunt_kills(name, data)
-    time_played = time.strftime('%Hh %Mm %Ss', time.gmtime(hypixel.get_bsg_time_played(name, data)))
+    time_played = time.strftime('%Dd %Hh %Mm %Ss', time.gmtime(hypixel.get_bsg_time_played(name, data)))
 
 
     if deaths == 0:
@@ -1591,8 +1591,7 @@ async def bsg(ctx, name=None):
     Deaths ➠ **{'{:,}'.format(deaths)}**
     K/D Ratio ➠ **{'{:,}'.format(kd)}**
     Wins ➠ **{'{:,}'.format(wins)}**
-    Losses ➠ **{'{:,}'.format(losses)}**
-    W/L Ratio ➠ **{'{:,}'.format(wl)}**
+    Playtime ➠ **{time_played}**
     Coins ➠ **{'{:,}'.format(coins)}**
     ''', inline=True)
 
@@ -1603,7 +1602,7 @@ async def bsg(ctx, name=None):
     Finisher ➠ **{finisher}**
     Taunt ➠ **{taunt}**
     Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
-    Playtime ➠ **{time_played}**
+    
     ''', inline=True)
 
 

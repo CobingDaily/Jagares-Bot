@@ -1524,8 +1524,6 @@ async def bsg(ctx, name=None):
     kills = hypixel.get_bsg_kills(name, data) 
     deaths = hypixel.get_bsg_deaths(name, data)
     wins = hypixel.get_bsg_wins(name, data)
-    games_played = hypixel.get_bsg_games_played(name, data)
-    losses = games_played - wins
     coins = hypixel.get_bsg_coins(name, data)
 
     kills_rambo = hypixel.get_bsg_kills_rambo(name, data)
@@ -1534,7 +1532,7 @@ async def bsg(ctx, name=None):
     finisher = hypixel.get_bsg_chosen_finisher(name, data)
     taunt = hypixel.get_bsg_chosen_taunt(name, data)
     taunt_kills = hypixel.get_bsg_taunt_kills(name, data)
-    time_played = time.strftime('%Dd %Hh %Mm %Ss', time.gmtime(hypixel.get_bsg_time_played(name, data)))
+    time_played = time.strftime('%dd %Hh %Mm %Ss', time.gmtime(hypixel.get_bsg_time_played(name, data)))
 
 
     if deaths == 0:
@@ -1546,10 +1544,10 @@ async def bsg(ctx, name=None):
 
 
 
-    if losses ==0:
-        wl = wins
-    else:
-        wl = round(wins/losses, 2)
+    # if losses ==0:
+    #     wl = wins
+    # else:
+    #     wl = round(wins/losses, 2)
 
     # if losses_solo ==0:
     #     wl_solo = wins_solo

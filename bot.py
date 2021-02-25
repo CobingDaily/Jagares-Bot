@@ -1532,7 +1532,7 @@ async def bsg(ctx, name=None):
     finisher = hypixel.get_bsg_chosen_finisher(name, data)
     taunt = hypixel.get_bsg_chosen_taunt(name, data)
     taunt_kills = hypixel.get_bsg_taunt_kills(name, data)
-    time_played = time.strftime('%dd %Hh %Mm %Ss', time.gmtime(hypixel.get_bsg_time_played(name, data)))
+    time_played = datetime.timedelta(seconds=hypixel.get_bsg_time_played(name, data))
 
 
     if deaths == 0:

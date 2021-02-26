@@ -1651,7 +1651,7 @@ K/D Ratio ➠ **{'{:,}'.format(kd_kit)}**
 Wins Solo ➠ **{'{:,}'.format(wins_kit)}**
 Wins Teams ➠ **{'{:,}'.format(wins_teams_kit)}**
 W/L Ratio ➠ **{'{:,}'.format(wl_kit)}**
-Experience ➠ **{exp_kit}**
+Experience ➠ **{'{:,}'.format(exp_kit)}**
 
 ''', inline=True)
 

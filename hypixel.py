@@ -239,7 +239,7 @@ def get_displayname(name, data):
     try:
         ign = str(data["player"]["displayname"])
     except:
-        ign = None
+        ign = "none"
     return ign
 
 def get_uuid(name, data):

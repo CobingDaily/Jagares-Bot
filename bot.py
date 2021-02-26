@@ -1679,8 +1679,15 @@ Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
         embed.set_image(url=f"https://gen.plancke.io/blitz/{ign}/3.png?random={rand}")
 
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-        await ctx.send(embed=embed)
+        if ign == "none":
+            await ctx.send(f"Player `{name}` is not found!")
+        else:
+            await ctx.send(embed=embed)
+
+
+
     else:
+
     
         embed = discord.Embed(
         title = f"`{ign}'s {kit.capitalize()} Stats`",
@@ -1708,10 +1715,12 @@ Experience ➠ **{'{:,}'.format(exp_kit)}**
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
-        if kit.lower() in bsg_kits:
-            await ctx.send(embed=embed)
-        else:
+        if kit.lower() not in bsg_kits:
             await ctx.send(f"`{kit}` Kit Does Not Exist!")
+        elif ign == "none":
+            await ctx.send(f"Player `{name}` is not found!")
+        else:
+            await ctx.send(embed=embed)
 
 
 

@@ -1544,7 +1544,6 @@ async def bsg(ctx, name=None, kit=None):
 
 
     kills_kit = hypixel.get_bsg_kills_kit(name, kit, data) 
-    deaths_kit = hypixel.get_bsg_deaths_kit(name, kit, data)
     wins_kit = hypixel.get_bsg_wins_kit(name, kit, data)
     wins_teams_kit = hypixel.get_bsg_wins_teams_kit(name, kit, data)
     wins_total_kit = wins_kit + wins_teams_kit
@@ -1552,6 +1551,7 @@ async def bsg(ctx, name=None, kit=None):
     level_kit = hypixel.get_bsg_level_kit(name, kit, data)
     games_played_kit = hypixel.get_bsg_games_played_kit(name, kit, data)
     losses_kit = games_played_kit - wins_total_kit
+    deaths_kit = losses_kit
 
     if deaths_kit == 0:
         kd_kit = kills_kit

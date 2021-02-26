@@ -1602,7 +1602,7 @@ async def bsg(ctx, name=None, kit=None):
 
     if kit == None or kit == "overall":
         embed = discord.Embed(
-        title = f"`{ign}'s Blitz Stats`",
+        title = f"```{ign}'s Blitz Stats```",
         colour = discord.Colour.orange()
         )
         rand = get_random_string(12)
@@ -1638,7 +1638,7 @@ Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
     else:
     
         embed = discord.Embed(
-        title = f"`{ign}'s {kit.capitalize()} Stats`",
+        title = f"```{ign}'s {kit.capitalize()} Stats```",
         colour = discord.Colour.orange()
         )
 

@@ -1523,6 +1523,8 @@ async def nh(ctx, name=None):
 @bot.command(aliases=['blitz', 'sg', 'hg'])
 async def bsg(ctx, name=None, kit=None):
 
+    kit = kit.lower()
+    name = name.lower()
 
     if kit == "horse":
         kit = "horsetamer"

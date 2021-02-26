@@ -10,6 +10,7 @@ REVERSE_CONST = REVERSE_PQ_PREFIX
 GROWTH_DIVIDES_2 = 2 / GROWTH
 
 
+bsg_kits_ultimate = ["ranger", "phoenix", "donkeytamer", "warrior"]
 
 
 
@@ -849,10 +850,36 @@ def get_bsg_exp_kit(name, kit, data):
 
 
 def get_bsg_level_kit(name, kit, data):
-    try:
-        bsg_level_kit = int(data["player"]["stats"]["HungerGames"][f"{kit}"]) + 1
-    except:
-        bsg_level_kit = 1
+    if kit in bsg_kits_ultimate:
+        exp = get_bsg_exp_kit(name, kit, data)
+        if exp < 100:
+            bsg_level_kit = 1
+        elif exp >= 100 and exp < 250:
+            bsg_level_kit = 2
+        elif exp >= 250 and exp < 500:
+            bsg_level_kit = 3
+        elif exp >= 500 and exp < 1000:
+            bsg_level_kit = 4
+        elif exp >= 1000 and exp < 1500:
+            bsg_level_kit = 5
+        elif exp >= 1500 and exp < 2000:
+            bsg_level_kit = 6
+        elif exp >= 2000 and exp < 2500:
+            bsg_level_kit = 7
+        elif exp >= 2500 and exp < 5000:
+            bsg_level_kit = 8
+        elif exp >= 5000 and exp < 10000:
+            bsg_level_kit = 9
+        elif exp >= 10000:
+            bsg_level_kit = 10
+        else:
+            bsg_level_kit = 0
+    else:
+
+        try:
+            bsg_level_kit = int(data["player"]["stats"]["HungerGames"][f"{kit}"]) + 1
+        except:
+            bsg_level_kit = 1
     try:
         bsg_pres_kit = int(data["player"]["stats"]["HungerGames"][f"p{kit}"])
     except:

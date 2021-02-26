@@ -22,6 +22,14 @@ classes = ["Hunter", "Zombie", "Creeper", "Arcanist", "Shaman", "Dreadlord", "Go
 
 defaultClasses = ["Hunter", "Cow", "Shark"]
 
+
+bsg_kits = ["horsetamer", "ranger", "archer", "astronaut", "troll", "meatmaster", "reaper", "reddragon", "toxicologist", "donkeytamer",
+            "rogue", "warlock", "slimeyslime", "jockey", "golem", "viking", "speleologist", "shadow knight", "baker",
+            "knight", "pigman", "guardian", "phoenix", "paladin", "necromancer", "scout", "hunter", "warrior", "hype train",
+            "fisherman", "florist", "diver", "arachnologist", "blaze", "wolftamer", "tim", "snowman", "farmer", "armorer", "creepertamer"]
+
+bsg_kits_ultimate = ["ranger", "phoenix", "donkeytamer", "warrior"]
+
 @bot.event
 async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=discord.Game('/help'))
@@ -1514,6 +1522,9 @@ async def nh(ctx, name=None):
 
 @bot.command(aliases=['blitz', 'sg', 'hg'])
 async def bsg(ctx, name=None, kit=None):
+    if name in bsg_kits and kit is None:
+        kit = name
+        name = ctx.message.author.display_name
     if name is None:
         name = ctx.message.author.display_name
     data = hypixel.hypixel_api(name)

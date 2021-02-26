@@ -1711,7 +1711,7 @@ Experience ➠ **{'{:,}'.format(exp_kit)}**
         if kit.lower() in bsg_kits:
             await ctx.send(embed=embed)
         else:
-            await ctx.send(f"{kit} Does Not Exist!")
+            await ctx.send(f"`{kit}` Kit Does Not Exist!")
 
 
 

@@ -1521,7 +1521,7 @@ async def nh(ctx, name=None):
 
 
 @bot.command(aliases=['blitz', 'sg', 'hg'])
-async def bsg(ctx, name=None, kit=None):
+async def bsg(ctx, *, name=None, kit=None):
     # if kit is not None:
     #     kit = kit.lower()
     # if name is not None:

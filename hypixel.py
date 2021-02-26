@@ -861,7 +861,7 @@ def get_bsg_level_kit(name, kit, data):
     if bsg_pres_kit == 0:
         result = f"{roman.toRoman(bsg_level_kit)}"
     else:
-        result = f"Prestige {roman.toRoman(bsg_pres_kit)}"
+        result = f"⭐" * bsg_pres_kit
     return result
 
 

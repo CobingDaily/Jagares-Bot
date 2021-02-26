@@ -1626,14 +1626,14 @@ Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
     else:
     
         embed = discord.Embed(
-        title = f"`{ign}'s {kit.capitalize()} {level_kit} Stats`",
+        title = f"`{ign}'s {kit.capitalize()} Stats`",
         colour = discord.Colour.orange()
         )
 
         embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
 
-        embed.add_field(name='\u200b', value=f'''
+        embed.add_field(name=f"{kit.capitalize} {level_kit}", value=f'''
 Kills ➠ **{'{:,}'.format(kills_kit)}**
 Deaths ➠ **{'{:,}'.format(deaths_kit)}**
 K/D Ratio ➠ **{'{:,}'.format(kd_kit)}**

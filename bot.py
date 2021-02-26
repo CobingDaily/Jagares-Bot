@@ -1633,7 +1633,7 @@ Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
         embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
 
-        embed.add_field(name=f"{kit.capitalize} {level_kit}", value=f'''
+        embed.add_field(name=f"{kit.capitalize()} {level_kit}", value=f'''
 Kills ➠ **{'{:,}'.format(kills_kit)}**
 Deaths ➠ **{'{:,}'.format(deaths_kit)}**
 K/D Ratio ➠ **{'{:,}'.format(kd_kit)}**

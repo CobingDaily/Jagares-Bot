@@ -1626,7 +1626,7 @@ Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
     else:
     
         embed = discord.Embed(
-        title = f"`{ign}'s {kit.capitalize} {level_kit} Stats`",
+        title = f"`{ign}'s {kit.capitalize()} {level_kit} Stats`",
         colour = discord.Colour.orange()
         )
 

@@ -1522,16 +1522,44 @@ async def nh(ctx, name=None):
 
 @bot.command(aliases=['blitz', 'sg', 'hg'])
 async def bsg(ctx, name=None, kit=None):
-    if kit is not None:
-        kit = kit.lower()
-    if name is not None:
-        name = name.lower()
+    # if kit is not None:
+    #     kit = kit.lower()
+    # if name is not None:
+    #     name = name.lower()
 
-    if kit == "horse":
-        kit = "horsetamer"
-    if name == "horse":
-        name = "horsetamer"
+    # if kit == "horse":
+    #     kit = "horsetamer"
+    # if name == "horse":
+    #     name = "horsetamer"
 
+    # if kit == "donkey":
+    #     kit = "donkeytamer"
+    # if name == "donkey":
+    #     name = "donkeytamer"
+
+
+    # if kit == "train":
+    #     kit = "hype train"
+    # if name == "train":
+    #     name = "hype train"
+
+
+    # if kit == "toxic":
+    #     kit = "toxicologist"
+    # if name == "toxic":
+    #     name = "toxicologist"
+
+
+    # if kit == "spele":
+    #     kit = "speleologist"
+    # if name == "spele":
+    #     name = "speleologist"
+
+
+    # if kit == "horse":
+    #     kit = "horsetamer"
+    # if name == "horse":
+    #     name = "horsetamer"
 
 
     if name is None:
@@ -1651,7 +1679,7 @@ Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
         embed.set_image(url=f"https://gen.plancke.io/blitz/{ign}/3.png?random={rand}")
 
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-
+        await ctx.send(embed=embed)
     else:
     
         embed = discord.Embed(
@@ -1680,10 +1708,10 @@ Experience ➠ **{'{:,}'.format(exp_kit)}**
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
 
-
-
-
-    await ctx.send(embed=embed)
+        if kit.lower() in bsg_kits:
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send(f"{kit} Does Not Exist!")
 
 
 

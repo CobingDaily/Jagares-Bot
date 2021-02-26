@@ -1522,7 +1522,7 @@ async def nh(ctx, name=None):
 
 @bot.command(aliases=['blitz', 'sg', 'hg'])
 async def bsg(ctx, name=None, kit=None):
-    if name in bsg_kits and kit is None:
+    if name.lower() in bsg_kits and kit is None:
         kit = name
         name = ctx.message.author.display_name
     if name is None:

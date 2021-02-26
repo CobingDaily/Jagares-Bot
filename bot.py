@@ -1528,10 +1528,10 @@ async def bsg(ctx, name=None, kit=None):
         kit = name
         name = ctx.message.author.display_name
     
-    elif name.lower() not in bsg_kits and kit is None:
-        if kit == "horse":
-            kit = "horsetamer"
-        name = ctx.message.author.display_name
+
+    if kit == "horse":
+        kit = "horsetamer"
+
 
 
 

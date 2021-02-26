@@ -1531,6 +1531,8 @@ async def bsg(ctx, name=None, kit=None):
 
     elif name.lower() == "horse" or kit.lower() == "horse":
         kit = "horsetamer"
+        if name is None:
+            name = ctx.message.author.display_name
 
     data = hypixel.hypixel_api(name)
     try:

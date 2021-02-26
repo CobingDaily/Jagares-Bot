@@ -1599,7 +1599,7 @@ async def bsg(ctx, name=None, kit=None):
 
 
 
-    if kit == None:
+    if kit == None or kit == "overall":
         embed = discord.Embed(
         title = f"`{ign}'s Blitz Stats`",
         colour = discord.Colour.orange()

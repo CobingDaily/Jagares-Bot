@@ -1513,7 +1513,7 @@ async def nh(ctx, name=None):
 
 
 @bot.command(aliases=['blitz', 'sg', 'hg'])
-async def bsg(ctx, name=None):
+async def bsg(ctx, name=None, kit=None):
     if name is None:
         name = ctx.message.author.display_name
     data = hypixel.hypixel_api(name)
@@ -1543,6 +1543,29 @@ async def bsg(ctx, name=None):
 
 
 
+    kills_kit = hypixel.get_bsg_kills_kit(name, kit, data) 
+    deaths_kit = hypixel.get_bsg_deaths_kit(name, kit, data)
+    wins_kit = hypixel.get_bsg_wins_kit(name, kit, data)
+    wins_teams_kit = hypixel.get_bsg_wins_teams_kit(name, kit, data)
+    wins_total_kit = wins_kit + wins_teams_kit
+    exp_kit = hypixel.get_bsg_exp_kit(name, kit, data)
+    level_kit = hypixel.get_bsg_level_kit(name, kit, data)
+    games_played_kit = hypixel.get_bsg_games_played_kit(name, kit, data)
+    losses_kit = games_played_kit - wins_total_kit
+
+    if deaths_kit == 0:
+        kd_kit = kills_kit
+    else:
+        kd_kit = round(kills_kit/deaths_kit, 2)
+
+    if losses_kit == 0:
+        wl_kit = wins_total_kit
+    else:
+        wl_kit = round(wins_total_kit/losses_kit, 2)
+
+
+
+
 
     # if losses ==0:
     #     wl = wins
@@ -1564,51 +1587,72 @@ async def bsg(ctx, name=None):
 
 
 
-    rand = get_random_string(12)
+
+    if kit == None:
+        embed = discord.Embed(
+        title = f"`{ign}'s Blitz Stats`",
+        colour = discord.Colour.orange()
+        )
+        rand = get_random_string(12)
+
+        embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
 
-    embed = discord.Embed(
-    title = f"`{ign}'s Blitz Stats`",
-    colour = discord.Colour.orange()
-    )
+        embed.add_field(name='\u200b', value=f'''
+Kills ➠ **{'{:,}'.format(kills)}**
+Deaths ➠ **{'{:,}'.format(deaths)}**
+K/D Ratio ➠ **{'{:,}'.format(kd)}**
+Wins ➠ **{'{:,}'.format(wins)}**
+Playtime ➠ **{time_played}**
+Coins ➠ **{'{:,}'.format(coins)}**
+''', inline=True)
+
+        embed.add_field(name='\u200b', value=f'''
+Rambo Kills ➠ **{'{:,}'.format(kills_rambo)}**
+Rambo Wins ➠ **{'{:,}'.format(wins_rambo)}**
+Victory Dance ➠ **{victorydance}**
+Finisher ➠ **{finisher}**
+Taunt ➠ **{taunt}**
+Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
+''', inline=True)
 
 
 
-    embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
+        embed.set_image(url=f"https://gen.plancke.io/blitz/{ign}/3.png?random={rand}")
 
-    # embed.add_field(name='Kills', value=f"`{'{:,}'.format(kills)}`", inline=True)  
-    # embed.add_field(name='Deaths', value=f"`{'{:,}'.format(deaths)}`", inline=True)
-    # embed.add_field(name='K/D Ratio', value=f"`{'{:,}'.format(kd)}`", inline=True)
-    # embed.add_field(name='Wins', value=f"`{'{:,}'.format(wins)}`", inline=True)
-    # embed.add_field(name='Losses', value=f"`{'{:,}'.format(losses)}`", inline=True)
-    # embed.add_field(name='Coins', value=f"`{'{:,}'.format(coins)}`", inline=True)
+        embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
-    embed.add_field(name='\u200b', value=f'''
-    Kills ➠ **{'{:,}'.format(kills)}**
-    Deaths ➠ **{'{:,}'.format(deaths)}**
-    K/D Ratio ➠ **{'{:,}'.format(kd)}**
-    Wins ➠ **{'{:,}'.format(wins)}**
-    Playtime ➠ **{time_played}**
-    Coins ➠ **{'{:,}'.format(coins)}**
-    ''', inline=True)
-
-    embed.add_field(name='\u200b', value=f'''
-    Rambo Kills ➠ **{'{:,}'.format(kills_rambo)}**
-    Rambo Wins ➠ **{'{:,}'.format(wins_rambo)}**
-    Victory Dance ➠ **{victorydance}**
-    Finisher ➠ **{finisher}**
-    Taunt ➠ **{taunt}**
-    Taunt Kills ➠ **{'{:,}'.format(taunt_kills)}**
+    else:
     
-    ''', inline=True)
+        embed = discord.Embed(
+        title = f"`{ign}'s {kit.capitalize} {level_kit} Stats`",
+        colour = discord.Colour.orange()
+        )
+
+        embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
+
+
+        embed.add_field(name='\u200b', value=f'''
+Kills ➠ **{'{:,}'.format(kills_kit)}**
+Deaths ➠ **{'{:,}'.format(deaths_kit)}**
+K/D Ratio ➠ **{'{:,}'.format(kd_kit)}**
+Wins Solo ➠ **{'{:,}'.format(wins_kit)}**
+Wins Teams ➠ **{'{:,}'.format(wins_teams_kit)}**
+W/L Ratio ➠ **{'{:,}'.format(wl_kit)}**
+Experience ➠ **{exp_kit}**
+
+''', inline=True)
 
 
 
 
-    embed.set_image(url=f"https://gen.plancke.io/blitz/{ign}/3.png?random={rand}")
 
-    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+        embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+
 
     await ctx.send(embed=embed)
 

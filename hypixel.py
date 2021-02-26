@@ -1,6 +1,6 @@
 import requests
 import math, re
-
+import roman
 
 API_KEY = "d52f4c03-9f60-4358-8a24-d5d97b46ceb1"
 BASE = 10_000
@@ -788,6 +788,95 @@ def get_bsg_time_played(name, data):
     except:
         bsg_time_played = 0
     return bsg_time_played
+
+
+
+
+
+
+
+
+def get_bsg_kills_kit(name, kit, data):
+    try:
+        bsg_kills_kit = int(data["player"]["stats"]["HungerGames"][f"kills_{kit}"])
+    except:
+        bsg_kills_kit = 0
+    return bsg_kills_kit
+
+def get_bsg_deaths_kit(name, kit, data):
+    try:
+        bsg_deaths_kit = int(data["player"]["stats"]["HungerGames"][f"deaths_{kit}"])
+    except:
+        bsg_deaths_kit = 0
+    return bsg_deaths_kit
+
+def get_bsg_wins_kit(name, kit, data):
+    try:
+        bsg_wins_kit = int(data["player"]["stats"]["HungerGames"][f"wins_{kit}"])
+    except:
+        bsg_wins_kit = 0
+    return bsg_wins_kit
+
+
+def get_bsg_wins_teams_kit(name, kit, data):
+    try:
+        bsg_wins_teams_kit = int(data["player"]["stats"]["HungerGames"][f"wins_teams_{kit}"])
+    except:
+        bsg_wins_teams_kit = 0
+    return bsg_wins_teams_kit
+
+
+def get_bsg_games_played_kit(name, kit, data):
+    try:
+        bsg_games_played_kit = int(data["player"]["stats"]["HungerGames"][f"games_played_{kit}"])
+    except:
+        bsg_games_played_kit = 0
+    return bsg_games_played_kit
+
+
+
+
+def get_bsg_exp_kit(name, kit, data):
+    try:
+        bsg_exp_kit = int(data["player"]["stats"]["HungerGames"][f"exp_{kit}"])
+    except:
+        bsg_exp_kit = 0
+    return bsg_exp_kit
+
+
+
+
+
+
+def get_bsg_level_kit(name, kit, data):
+    try:
+        bsg_level_kit = int(data["player"]["stats"]["HungerGames"][f"{kit}"]) + 1
+    except:
+        bsg_level_kit = 1
+    try:
+        bsg_pres_kit = int(data["player"]["stats"]["HungerGames"][f"p{kit}"])
+    except:
+        bsg_pres_kit = 0
+
+    if bsg_pres_kit == 0:
+        result = f"{roman.toRoman(bsg_level_kit)}"
+    else:
+        result = f"Prestige {roman.toRoman(bsg_pres_kit)}"
+    return result
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

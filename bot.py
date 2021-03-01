@@ -1568,7 +1568,8 @@ async def bsg(ctx, name=None, *, kit=None):
         kit = name
         name = ctx.message.author.display_name
     
-    kit = kit.lower()
+    if kit is not None:
+        kit = kit.lower()
 
 
 

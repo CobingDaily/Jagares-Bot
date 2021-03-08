@@ -572,6 +572,7 @@ def get_class_plancke_fkd(name:str, Class:str) -> float:
     page = requests.get(url)
     soup = BeautifulSoup(page.text, 'html.parser')
     table = soup.find('table', attrs={'class':'table m-b-0'})
+    print(table)
     rows = table.find_all('tr')
     try:
         for row in rows:

@@ -903,7 +903,7 @@ async def mwclass(ctx, Class, name=None):
             class_cpg = round(class_cp / class_games_all, 2)
 
         # try:
-        class_fkd = round(hypixel.get_class_plancke_fkd(name, Class), 2)
+        class_fkd = round(hypixel.get_class_plancke_fkd(Class, name), 2)
         # except:
         #     if class_final_deaths_all == 0:
         #         class_fkd = class_final_kills_all

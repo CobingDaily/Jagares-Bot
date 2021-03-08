@@ -1,6 +1,7 @@
 import requests
 import math, re
 import roman
+from bs4 import BeautifulSoup
 
 API_KEY = "d52f4c03-9f60-4358-8a24-d5d97b46ceb1"
 BASE = 10_000
@@ -8,6 +9,8 @@ GROWTH = 2_500
 REVERSE_PQ_PREFIX = -(BASE - 0.5 * GROWTH) / GROWTH
 REVERSE_CONST = REVERSE_PQ_PREFIX
 GROWTH_DIVIDES_2 = 2 / GROWTH
+
+
 
 
 bsg_kits_ultimate = ["ranger", "phoenix", "donkeytamer", "warrior"]
@@ -562,6 +565,29 @@ def get_class_final_deaths_all(name, Class, data):
     except:
         class_final_deaths_all = 0
     return class_final_deaths_all
+
+
+def get_class_plancke_fkd(name:str, Class:str) -> int:
+    url = f"https://plancke.io/hypixel/player/stats/{name}#MW"
+    page = requests.get(url)
+    soup = BeautifulSoup(page.text, 'html.parser')
+    table = soup.find('table', attrs={'class':'table m-b-0'})
+    rows = table.find_all('tr')
+    try:
+        for row in rows:
+            cells = row.find_all("td")
+            if len(cells) is not 0:
+                if cells[0].get_text() == str(Class.capitalize()):
+                    fkd = cells[5].get_text()
+    except:
+        fkd = 0
+    return int(fkd)
+
+
+
+
+
+
 
 def get_class_wins_all(name, Class, data):
     

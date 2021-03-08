@@ -5,3 +5,4 @@ requests
 Cybernator
 matplotlib
 roman
+bs4

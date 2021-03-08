@@ -567,7 +567,7 @@ def get_class_final_deaths_all(name, Class, data):
     return class_final_deaths_all
 
 
-def get_class_plancke_fkd(name:str, Class:str) -> int:
+def get_class_plancke_fkd(name:str, Class:str) -> float:
     url = f"https://plancke.io/hypixel/player/stats/{name}#MW"
     page = requests.get(url)
     soup = BeautifulSoup(page.text, 'html.parser')
@@ -581,7 +581,7 @@ def get_class_plancke_fkd(name:str, Class:str) -> int:
                     fkd = cells[5].get_text()
     except:
         fkd = 0
-    return int(fkd)
+    return float(fkd)
 
 
 

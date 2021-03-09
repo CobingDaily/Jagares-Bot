@@ -13,7 +13,7 @@ from Cybernator import Paginator as pag
 from PIL import Image, ImageFont, ImageDraw
 import matplotlib.pyplot as plt
 
-bot = commands.Bot(command_prefix = "/")
+bot = commands.Bot(command_prefix = ".")
 bot.remove_command('help')
 
 
@@ -165,13 +165,13 @@ async def help(ctx):
     
     embed1.set_author(name='Commands')
 
-    embed1.add_field(name='Mega Walls Stats', value='/mw <player>', inline=False)
-    embed1.add_field(name='Mega Walls Class Points', value='/cp <player>', inline=False)
-    embed1.add_field(name='Mega Walls Class Stats', value='/mwclass <class> <player>', inline=False)
-    embed1.add_field(name='Blitz Survival Games Stats', value='/bsg <player>', inline=False)
-    embed1.add_field(name='Info', value='/info <player>', inline=False)
-    embed1.add_field(name='Guild Info', value='/guild <player>', inline=False)
-    embed1.add_field(name='Watchdog/Staff Stats', value='/watchdog', inline=False)
+    embed1.add_field(name='Mega Walls Stats', value='.mw <player>', inline=False)
+    embed1.add_field(name='Mega Walls Class Points', value='.cp <player>', inline=False)
+    embed1.add_field(name='Mega Walls Class Stats', value='.mwclass <class> <player>', inline=False)
+    embed1.add_field(name='Blitz Survival Games Stats', value='.bsg <player>', inline=False)
+    embed1.add_field(name='Info', value='.info <player>', inline=False)
+    embed1.add_field(name='Guild Info', value='.guild <player>', inline=False)
+    embed1.add_field(name='Watchdog/Staff Stats', value='.watchdog', inline=False)
 
 
     embed1.set_footer(text="© 2020 LazBoi All Rights Reserved | Page 1/3 ")
@@ -186,10 +186,10 @@ async def help(ctx):
     
     embed2.set_author(name='Commands')
 
-    embed2.add_field(name='Guild Cape', value='/gcape', inline=False)
-    embed2.add_field(name='8ball', value='/8ball <question>', inline=False)
-    embed2.add_field(name='Good Night', value='/gn <person>', inline=False)
-    embed2.add_field(name='Duel', value='/duel <player1> <player2>', inline=False)
+    embed2.add_field(name='Guild Cape', value='.gcape', inline=False)
+    embed2.add_field(name='8ball', value='.8ball <question>', inline=False)
+    embed2.add_field(name='Good Night', value='.gn <person>', inline=False)
+    embed2.add_field(name='Duel', value='.duel <player1> <player2>', inline=False)
 
 
     embed2.set_footer(text="© 2020 LazBoi All Rights Reserved | Page 2/3 ")
@@ -205,10 +205,10 @@ async def help(ctx):
     
     embed3.set_author(name='Commands')
 
-    embed3.add_field(name='Pet Image', value='/dog/cat/bird/panda', inline=False)
-    embed3.add_field(name='Lyrics', value='/lyrics <song>', inline=False)
-    embed3.add_field(name='Bot Chat', value='/chat <message>', inline=False)
-    embed3.add_field(name='Shoutout', value='/shoutout', inline=False)
+    embed3.add_field(name='Pet Image', value='.dog/cat/bird/panda', inline=False)
+    embed3.add_field(name='Lyrics', value='.lyrics <song>', inline=False)
+    embed3.add_field(name='Bot Chat', value='.chat <message>', inline=False)
+    embed3.add_field(name='Shoutout', value='.shoutout', inline=False)
 
     embed3.set_footer(text="© 2020 LazBoi All Rights Reserved | Page 3/3 ")
 
@@ -613,7 +613,7 @@ async def duel(ctx, p1=None, p2=None):
     
     elif p1 is None and p2 is None:
         await ctx.send(f'`Both` Player arguments are missing.')
-        await ctx.send(f'/duel <Player1> <Player2>')
+        await ctx.send(f'.duel <Player1> <Player2>')
 
     else:
         await ctx.send(f'`{random.choice(players)}` won the duel.')

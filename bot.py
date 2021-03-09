@@ -32,7 +32,7 @@ bsg_kits_ultimate = ["ranger", "phoenix", "donkeytamer", "warrior"]
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game('/help'))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game('.help'))
     
     print(bot.user.name + " is ready.")
 

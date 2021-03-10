@@ -16,11 +16,10 @@ GROWTH_DIVIDES_2 = 2 / GROWTH
 bsg_kits_ultimate = ["ranger", "phoenix", "donkeytamer", "warrior"]
 
 
-proxies = { 
-              "http"  : "185.39.150.44:8000", 
-              "https" : "185.39.150.44:8000"
-            }
-
+proxies = {
+            "http"  : "http://rTX1ko:yGYUTG@185.39.150.44:8000/", 
+            "https" : "https://rTX1ko:yGYUTG@185.39.150.44:8000/"
+           }
 
 
 

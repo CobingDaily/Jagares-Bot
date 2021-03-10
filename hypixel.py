@@ -16,7 +16,10 @@ GROWTH_DIVIDES_2 = 2 / GROWTH
 bsg_kits_ultimate = ["ranger", "phoenix", "donkeytamer", "warrior"]
 
 
-
+proxies = { 
+              "http"  : "185.39.150.44:8000", 
+              "https" : "185.39.150.44:8000"
+            }
 
 
 
@@ -569,7 +572,7 @@ def get_class_final_deaths_all(name, Class, data):
 
 def get_class_plancke_fkd(name:str, Class:str) -> float:
     url = f"https://plancke.io/hypixel/player/stats/{name}#MW"
-    page = requests.get(url)
+    page = requests.get(url, proxies=proxies)
     soup = BeautifulSoup(page.text, 'html.parser')
     table = soup.find('table', attrs={'class':'table m-b-0'})
     rows = table.find_all('tr')

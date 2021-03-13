@@ -426,22 +426,77 @@ async def apply(ctx):
 
     # await ctx.send(f'https://hypixel.net/threads/%E2%98%95%EF%B8%8F-jagares-jag-%E2%98%95%EF%B8%8F-level-89-%E2%98%95%EF%B8%8F-mega-walls-more-%E2%98%95%EF%B8%8F-top-100-%E2%98%95%EF%B8%8F-events-%E2%98%95%EF%B8%8F.2490194/')
     await ctx.send(embed=embed)
-		    
+
+
+
+
+
+
+
+
+
+
 @bot.command(pass_context=True, aliases=['clear'])
 @has_permissions(manage_messages=True)
 async def purge(ctx, ammount=3):
     await ctx.channel.purge(limit=ammount+1)
 
-		    
-
 @purge.error
 async def purge_error(ctx, error):
-    if isinstance(error, commands.MissingPermissions):
-        		    	    
+    if isinstance(error, commands.MissingPermissions): 		    	    
         await ctx.send("You don't have the permission to delete messages.")
 		    
 
-		    
+
+
+@bot.command(pass_context=True)
+@has_permissions(kick_members=True)
+async def kick(ctx, member : discord.Member=None, *, reason=None):
+    if reason is None:
+        reason = "N/A"
+    if member is None:
+        await ctx.send("Member is not defined!")
+    else:
+        await member.kick(reason=reason)
+        await ctx.send(f"{member} has been kicked.")
+
+@kick.error
+async def kick_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):     		    	    
+        await ctx.send("You don't have the permission to ban members.")
+
+
+
+
+@bot.command(pass_context=True)
+@has_permissions(ban_members=True)
+async def ban(ctx, member : discord.Member=None, *, reason=None):
+    if reason is None:
+        reason = "N/A"
+    if member is None:
+        await ctx.send("Member is not defined!")
+    else:
+        await member.ban(reason=reason)
+        await ctx.send(f"{member} has been banned.")
+
+@ban.error
+async def ban_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):     		    	    
+        await ctx.send("You don't have the permission to ban members.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+	    
 # @bot.command(pass_context=True)
 # @has_permissions(manage_messages=True)
 # async def say(ctx, *, msg):

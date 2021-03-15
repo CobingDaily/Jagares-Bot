@@ -68,11 +68,12 @@ def uuid_or_name(input):
 def hypixel_api(name):
     result = uuid_or_name(name)
     if result == "name":
-        # try:
-        mcdata = requests.get(f"https://api.mojang.com/users/profiles/minecraft/{name}").json()
-        name = mcdata["id"]
-        # except:
-        #     name = "none"
+        try:
+            mcdata = requests.get(f"https://api.mojang.com/users/profiles/minecraft/{name}").json()
+            name = mcdata["id"]
+            result = "uuid"
+        except:
+            name = "none"
 
     url = f"https://api.hypixel.net/player?key={API_KEY}&{result}={name}"
     res = requests.get(url)

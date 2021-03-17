@@ -1218,13 +1218,21 @@ async def classcompare(ctx, Class, name1, name2=None):
 
 @bot.command(aliases=['Guild', 'g'])
 async def guild(ctx, name=None):
+    embed_loading = discord.Embed(
+    # title = 'Jagares Bot',
+    colour = discord.Colour.orange()
+    )
+    embed_loading.add_field(name=f'Loading...', value="\u200b", inline=True)
+    msg = await ctx.send(embed=embed_loading)
+
+
     if name is None:
         name = ctx.message.author.display_name
     data = hypixel.hypixel_api(name)
     gdata = hypixel.hypixel_gapi(name)
 
     if gdata is None:
-        await ctx.send("Guild not found!")
+        await msg.edit("Guild not found!")
         success = False
     else:
         success = True
@@ -1354,7 +1362,7 @@ Level ➠ **{'{:,}'.format(guild_level)}**
 
 
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-        await ctx.send(file=img, embed=embed)
+        await msg.edit(file=img, embed=embed)
 
 
 

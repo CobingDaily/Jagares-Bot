@@ -1225,7 +1225,7 @@ async def guild(ctx, name=None):
     embed_loading.add_field(name=f'Loading...', value="\u200b", inline=True)
     loading_img = discord.File("loading.gif", filename="loading.gif")
     embed_loading.set_image(url="attachment://loading.gif")
-    msg = await ctx.send(file=loading_img, embed=embed_loading)
+    msg = await ctx.send(embed=embed_loading)
 
     if name is None:
         name = ctx.message.author.display_name

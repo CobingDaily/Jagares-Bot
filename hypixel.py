@@ -1005,7 +1005,7 @@ def get_guild_exp(name, gdata):
         guild_exp = 0
     return guild_exp
 
-@jit()
+
 def get_guild_level(exp):
     EXP_NEEDED = [
     100000,

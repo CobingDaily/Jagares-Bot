@@ -1334,25 +1334,25 @@ Level ➠ **{'{:,}'.format(guild_level)}**
         expEachDay.reverse()
         exp.reverse()
 
-        plt.figure(figsize=(10, 4))
-        axis_x = expEachDay
-        axis_y = exp
-        # axis_y_PL = axis_y_player
-        plt.style.use("ggplot")
-        plt.plot(axis_x, axis_y, label=f"GEXP",  linewidth=3, color="#ec9b00", marker="o")
-        # plt.plot(axis_x, axis_y_PL, label=f"{player_ign}'s GEXP",  linewidth=3, color="#2A85EC", marker="o")
-        plt.ticklabel_format(axis="y", style="plain")
-        # plt.tight_layout()
-        # plt.title("test", size=30)
-        plt.legend()
-        plt.savefig("graph.png", transparent=False, bbox_inches='tight')
-        img = discord.File("graph.png", filename="graph.png")
-        embed.set_image(url="attachment://graph.png")
+        # plt.figure(figsize=(10, 4))
+        # axis_x = expEachDay
+        # axis_y = exp
+        # # axis_y_PL = axis_y_player
+        # plt.style.use("ggplot")
+        # plt.plot(axis_x, axis_y, label=f"GEXP",  linewidth=3, color="#ec9b00", marker="o")
+        # # plt.plot(axis_x, axis_y_PL, label=f"{player_ign}'s GEXP",  linewidth=3, color="#2A85EC", marker="o")
+        # plt.ticklabel_format(axis="y", style="plain")
+        # # plt.tight_layout()
+        # # plt.title("test", size=30)
+        # plt.legend()
+        # plt.savefig("graph.png", transparent=False, bbox_inches='tight')
+        # img = discord.File("graph.png", filename="graph.png")
+        # embed.set_image(url="attachment://graph.png")
 
 
 
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-        await ctx.send(file=img, embed=embed)
+        await ctx.send(embed=embed)
 
 
 

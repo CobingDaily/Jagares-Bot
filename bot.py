@@ -1223,7 +1223,7 @@ async def guild(ctx, name=None):
     colour = discord.Colour.orange()
     )
     embed_loading.add_field(name=f'Loading...', value="\u200b", inline=True)
-    msg = await ctx.send(embed=embed_loading)
+    msg = await ctx.send(file=None, embed=embed_loading)
 
 
     if name is None:
@@ -1362,7 +1362,7 @@ Level ➠ **{'{:,}'.format(guild_level)}**
 
 
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-        await msg.edit(embed=embed)
+        await msg.edit(file=img, embed=embed)
 
 
 

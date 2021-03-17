@@ -12,7 +12,7 @@ from discord.ext.commands import has_permissions, CheckFailure, MissingPermissio
 from Cybernator import Paginator as pag
 from PIL import Image, ImageFont, ImageDraw
 import matplotlib.pyplot as plt
-
+from numba import jit, njit
 
 bot = commands.Bot(command_prefix = ".")
 bot.remove_command('help')
@@ -1215,11 +1215,12 @@ async def classcompare(ctx, Class, name1, name2=None):
 
 
 
+
 @bot.command(aliases=['Guild', 'g'])
 async def guild(ctx, name=None):
     if name is None:
         name = ctx.message.author.display_name
-    # data = hypixel.hypixel_api(name)
+    data = hypixel.hypixel_api(name)
     gdata = hypixel.hypixel_gapi(name)
 
     if gdata is None:
@@ -1238,8 +1239,8 @@ async def guild(ctx, name=None):
     guild_tag = hypixel.get_guild_tag(name, gdata)
     guild_exp_total = hypixel.get_guild_exp(name, gdata)
     guild_level = hypixel.get_guild_level(guild_exp_total)
-    # player_ign = hypixel.get_displayname(name, data)
-    # player_uuid = hypixel.get_uuid(name, data)
+    player_ign = hypixel.get_displayname(name, data)
+    player_uuid = hypixel.get_uuid(name, data)
 
     embed = discord.Embed(
     # title = 'Jagares Bot',
@@ -1247,7 +1248,7 @@ async def guild(ctx, name=None):
     )
 
     exp = [0, 0, 0, 0, 0, 0, 0]
-    # playerExp = ""
+    playerExp = ""
     expEachDay = []
     # axis_y_player = []
     k = 0
@@ -1267,16 +1268,16 @@ async def guild(ctx, name=None):
                         owner_name = None
             time2 = time.time()
             print(f"{time2 - time1}s - finding owner, adding exp")
-        # if "members" in gdata["guild"]:
-        #     time3 = time.time()
-        #     for member in guild_members:
-        #         if member["uuid"] == player_uuid:
-        #             for dailyPlayerExpHistory in member["expHistory"]:
-        #                 playerExpValue = member["expHistory"]
-        #                 playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(playerExpValue[dailyPlayerExpHistory])}** \n"
-        #                 # axis_y_player.append(playerExpValue[dailyPlayerExpHistory])
-        #     time4 = time.time()
-        #     print(f"{time4 - time3}s - adding xp")
+        if "members" in gdata["guild"]:
+            time3 = time.time()
+            for member in guild_members:
+                if member["uuid"] == player_uuid:
+                    for dailyPlayerExpHistory in member["expHistory"]:
+                        playerExpValue = member["expHistory"]
+                        playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(playerExpValue[dailyPlayerExpHistory])}** \n"
+                        # axis_y_player.append(playerExpValue[dailyPlayerExpHistory])
+            time4 = time.time()
+            print(f"{time4 - time3}s - adding xp")
         time5 = time.time()
         for dailyExpHistory in member["expHistory"]:
             expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
@@ -1284,21 +1285,21 @@ async def guild(ctx, name=None):
             k = k + 1 
         time6 = time.time()
         print(f"{time6 - time5}s - appending exp")
-        # ranks = []
+        ranks = []
 
-        # if "ranks" in gdata["guild"]:
-        #     time7 = time.time()
-        #     for rank in gdata["guild"]["ranks"]:
-        #         try:
-        #             ranks.append(rank["name"])
-        #         except:
-        #             ranks.append("")
-        #         if "default" in rank:
-        #             if rank["default"] == True:
-        #                 default_rank = rank["name"]
-        #                 # default_rank_tag = rank["tag"]
-        #     time8 = time.time()
-        #     print(f"{time8 - time7}s - appending ranks")
+        if "ranks" in gdata["guild"]:
+            time7 = time.time()
+            for rank in gdata["guild"]["ranks"]:
+                try:
+                    ranks.append(rank["name"])
+                except:
+                    ranks.append("")
+                if "default" in rank:
+                    if rank["default"] == True:
+                        default_rank = rank["name"]
+                        # default_rank_tag = rank["tag"]
+            time8 = time.time()
+            print(f"{time8 - time7}s - appending ranks")
 
 
 
@@ -1314,45 +1315,46 @@ Guild Name ➠ **{guild_name}**
 Guild Tag ➠ **{guild_tag}**
 Tag Color ➠ **{guild_tag_color}**
 Guild Master ➠ **{owner_name}**
+Default Rank ➠ **{default_rank}**
 Total GEXP ➠ **{'{:,}'.format(guild_exp_total)}**
 Level ➠ **{'{:,}'.format(guild_level)}**
         '''
 
-        # guild_ranks = ""
-        # for guild_rank in ranks:
-        #     guild_ranks += "➠ " + str(guild_rank) + "\n"
+        guild_ranks = ""
+        for guild_rank in ranks:
+            guild_ranks += "➠ " + str(guild_rank) + "\n"
 
 
 
         embed.add_field(name=f'Stats', value=guild_stats, inline=True)
         embed.add_field(name=f'Weekly GEXP', value=expValue, inline=True)
-        # embed.add_field(name=f"\u200B", value="\u200B", inline=False)
-        # embed.add_field(name=f'Ranks', value=guild_ranks, inline=True)
-        # embed.add_field(name=f"{player_ign}'s Weekly GEXP", value=playerExp, inline=True)
+        embed.add_field(name=f"\u200B", value="\u200B", inline=False)
+        embed.add_field(name=f'Ranks', value=guild_ranks, inline=True)
+        embed.add_field(name=f"{player_ign}'s Weekly GEXP", value=playerExp, inline=True)
 
 
         expEachDay.reverse()
         exp.reverse()
 
-        # plt.figure(figsize=(10, 4))
-        # axis_x = expEachDay
-        # axis_y = exp
-        # # axis_y_PL = axis_y_player
-        # plt.style.use("ggplot")
-        # plt.plot(axis_x, axis_y, label=f"GEXP",  linewidth=3, color="#ec9b00", marker="o")
-        # # plt.plot(axis_x, axis_y_PL, label=f"{player_ign}'s GEXP",  linewidth=3, color="#2A85EC", marker="o")
-        # plt.ticklabel_format(axis="y", style="plain")
-        # # plt.tight_layout()
-        # # plt.title("test", size=30)
-        # plt.legend()
-        # plt.savefig("graph.png", transparent=False, bbox_inches='tight')
-        # img = discord.File("graph.png", filename="graph.png")
-        # embed.set_image(url="attachment://graph.png")
+        plt.figure(figsize=(10, 4))
+        axis_x = expEachDay
+        axis_y = exp
+        # axis_y_PL = axis_y_player
+        plt.style.use("ggplot")
+        plt.plot(axis_x, axis_y, label=f"GEXP",  linewidth=3, color="#ec9b00", marker="o")
+        # plt.plot(axis_x, axis_y_PL, label=f"{player_ign}'s GEXP",  linewidth=3, color="#2A85EC", marker="o")
+        plt.ticklabel_format(axis="y", style="plain")
+        # plt.tight_layout()
+        # plt.title("test", size=30)
+        plt.legend()
+        plt.savefig("graph.png", transparent=False, bbox_inches='tight')
+        img = discord.File("graph.png", filename="graph.png")
+        embed.set_image(url="attachment://graph.png")
 
 
 
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-        await ctx.send(embed=embed)
+        await ctx.send(file=img, embed=embed)
 
 
 

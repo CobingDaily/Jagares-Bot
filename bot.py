@@ -1254,6 +1254,7 @@ async def guild(ctx, name=None):
     expValue = ""
     if success == True:
         if "ranks" in gdata["guild"]:
+            time1 = time.time()
             for member in guild_members:
                 i = 0
                 for dailyExpHistory in member["expHistory"]:
@@ -1264,22 +1265,29 @@ async def guild(ctx, name=None):
                         owner_name = hypixel.hypixel_api(member["uuid"])["player"]["displayname"]
                     except:
                         owner_name = None
+            time2 = time.time()
+            print(f"{time2 - time1}s - finding owner, adding exp")
         if "members" in gdata["guild"]:
+            time3 = time.time()
             for member in guild_members:
                 if member["uuid"] == player_uuid:
                     for dailyPlayerExpHistory in member["expHistory"]:
                         playerExpValue = member["expHistory"]
                         playerExp += f"{dailyPlayerExpHistory} ➠ **{'{:,}'.format(playerExpValue[dailyPlayerExpHistory])}** \n"
                         # axis_y_player.append(playerExpValue[dailyPlayerExpHistory])
-
+            time4 = time.time()
+            print(f"{time4 - time3}s - adding xp")
+        time5 = time.time()
         for dailyExpHistory in member["expHistory"]:
             expValue += f"{dailyExpHistory} ➠ **{'{:,}'.format(exp[k])}** \n"
             expEachDay.append(dailyExpHistory)
             k = k + 1 
-        
+        time6 = time.time()
+        print(f"{time6 - time5}s - appending exp")
         ranks = []
 
         if "ranks" in gdata["guild"]:
+            time7 = time.time()
             for rank in gdata["guild"]["ranks"]:
                 try:
                     ranks.append(rank["name"])
@@ -1289,6 +1297,8 @@ async def guild(ctx, name=None):
                     if rank["default"] == True:
                         default_rank = rank["name"]
                         # default_rank_tag = rank["tag"]
+            time8 = time.time()
+            print(f"{time8 - time7}s - appending ranks")
 
 
 

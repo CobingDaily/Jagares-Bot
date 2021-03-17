@@ -6,3 +6,4 @@ Cybernator
 matplotlib
 roman
 bs4
+numba

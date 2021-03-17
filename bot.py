@@ -12,6 +12,7 @@ from discord.ext.commands import has_permissions, CheckFailure, MissingPermissio
 from Cybernator import Paginator as pag
 from PIL import Image, ImageFont, ImageDraw
 import matplotlib.pyplot as plt
+from numba import jit, njit
 
 bot = commands.Bot(command_prefix = ".")
 bot.remove_command('help')
@@ -1216,6 +1217,7 @@ async def classcompare(ctx, Class, name1, name2=None):
 
 
 @bot.command(aliases=['Guild', 'g'])
+@jit()
 async def guild(ctx, name=None):
     if name is None:
         name = ctx.message.author.display_name

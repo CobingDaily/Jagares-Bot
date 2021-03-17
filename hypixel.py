@@ -2,6 +2,7 @@ import requests
 import math, re
 import roman
 from bs4 import BeautifulSoup
+from numba import jit, njit
 
 API_KEY = "d52f4c03-9f60-4358-8a24-d5d97b46ceb1"
 BASE = 10_000
@@ -1004,7 +1005,7 @@ def get_guild_exp(name, gdata):
         guild_exp = 0
     return guild_exp
 
-
+@jit()
 def get_guild_level(exp):
     EXP_NEEDED = [
     100000,

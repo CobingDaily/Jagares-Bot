@@ -1362,7 +1362,7 @@ Level ➠ **{'{:,}'.format(guild_level)}**
 
 
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-        await msg.edit(file=img, embed=embed)
+        await msg.edit(embed=embed)
 
 
 

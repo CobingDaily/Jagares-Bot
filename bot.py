@@ -1223,8 +1223,8 @@ async def guild(ctx, name=None):
     colour = discord.Colour.orange()
     )
     embed_loading.add_field(name=f'Loading...', value="\u200b", inline=True)
-    loading_img = discord.File("./images/loading.gif", filename="loading.gif")
-    embed_loading.set_image(url="attachment://loading.png")
+    loading_img = discord.File("loading.gif", filename="loading.gif")
+    embed_loading.set_image(url="attachment://loading.gif")
     msg = await ctx.send(file=loading_img, embed=embed_loading)
 
     if name is None:

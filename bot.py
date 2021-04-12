@@ -827,7 +827,7 @@ Level: **{'{:,}'.format(level)}/{'{:,}'.format(level_requirement)}** {level_emoj
 Final Kills: **{'{:,}'.format(final_kills)}/{'{:,}'.format(final_kills_requirement)}** {final_kills_emoji}
 Wins: **{'{:,}'.format(wins)}/{'{:,}'.format(wins_requirement)}** {wins_emoji}
 Discord: **{author}**
-
+\u200B
 
 ''', inline=True)
 
@@ -845,7 +845,7 @@ Discord: **{author}**
         await ctx.send("An officer will review your application. If you don't receive a response within 2 days, you can reapply.")
         msg = await officer_chat.send(embed=embed)
         for emoji in reactions: 
-            await bot.add_reaction(msg, emoji)
+            await msg.add_reaction(emoji)
 
 @bot.command()
 async def cp(ctx, name=None):

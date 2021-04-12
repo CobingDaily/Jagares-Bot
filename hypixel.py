@@ -267,7 +267,7 @@ def get_uuid(name, data):
 
 def get_level(name, data):
     try:
-        exp = int(data["player"]["exp"])
+        exp = int(data["player"]["networkExp"])
     except:
         exp = 0
     return round(1 + REVERSE_PQ_PREFIX + math.sqrt(REVERSE_CONST + GROWTH_DIVIDES_2 * exp))

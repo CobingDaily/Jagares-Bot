@@ -856,7 +856,7 @@ Discord: **{author}**
         if ign == "none":
             await ctx.send(f"Player `{name}` is not found!")
         else:
-            await ctx.send("An officer will review your application. If you don't receive a response within 2 days, you can reapply.")
+            await ctx.send(f"Application created for `{ign}` ({author}).")
             msg = await officer_chat.send(embed=embed)
             for emoji in reactions: 
                 await msg.add_reaction(emoji)

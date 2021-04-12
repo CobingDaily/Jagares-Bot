@@ -74,7 +74,7 @@ async def info(ctx, name=None):
 
         ign = hypixel.get_displayname(name, data)
 
-        level = hypixel.get_level(name, data2)
+        level = hypixel.get_level(name, data)
         karma = hypixel.get_karma(name, data2)
         achievementPoints = hypixel.get_achievementPoints(name, data2)
         quests = hypixel.get_quests(name, data2)
@@ -150,6 +150,10 @@ async def info(ctx, name=None):
         await ctx.send("Player not found! (Make sure to use their Minecraft username)")
     else:
          await page.start()
+
+
+
+
 
 
 
@@ -417,16 +421,16 @@ async def dc(ctx):
         await ctx.send(f'Only Guild Members Have Access To This Command!')
  
 		    
-@bot.command()
-async def apply(ctx):
-    embed = discord.Embed(
-    title = f"Apply For Jagares",
-    colour = discord.Colour.orange()
-    )
-    embed.add_field(name='\u200b', value=f"[apply here](https://hypixel.net/threads/%E2%98%95%EF%B8%8F-jagares-jag-%E2%98%95%EF%B8%8F-level-89-%E2%98%95%EF%B8%8F-mega-walls-more-%E2%98%95%EF%B8%8F-top-100-%E2%98%95%EF%B8%8F-events-%E2%98%95%EF%B8%8F.2490194/)", inline=True)
+# @bot.command()
+# async def apply(ctx):
+#     embed = discord.Embed(
+#     title = f"Apply For Jagares",
+#     colour = discord.Colour.orange()
+#     )
+#     embed.add_field(name='\u200b', value=f"[apply here](https://hypixel.net/threads/%E2%98%95%EF%B8%8F-jagares-jag-%E2%98%95%EF%B8%8F-level-89-%E2%98%95%EF%B8%8F-mega-walls-more-%E2%98%95%EF%B8%8F-top-100-%E2%98%95%EF%B8%8F-events-%E2%98%95%EF%B8%8F.2490194/)", inline=True)
 
-    # await ctx.send(f'https://hypixel.net/threads/%E2%98%95%EF%B8%8F-jagares-jag-%E2%98%95%EF%B8%8F-level-89-%E2%98%95%EF%B8%8F-mega-walls-more-%E2%98%95%EF%B8%8F-top-100-%E2%98%95%EF%B8%8F-events-%E2%98%95%EF%B8%8F.2490194/')
-    await ctx.send(embed=embed)
+#     # await ctx.send(f'https://hypixel.net/threads/%E2%98%95%EF%B8%8F-jagares-jag-%E2%98%95%EF%B8%8F-level-89-%E2%98%95%EF%B8%8F-mega-walls-more-%E2%98%95%EF%B8%8F-top-100-%E2%98%95%EF%B8%8F-events-%E2%98%95%EF%B8%8F.2490194/')
+#     await ctx.send(embed=embed)
 
 
 
@@ -768,6 +772,80 @@ async def mw(ctx, name=None):
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
     await ctx.send(embed=embed)
+
+
+@bot.command()
+async def apply(ctx, name=None):
+    if name is None:
+        name = ctx.message.author.display_name
+    data = hypixel.hypixel_api(name)
+    try:
+        ign = hypixel.get_displayname(name, data)
+    except:
+        await ctx.send(f"Player `{name}` is not found!")
+    
+    level = hypixel.get_level(name, data)
+    final_kills = hypixel.get_final_kills(name, data) 
+    wins = hypixel.get_wins(name, data)
+    author = ctx.message.author
+    officer_chat = bot.get_channel(542788550329106503)
+
+    level_requirement = 100
+    final_kills_requirement = 750
+    wins_requirement = 300
+
+    reactions = ["✅", "❌"]
+
+
+    if level >= level_requirement:
+        level_emoji = "🟢"
+    else:
+        level_emoji = "🔴"
+
+    if final_kills >= final_kills_requirement:
+        final_kills_emoji = "🟢"
+    else:
+        final_kills_emoji = "🔴"
+
+    if wins >= wins_requirement:
+        wins_emoji = "🟢"
+    else:
+        wins_emoji = "🔴"
+    
+
+
+    embed = discord.Embed(
+    title = f"\u200B",
+    colour = discord.Colour.orange()
+    )
+
+    embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
+
+
+    embed.add_field(name=f"`{ign}`'s Application ", value=f'''
+Level: **{'{:,}'.format(level)}/{'{:,}'.format(level_requirement)}** {level_emoji}
+Final Kills: **{'{:,}'.format(final_kills)}/{'{:,}'.format(final_kills_requirement)}** {final_kills_emoji}
+Wins: **{'{:,}'.format(wins)}/{'{:,}'.format(wins_requirement)}** {wins_emoji}
+Discord: **{author}**
+
+
+''', inline=True)
+
+
+    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+
+
+
+
+
+    if ign == "none":
+        await ctx.send(f"Player `{name}` is not found!")
+    else:
+        await ctx.send("An officer will review your application. If you don't receive a response within 2 days, you can reapply.")
+        msg = await officer_chat.send(embed=embed)
+        # for emoji in reactions: 
+        #     await bot.add_reaction(msg, emoji)
 
 @bot.command()
 async def cp(ctx, name=None):

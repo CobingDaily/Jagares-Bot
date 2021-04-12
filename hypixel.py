@@ -265,9 +265,9 @@ def get_uuid(name, data):
     return uuid
 
 
-def get_level(name, data2):
+def get_level(name, data):
     try:
-        exp = int(data2["exp"])
+        exp = int(data["player"]["exp"])
     except:
         exp = 0
     return round(1 + REVERSE_PQ_PREFIX + math.sqrt(REVERSE_CONST + GROWTH_DIVIDES_2 * exp))

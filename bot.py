@@ -46,6 +46,18 @@ async def on_ready():
 #         print(" "+servers[x-1].name)
 
 
+@bot.event
+async def on_message(message):
+    if message.channel.id == 831180773825839174:
+        if message.author.bot:
+            pass
+        else:
+            # await client.process_commands(message)
+            if message.content == '.apply':
+                await message.channel.send('as')
+
+
+
 @bot.command(pass_context=True)
 async def servers(ctx):
     servers = list(bot.guilds)

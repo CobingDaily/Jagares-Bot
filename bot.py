@@ -838,14 +838,16 @@ Discord: **{author}**
 
 
 
-
-    if ign == "none":
-        await ctx.send(f"Player `{name}` is not found!")
+    if ctx.channel.id == 831180773825839174:
+        if ign == "none":
+            await ctx.send(f"Player `{name}` is not found!")
+        else:
+            await ctx.send("An officer will review your application. If you don't receive a response within 2 days, you can reapply.")
+            msg = await officer_chat.send(embed=embed)
+            for emoji in reactions: 
+                await msg.add_reaction(emoji)
     else:
-        await ctx.send("An officer will review your application. If you don't receive a response within 2 days, you can reapply.")
-        msg = await officer_chat.send(embed=embed)
-        for emoji in reactions: 
-            await msg.add_reaction(emoji)
+        await ctx.send("You can only use this command in #apply.")
 
 @bot.command()
 async def cp(ctx, name=None):

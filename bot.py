@@ -853,7 +853,7 @@ Discord: **{author}**
 
 
     if ctx.channel.id == 831180773825839174:
-        if ign == "none" or ign == None:
+        if ign == "none" or ign == None or ign == "None":
             await ctx.send(f"Player `{name}` is not found!")
         else:
             await ctx.send(f"Application created for `{ign}` ({author}).")

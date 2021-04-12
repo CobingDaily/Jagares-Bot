@@ -815,14 +815,14 @@ async def apply(ctx, name=None):
 
 
     embed = discord.Embed(
-    title = f"\u200B",
+    title = f"`{ign}`'s Application",
     colour = discord.Colour.orange()
     )
 
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
 
 
-    embed.add_field(name=f"`{ign}`'s Application ", value=f'''
+    embed.add_field(name=f"\u200B", value=f'''
 Level: **{'{:,}'.format(level)}/{'{:,}'.format(level_requirement)}** {level_emoji}
 Final Kills: **{'{:,}'.format(final_kills)}/{'{:,}'.format(final_kills_requirement)}** {final_kills_emoji}
 Wins: **{'{:,}'.format(wins)}/{'{:,}'.format(wins_requirement)}** {wins_emoji}
@@ -844,8 +844,8 @@ Discord: **{author}**
     else:
         await ctx.send("An officer will review your application. If you don't receive a response within 2 days, you can reapply.")
         msg = await officer_chat.send(embed=embed)
-        # for emoji in reactions: 
-        #     await bot.add_reaction(msg, emoji)
+        for emoji in reactions: 
+            await bot.add_reaction(msg, emoji)
 
 @bot.command()
 async def cp(ctx, name=None):

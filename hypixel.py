@@ -4,7 +4,8 @@ import roman
 from bs4 import BeautifulSoup
 from numba import jit, njit
 
-API_KEY = "d52f4c03-9f60-4358-8a24-d5d97b46ceb1"
+# API_KEY = "d52f4c03-9f60-4358-8a24-d5d97b46ceb1"
+API_KEY = "0f01eaf9-74c0-4bfb-9789-0287e70bd0f7" #temp
 BASE = 10_000
 GROWTH = 2_500
 REVERSE_PQ_PREFIX = -(BASE - 0.5 * GROWTH) / GROWTH

@@ -785,7 +785,10 @@ async def mw(ctx, name=None):
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
-    await ctx.send(embed=embed)
+    if ign != "none" or ign != "None" or ign != None:
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send(f"Player `{name}` is not found!")
 
 
 @bot.command()
@@ -1142,7 +1145,7 @@ async def mwclass(ctx, Class, name=None):
         # embed.set_image(url=f"https://gen.plancke.io/mwclass/{ign}/{Class.capitalize()}.png?random={rand}")
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
-        if ign != "none":
+        if ign != "none" or ign != "None" or ign != None:
             await ctx.send(file=img, embed=embed)
         else:
             await ctx.send(f"Player `{name}` is not found!")
@@ -1288,8 +1291,8 @@ async def classcompare(ctx, Class, name1, name2=None):
 
 
 
-
     await ctx.send(embed=embed)
+    
 
 
 
@@ -1452,7 +1455,11 @@ Level ➠ **{'{:,}'.format(guild_level)}**
 
 
         embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
-        await ctx.send(file=img, embed=embed)
+        if ign != "none" or ign != "None" or ign != None:
+            await ctx.send(file=img, embed=embed)
+        else:
+            await ctx.send(f"Player `{name}` is not found!")
+
 
 
 
@@ -1660,11 +1667,15 @@ async def nh(ctx, name=None):
 
 
 
+    if ign != "none" or ign != "None" or ign != None:
+        message = await ctx.send(embed=embed1)
+        page = pag(bot, message, footer=False, only=ctx.author, use_more=False, embeds = embeds, language='en',use_exit=False, exit_reaction=["⏹"])
 
-    message = await ctx.send(embed=embed1)
-    page = pag(bot, message, footer=False, only=ctx.author, use_more=False, embeds = embeds, language='en',use_exit=False, exit_reaction=["⏹"])
+        await page.start()
+    else:
+        await ctx.send(f"Player `{name}` is not found!")
 
-    await page.start()
+
 
 
 
@@ -1886,7 +1897,7 @@ Experience ➠ **{'{:,}'.format(exp_kit)}**
 
         if kit.lower() not in bsg_kits:
             await ctx.send(f"`{kit}` Kit Does Not Exist!")
-        elif ign == "none":
+        elif ign == "none" or ign == "None" or ign == None:
             await ctx.send(f"Player `{name}` is not found!")
         else:
             await ctx.send(embed=embed)

@@ -80,8 +80,11 @@ def hypixel_api(name):
     url = f"https://api.hypixel.net/player?key={API_KEY}&{result}={name}"
     res = requests.get(url)
     data = res.json()
-    if data["player"] is None:
-        return None
+    try:
+        if data["player"] is None:
+            return None
+    except:
+        data = None
     return data
 
 

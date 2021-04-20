@@ -782,7 +782,7 @@ async def mw(ctx, name=None):
     embed.add_field(name='Cakes Found', value=f"`{'{:,}'.format(cakes_found)}`", inline=True)
     embed.add_field(name='Class Points', value=f"`{'{:,}'.format(cps)}`", inline=True)
     embed.add_field(name='Chosen Skin', value=f"`{chosen_skin}`", inline=True)
-    embed.set_image(url=f"https://gen.plancke.io/mw/{ign}/2.png?random={rand}")
+    embed.set_image(url=f"https://gen.plancke.io/mw/{uuid}/2.png?random={rand}")
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 

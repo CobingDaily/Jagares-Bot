@@ -759,7 +759,7 @@ async def mw(ctx, name=None):
     rand = get_random_string(12)
     
     embed = discord.Embed(
-    title = f'[{ign}](https://plancke.io/hypixel/player/stats/{uuid})',
+    title = f"[{ign}](https://plancke.io/hypixel/player/stats/{uuid}/)",
     colour = discord.Colour.orange()
     )
 

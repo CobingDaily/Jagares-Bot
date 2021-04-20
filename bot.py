@@ -759,14 +759,14 @@ async def mw(ctx, name=None):
     rand = get_random_string(12)
     
     embed = discord.Embed(
-    title = f"[{ign} on plancke](https://plancke.io/hypixel/player/stats/{uuid}/)",
+    title = f"`{ign}`'s Mega Walls stats",
     colour = discord.Colour.orange()
     )
 
 
 
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
-    embed.add_field(name='Plancke', value=f"[{ign}](https://plancke.io/hypixel/player/stats/{uuid}/)", inline=False)
+    embed.add_field(name='\u200B', value=f"[{ign}](https://plancke.io/hypixel/player/stats/{uuid}/)", inline=False)
     embed.add_field(name='Final Kills', value=f"`{'{:,}'.format(final_kills)}`", inline=True)
     embed.add_field(name='Final Assists', value=f"`{'{:,}'.format(fas)}`", inline=True)
     embed.add_field(name='Final Deaths', value=f"`{'{:,}'.format(fds)}`", inline=True)

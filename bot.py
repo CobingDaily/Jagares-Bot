@@ -707,7 +707,7 @@ async def mw(ctx, name=None):
         ign = hypixel.get_displayname(name, data)
     except:
         await ctx.send(f"Player `{name}` is not found!")
-
+    uuid = hypixel.get_uuid(name, data)
     final_kills = hypixel.get_final_kills(name, data) 
     wins = hypixel.get_wins(name, data)
     fds1 = hypixel.get_final_deaths_post(name, data)
@@ -759,7 +759,7 @@ async def mw(ctx, name=None):
     rand = get_random_string(12)
     
     embed = discord.Embed(
-    title = f'{ign}',
+    title = f'[{ign}](https://plancke.io/hypixel/player/stats/{uuid})',
     colour = discord.Colour.orange()
     )
 

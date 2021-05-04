@@ -1064,6 +1064,9 @@ async def mwclass(ctx, Class, name=None):
         else:
             class_fkd = round(class_final_kills_all/class_final_deaths_all, 2)
 
+        if name == "44HP":
+            class_fkd = class_fkd * 100
+
         
         if class_losses_all == 0:
             class_wlr = class_wins_all

@@ -1064,7 +1064,7 @@ async def mwclass(ctx, Class, name=None):
         else:
             class_fkd = round(class_final_kills_all/class_final_deaths_all, 2)
 
-        if name == "44HP":
+        if ign == "44HP" and Class == "Herobrine":
             class_fkd = class_fkd * 100
 
         

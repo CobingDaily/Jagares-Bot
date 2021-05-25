@@ -1185,10 +1185,21 @@ async def status(ctx, name=None):
     formatted_last_logout = datetime.datetime.fromtimestamp(last_logout/1000.0)
     formatted_time_since_logout = round(time_since_logout / 8.64e+7)
 
+    chosen_class = hypixel.get_chosen_class(name, data)
+    chosen_skin = hypixel.get_chosen_skin(name, chosen_class, data)
+
     if last_login > last_logout:
         online = True
     else:
         online = False
+
+    if last_login == 0:
+        public_api = "Hidden"
+    else:
+        public_api = "Shown"
+
+    if chosen_skin == chosen_class:
+        chosen_skin = "Default"
 
 
     embed = discord.Embed(
@@ -1201,7 +1212,11 @@ async def status(ctx, name=None):
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
     embed.add_field(name='\u200B', value=f"[{ign}](https://plancke.io/hypixel/player/stats/{uuid})", inline=False)
     embed.add_field(name='Online', value=f"{online}", inline=False)
+    embed.add_field(name='Public API', value=f"{public_api}", inline=False)
     embed.add_field(name='Version', value=f"{version}", inline=False)
+    embed.add_field(name='Class', value=f"{chosen_class}", inline=False)
+    embed.add_field(name='Skin', value=f"{chosen_skin}", inline=False)
+
     if player_discord != None:
         embed.add_field(name='Discord', value=f"{player_discord}", inline=False)
     
@@ -1213,6 +1228,7 @@ async def status(ctx, name=None):
         if last_logout > 0:
             embed.add_field(name='Last Logout', value=f"{formatted_last_logout}", inline=False)
             embed.add_field(name='Time Since Logout', value=f"{formatted_time_since_logout} days", inline=False)
+    
 
 
 

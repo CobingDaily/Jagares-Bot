@@ -1203,17 +1203,17 @@ async def status(ctx, name=None):
 
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
     embed.add_field(name='\u200B', value=f"[{ign}](https://plancke.io/hypixel/player/stats/{uuid})", inline=False)
-    embed.add_field(name='Online', value=str(online), inline=False)
-    embed.add_field(name='Version', value=str(version), inline=False)
+    embed.add_field(name='Online', value=online, inline=False)
+    embed.add_field(name='Version', value=version, inline=False)
     if discord != None:
-        embed.add_field(name='Version', value=str(discord), inline=False)
+        embed.add_field(name='Version', value=discord, inline=False)
     
-    embed.add_field(name='First Login', value=str(formatted_first_login), inline=False)
+    embed.add_field(name='First Login', value=formatted_first_login, inline=False)
     if last_login > last_logout:
-        embed.add_field(name='Last Login', value=str(formatted_last_login), inline=False)
+        embed.add_field(name='Last Login', value=formatted_last_login, inline=False)
     else:
-        embed.add_field(name='Last Logout', value=str(formatted_last_logout), inline=False)
-        embed.add_field(name='Time Since Logout', value=str(formatted_time_since_logout), inline=False)
+        embed.add_field(name='Last Logout', value=formatted_last_logout, inline=False)
+        embed.add_field(name='Time Since Logout', value=formatted_time_since_logout, inline=False)
 
 
 

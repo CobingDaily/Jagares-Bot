@@ -1174,10 +1174,10 @@ async def status(ctx, name=None):
         await ctx.send(f"Player `{name}` is not found!")
     uuid = hypixel.get_uuid(name, data)
     version = hypixel.get_mcVersionRp(name, data)
-    first_login = hypixel.get_firstLogin(name, data)
-    last_login = hypixel.get_lastLogin(name, data)
-    last_logout = hypixel.get_lastLogout(name, data)
-    player_discord = hypixel.get_playerDiscord(name, data)
+    first_login = round(hypixel.get_firstLogin(name, data))
+    last_login = round(hypixel.get_lastLogin(name, data))
+    last_logout = round(hypixel.get_lastLogout(name, data))
+    player_discord = round(hypixel.get_playerDiscord(name, data))
     time_since_logout = time.time() * 1000 - last_logout
 
     formatted_first_login = datetime.datetime.fromtimestamp(first_login/1000.0)
@@ -1206,11 +1206,12 @@ async def status(ctx, name=None):
         embed.add_field(name='Discord', value=f"{player_discord}", inline=False)
     
     embed.add_field(name='First Login', value=f"{formatted_first_login}", inline=False)
-    if last_login > last_logout:
+    if online == True:
         embed.add_field(name='Last Login', value=f"{formatted_last_login}", inline=False)
     else:
         embed.add_field(name='Last Logout', value=f"{formatted_last_logout}", inline=False)
-        embed.add_field(name='Time Since Logout', value=f"{formatted_time_since_logout} days", inline=False)
+        if last_logout > 0:
+            embed.add_field(name='Time Since Logout', value=f"{formatted_time_since_logout} days", inline=False)
 
 
 

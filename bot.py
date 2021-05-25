@@ -1183,7 +1183,7 @@ async def status(ctx, name=None):
     formatted_first_login = datetime.datetime.fromtimestamp(first_login/1000.0)
     formatted_last_login = datetime.datetime.fromtimestamp(last_login/1000.0)
     formatted_last_logout = datetime.datetime.fromtimestamp(last_logout/1000.0)
-    formatted_time_since_logout = datetime.timedelta(milliseconds=time_since_logout).days
+    formatted_time_since_logout = time_since_logout / 8.64e+7
 
     if last_login > last_logout:
         online = True
@@ -1203,7 +1203,7 @@ async def status(ctx, name=None):
     embed.add_field(name='Online', value=f"{online}", inline=False)
     embed.add_field(name='Version', value=f"{version}", inline=False)
     if discord != None:
-        embed.add_field(name='Version', value=f"{player_discord}", inline=False)
+        embed.add_field(name='Discord', value=f"{player_discord}", inline=False)
     
     embed.add_field(name='First Login', value=f"{formatted_first_login}", inline=False)
     if last_login > last_logout:

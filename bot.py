@@ -1210,8 +1210,8 @@ async def status(ctx, name=None):
         if last_login > 0:
             embed.add_field(name='Last Login', value=f"{formatted_last_login}", inline=False)
     else:
-        embed.add_field(name='Last Logout', value=f"{formatted_last_logout}", inline=False)
         if last_logout > 0:
+            embed.add_field(name='Last Logout', value=f"{formatted_last_logout}", inline=False)
             embed.add_field(name='Time Since Logout', value=f"{formatted_time_since_logout} days", inline=False)
 
 

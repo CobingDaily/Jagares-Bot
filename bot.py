@@ -1177,9 +1177,8 @@ async def status(ctx, name=None):
     first_login = hypixel.get_firstLogin(name, data)
     last_login = hypixel.get_lastLogin(name, data)
     last_logout = hypixel.get_lastLogout(name, data)
-    discord = hypixel.get_playerDiscord(name, data)
+    player_discord = hypixel.get_playerDiscord(name, data)
     time_since_logout = datetime.datetime.now().microsecond - last_logout
-    online = False
 
     formatted_first_login = datetime.datetime.fromtimestamp(first_login/1000.0)
     formatted_last_login = datetime.datetime.fromtimestamp(first_login/1000.0)
@@ -1188,11 +1187,9 @@ async def status(ctx, name=None):
 
     if last_login > last_logout:
         online = True
+    else:
+        online = False
 
-
-
-
-    rand = get_random_string(12)
 
     embed = discord.Embed(
     title = f"`{ign}`'s Status",
@@ -1206,7 +1203,7 @@ async def status(ctx, name=None):
     embed.add_field(name='Online', value=f"{online}", inline=False)
     embed.add_field(name='Version', value=f"{version}", inline=False)
     if discord != None:
-        embed.add_field(name='Version', value=f"{discord}", inline=False)
+        embed.add_field(name='Version', value=f"{player_discord}", inline=False)
     
     embed.add_field(name='First Login', value=f"{formatted_first_login}", inline=False)
     if last_login > last_logout:

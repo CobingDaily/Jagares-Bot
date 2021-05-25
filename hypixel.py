@@ -4,8 +4,8 @@ import roman
 from bs4 import BeautifulSoup
 from numba import jit, njit
 
-# API_KEY = "d52f4c03-9f60-4358-8a24-d5d97b46ceb1"
-API_KEY = "87c99735-7ce2-4639-8fa0-9241640f61e5" #temp
+API_KEY = "2b6be98d-b4dd-4ff6-a3a5-7ed463ea63ef"
+# API_KEY = "87c99735-7ce2-4639-8fa0-9241640f61e5" #temp
 BASE = 10_000
 GROWTH = 2_500
 REVERSE_PQ_PREFIX = -(BASE - 0.5 * GROWTH) / GROWTH
@@ -310,15 +310,31 @@ def get_mcVersionRp(name, data):
 
 
 def get_firstLogin(name, data):
-    _id = data["player"]["_id"]
-    firstLogin = int(_id[0:8], base = 16) * 1000
+    try:
+        _id = data["player"]["_id"]
+        firstLogin = int(_id[0:8], base = 16) * 1000
+    except:
+        firstLogin = 0
     return firstLogin
 
 
 def get_lastLogin(name, data):
-    
-    lastLogin = int(data["player"]["lastLogin"])
+    try:
+        lastLogin = int(data["player"]["lastLogin"])
+    except:
+        lastLogin = 0    
     return lastLogin
+
+
+def get_lastLogout(name, data):
+    try:
+        lastLogout = int(data["player"]["lastLogout"])
+    except:
+        lastLogout = 0
+    return lastLogout
+
+
+
 
 def get_playerDiscord(name, data):
     try:

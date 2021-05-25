@@ -1160,6 +1160,69 @@ async def mwclass(ctx, Class, name=None):
 
 
 
+@bot.command(aliases=['playerstatus', 'ps'])
+async def status(ctx, name=None):
+    if name is None:
+        name = ctx.message.author.display_name
+    # result = uuid_or_name(name)
+    # await ctx.send(result)
+
+    data = hypixel.hypixel_api(name)
+    try:
+        ign = hypixel.get_displayname(name, data)
+    except:
+        await ctx.send(f"Player `{name}` is not found!")
+    uuid = hypixel.get_uuid(name, data)
+    version = hypixel.get_mcVersionRp(name, data)
+    first_login = hypixel.get_firstLogin(name, data)
+    last_login = hypixel.get_lastLogin(name, data)
+    last_logout = hypixel.get_lastLogout(name, data)
+    discord = hypixel.get_playerDiscord(name, data)
+    time_since_logout = datetime.datetime.now().microsecond - last_logout
+    online = False
+
+    formatted_first_login = datetime.datetime.fromtimestamp(first_login/1000.0)
+    formatted_last_login = datetime.datetime.fromtimestamp(first_login/1000.0)
+    formatted_last_logout = datetime.datetime.fromtimestamp(last_logout/1000.0)
+    formatted_time_since_logout = datetime.datetime.fromtimestamp(time_since_logout/1000.0)
+
+    if last_login > last_logout:
+        online = True
+
+
+
+
+    rand = get_random_string(12)
+
+    embed = discord.Embed(
+    title = f"`{ign}`'s Status",
+    colour = discord.Colour.orange()
+    )
+
+
+
+    embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
+    embed.add_field(name='\u200B', value=f"[{ign}](https://plancke.io/hypixel/player/stats/{uuid})", inline=False)
+    embed.add_field(name='Online', value=str(online), inline=False)
+    embed.add_field(name='Version', value=str(version), inline=False)
+    if discord != None:
+        embed.add_field(name='Version', value=str(discord), inline=False)
+    
+    embed.add_field(name='First Login', value=str(formatted_first_login), inline=False)
+    if last_login > last_logout:
+        embed.add_field(name='Last Login', value=str(formatted_last_login), inline=False)
+    else:
+        embed.add_field(name='Last Logout', value=str(formatted_last_logout), inline=False)
+        embed.add_field(name='Time Since Logout', value=str(formatted_time_since_logout), inline=False)
+
+
+
+    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+    if str(ign).lower() != "none":
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send(f"Player `{name}` is not found!")
 
 
 

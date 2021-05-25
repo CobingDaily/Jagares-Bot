@@ -1,4 +1,5 @@
 import discord
+from discord import file
 import hypixel
 import random
 import string
@@ -1198,6 +1199,21 @@ async def status(ctx, name=None):
         chosen_skin = "Default"
 
 
+    layer1 = Image.new("RGBA", (80, 80), (0, 0, 0, 0))
+    try:
+        im = Image.open(f"./Skins/{chosen_skin.lower()}.png")
+    except:
+        im = Image.open(f"./Skins/{chosen_class.lower()}.png")
+    bgArea = (8, 8, 16, 16)
+    fgArea = (40, 8, 48, 16)
+    background = im.crop(bgArea)
+    foreground = im.crop(fgArea)
+    background.paste(foreground, (0, 0), foreground)
+    layer2 = background.resize((80, 80), resample=Image.BOX)
+    layer1.paste(layer2, (0, 0)) 
+    layer1.save('skin.png')
+
+
     embed = discord.Embed(
     title = f"`{ign}`'s Status",
     colour = discord.Colour.orange()
@@ -1224,13 +1240,16 @@ async def status(ctx, name=None):
             embed.add_field(name='Last Logout', value=f"{formatted_last_logout}", inline=False)
             embed.add_field(name='Time Since Logout', value=f"{formatted_time_since_logout} days", inline=False)
     
+    img = discord.File("skin.png", filename="skin.png")
+    embed.set_image(url="attachment://skin.png")
+    
 
 
 
     embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
 
     if str(ign).lower() != "none":
-        await ctx.send(embed=embed)
+        await ctx.send(file=img, embed=embed)
     else:
         await ctx.send(f"Player `{name}` is not found!")
 

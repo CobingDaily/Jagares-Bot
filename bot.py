@@ -1178,7 +1178,7 @@ async def status(ctx, name=None):
     last_login = hypixel.get_lastLogin(name, data)
     last_logout = hypixel.get_lastLogout(name, data)
     player_discord = hypixel.get_playerDiscord(name, data)
-    time_since_logout = datetime.datetime.now().microsecond - last_logout
+    time_since_logout = round(datetime.datetime.now().microsecond - last_logout)
 
     formatted_first_login = datetime.datetime.fromtimestamp(first_login/1000.0)
     formatted_last_login = datetime.datetime.fromtimestamp(last_login/1000.0)

@@ -1193,10 +1193,6 @@ async def status(ctx, name=None):
     else:
         online = False
 
-    if last_login == 0:
-        public_api = "Hidden"
-    else:
-        public_api = "Shown"
 
     if chosen_skin == chosen_class:
         chosen_skin = "Default"
@@ -1211,11 +1207,10 @@ async def status(ctx, name=None):
 
     embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
     embed.add_field(name='\u200B', value=f"[{ign}](https://plancke.io/hypixel/player/stats/{uuid})", inline=False)
-    embed.add_field(name='Online', value=f"{online}", inline=False)
-    embed.add_field(name='Public API', value=f"{public_api}", inline=False)
-    embed.add_field(name='Version', value=f"{version}", inline=False)
-    embed.add_field(name='Class', value=f"{chosen_class}", inline=False)
-    embed.add_field(name='Skin', value=f"{chosen_skin}", inline=False)
+    embed.add_field(name='Online', value=f"{online}", inline=True)
+    embed.add_field(name='Version', value=f"{version}", inline=True)
+    embed.add_field(name='Class', value=f"{chosen_class}", inline=True)
+    embed.add_field(name='Skin', value=f"{chosen_skin}", inline=True)
 
     if player_discord != None:
         embed.add_field(name='Discord', value=f"{player_discord}", inline=False)

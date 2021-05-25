@@ -1183,7 +1183,7 @@ async def status(ctx, name=None):
     formatted_first_login = datetime.datetime.fromtimestamp(first_login/1000.0)
     formatted_last_login = datetime.datetime.fromtimestamp(last_login/1000.0)
     formatted_last_logout = datetime.datetime.fromtimestamp(last_logout/1000.0)
-    formatted_time_since_logout = datetime.datetime.month(time_since_logout)
+    formatted_time_since_logout = datetime.timedelta(milliseconds=time_since_logout).days
 
     if last_login > last_logout:
         online = True
@@ -1210,7 +1210,7 @@ async def status(ctx, name=None):
         embed.add_field(name='Last Login', value=f"{formatted_last_login}", inline=False)
     else:
         embed.add_field(name='Last Logout', value=f"{formatted_last_logout}", inline=False)
-        embed.add_field(name='Time Since Logout', value=f"{formatted_time_since_logout} months", inline=False)
+        embed.add_field(name='Time Since Logout', value=f"{formatted_time_since_logout} days", inline=False)
 
 
 

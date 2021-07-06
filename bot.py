@@ -1240,20 +1240,8 @@ async def status(ctx, name=None):
             embed.add_field(name='Last Logout', value=f"{formatted_last_logout}", inline=False)
             embed.add_field(name='Time Since Logout', value=f"{formatted_time_since_logout} days", inline=False)
     if uuid == "0ce4275d3a1846eb909db576b74f9a55":
-        unbanned = 360 - formatted_time_since_logout
-        embed.add_field(name='Unbanned in', value=f"{unbanned} days", inline=False)
-
-    elif uuid == "36ee64949934494eb3c24f2720852c40":
-        unbanned = 90 - formatted_time_since_logout
-        embed.add_field(name='Unbanned in', value=f"{unbanned} days", inline=False)
-
-    elif uuid == "a52bb5072c5c4a329aae886ff4e74b39":
-        unbanned = 360 - formatted_time_since_logout
-        embed.add_field(name='Unbanned in', value=f"{unbanned} days", inline=False)
-    
-    elif uuid == "e8c828c546ce423bb53c463c85debdda":
-        unbanned = 360 - formatted_time_since_logout
-        embed.add_field(name='Unbanned in', value=f"{unbanned} days", inline=False)
+        unbanned = (round(1625585912.2625225 * 1000 / 8.64e+7) + 181) - round(time.time() * 1000 / 8.64e+7)
+        embed.add_field(name='Ban timer', value=f"{unbanned} days", inline=False)
 
     
     img = discord.File("skin.png", filename="skin.png")

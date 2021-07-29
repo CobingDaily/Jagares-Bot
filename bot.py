@@ -15,12 +15,10 @@ from PIL import Image, ImageFont, ImageDraw
 import matplotlib.pyplot as plt
 from numba import jit, njit
 
+bot = commands.Bot(command_prefix = ".")
 officer_chat = bot.get_channel(542788550329106503)
 
-
-bot = commands.Bot(command_prefix = ".")
 bot.remove_command('help')
-
 
 classes = ["Hunter", "Zombie", "Creeper", "Arcanist", "Shaman", "Dreadlord", "Golem", "Squid", "Moleman", "Enderman", "Herobrine", "Blaze",
            "Pigman", "Spider", "Werewolf", "Pirate", "Phoenix", "Skeleton", "Assassin", "Renegade", "Snowman", "Automaton", "Cow", "Shark"]

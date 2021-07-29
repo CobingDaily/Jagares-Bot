@@ -422,8 +422,8 @@ async def give(ctx, role=None):
 async def gn(ctx, *, Object="bird"):
     
     await ctx.send(f'gn {Object}')
-        if ctx.channel.id == 831180773825839174:
-            await officer_chat.send(f"gn command used by {ctx.message.author}")
+    if ctx.channel.id == 831180773825839174:
+        await officer_chat.send(f"gn command used by {ctx.message.author}")
 
 
 @bot.command(aliases=['Bhoppare', 'xhealz', 'bhopper'])

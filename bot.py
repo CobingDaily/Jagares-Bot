@@ -15,6 +15,9 @@ from PIL import Image, ImageFont, ImageDraw
 import matplotlib.pyplot as plt
 from numba import jit, njit
 
+officer_chat = bot.get_channel(542788550329106503)
+
+
 bot = commands.Bot(command_prefix = ".")
 bot.remove_command('help')
 
@@ -419,6 +422,9 @@ async def give(ctx, role=None):
 async def gn(ctx, *, Object="bird"):
     
     await ctx.send(f'gn {Object}')
+        if ctx.channel.id == 831180773825839174:
+            await officer_chat.send(f"gn command used by {ctx.message.author}")
+
 
 @bot.command(aliases=['Bhoppare', 'xhealz', 'bhopper'])
 async def bhoppare(ctx):
@@ -807,7 +813,6 @@ async def apply(ctx, name=None):
     final_kills = hypixel.get_final_kills(name, data) 
     wins = hypixel.get_wins(name, data)
     author = ctx.message.author
-    officer_chat = bot.get_channel(542788550329106503)
 
     level_requirement = 100
     final_kills_requirement = 750

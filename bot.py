@@ -16,8 +16,6 @@ import matplotlib.pyplot as plt
 from numba import jit, njit
 
 bot = commands.Bot(command_prefix = ".")
-officer_chat = bot.get_channel(542788550329106503)
-
 bot.remove_command('help')
 
 classes = ["Hunter", "Zombie", "Creeper", "Arcanist", "Shaman", "Dreadlord", "Golem", "Squid", "Moleman", "Enderman", "Herobrine", "Blaze",
@@ -418,6 +416,7 @@ async def give(ctx, role=None):
 
 @bot.command()
 async def gn(ctx, *, Object="bird"):
+    officer_chat = bot.get_channel(542788550329106503)
     
     await ctx.send(f'gn {Object}')
     if ctx.channel.id == 831180773825839174:
@@ -815,6 +814,8 @@ async def apply(ctx, name=None):
     level_requirement = 100
     final_kills_requirement = 750
     wins_requirement = 300
+    officer_chat = bot.get_channel(542788550329106503)
+
 
     reactions = ["✅", "❌"]
 

@@ -2030,7 +2030,7 @@ async def bw(ctx, name=None):
     if deaths == 0:
         kd = kills
     else:
-        kd = round(kills/fds, 2)
+        kd = round(kills/deaths, 2)
 
     if fds == 0:
         fkd = final_kills

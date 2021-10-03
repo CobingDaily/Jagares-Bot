@@ -2005,6 +2005,78 @@ Experience ➠ **{'{:,}'.format(exp_kit)}**
 
 
 
+@bot.command()
+async def bw(ctx, name=None):
+    if name is None:
+        name = ctx.message.author.display_name
+    # result = uuid_or_name(name)
+    # await ctx.send(result)
+
+    data = hypixel.hypixel_api(name)
+    try:
+        ign = hypixel.get_displayname(name, data)
+    except:
+        await ctx.send(f"Player `{name}` is not found!")
+
+    uuid = hypixel.get_uuid(name, data)
+    kills = hypixel.get_bw_kills(name, data)
+    deaths = hypixel.get_bw_deaths(name, data)
+    final_kills = hypixel.get_bw_final_kills(name, data) 
+    fds = hypixel.get_bw_final_deaths(name, data)
+    wins = hypixel.get_bw_wins(name, data)
+    losses = hypixel.get_bw_losses(name, data)
+
+
+    if deaths == 0:
+        kd = final_kills
+    else:
+        kd = round(final_kills/fds, 2)
+
+    if fds == 0:
+        fkd = final_kills
+    else:
+        fkd = round(final_kills/fds, 2)
+    
+    if losses == 0:
+        wl = wins
+    else:
+        wl = round(wins/losses,  2)
+
+
+    next_fkd = math.floor(fkd + 1)
+
+    if fds == 0:
+        need_fks = next_fkd - final_kills
+    else:
+        need_fks = (fds * next_fkd) - final_kills
+
+
+    embed = discord.Embed(
+    title = f"`{ign}`'s Bed Wars Stats",
+    colour = discord.Colour.orange()
+    )
+
+
+
+    embed.set_author(name='Jagares Bot', icon_url=f"https://minotar.net/helm/{ign}/400")
+    embed.add_field(name='\u200B', value=f"[{ign}](https://plancke.io/hypixel/player/stats/{uuid})", inline=False)
+    embed.add_field(name='Kills', value=f"`{'{:,}'.format(kills)}`", inline=True)
+    embed.add_field(name='Deaths', value=f"`{'{:,}'.format(deaths)}`", inline=True)
+    embed.add_field(name='K/D Ratio', value=f'`{kd}`', inline=True)
+    embed.add_field(name='Final Kills', value=f"`{'{:,}'.format(final_kills)}`", inline=True)
+    embed.add_field(name='Final Deaths', value=f"`{'{:,}'.format(fds)}`", inline=True)
+    embed.add_field(name='FK/D Ratio', value=f'`{fkd}`', inline=True)
+    embed.add_field(name=f'Finals For {next_fkd} FK/D Ratio', value=f"``{'{:,}'.format(need_fks)}``", inline=True)
+    embed.add_field(name='Wins', value=f"`{'{:,}'.format(wins)}`", inline=True)
+    embed.add_field(name='Losses', value=f"`{'{:,}'.format(losses)}`", inline=True)
+    embed.add_field(name='W/L Ratio', value=f"`{'{:,}'.format(wl)}`", inline=True)
+
+    embed.set_footer(text="© 2020 LazBoi All Rights Reserved ")
+
+    if str(ign).lower() != "none":
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send(f"Player `{name}` is not found!")
 
 
 

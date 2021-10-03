@@ -704,13 +704,50 @@ def get_class_passive3(name, Class, data):
 
 
 
+# BED WARS
 
 
+def get_bw_kills(name, data):
+    try:
+        bw_kills = int(data["player"]["stats"]["Bedwars"]["kills_bedwars"])
+    except:
+        bw_kills = 0
+    return bw_kills
 
+def get_bw_final_kills(name, data):
+    try:
+        bw_kills = int(data["player"]["stats"]["Bedwars"]["final_kills_bedwars"])
+    except:
+        bw_kills = 0
+    return bw_kills
 
+def get_bw_deaths(name, data):
+    try:
+        bw_deaths = int(data["player"]["stats"]["Bedwars"]["deaths_bedwars"])
+    except:
+        bw_deaths = 0
+    return bw_deaths
 
+def get_bw_final_deaths(name, data):
+    try:
+        bw_deaths = int(data["player"]["stats"]["Bedwars"]["final_deaths_bedwars"])
+    except:
+        bw_deaths = 0
+    return bw_deaths
 
+def get_bw_wins(name, data):
+    try:
+        bw_wins = int(data["player"]["stats"]["Bedwars"]["wins_bedwars"])
+    except:
+        bw_wins = 0
+    return bw_wins
 
+def get_bw_losses(name, data):
+    try:
+        bw_losses = int(data["player"]["stats"]["Bedwars"]["losses_bedwars"])
+    except:
+        bw_losses = 0
+    return bw_losses
 
 # BLITZ SURVIVAL GAMES
 # BLITZ SURVIVAL GAMES
